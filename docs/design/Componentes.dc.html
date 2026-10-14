@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="./styles.css">
+<link rel="icon" href="./assets/logo/favicon.svg">
+<title>Ninety Nine One — Componentes</title>
+</helmet>
+<div class="{{ themeClass }}" style="background:var(--background);color:var(--foreground);font-family:var(--font-sans);min-height:100vh">
+  <header style="position:sticky;top:0;z-index:20;background:color-mix(in oklab, var(--background) 88%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)">
+    <div style="max-width:1200px;margin:0 auto;padding:0 var(--gutter);height:64px;display:flex;align-items:center;gap:24px">
+      <a href="Marca.dc.html" style="display:flex"><img src="{{ logo }}" alt="Ninety Nine One" style="height:26px"></a>
+      <div style="display:flex;gap:16px;font-size:14px;flex:1;justify-content:flex-end;align-items:center;flex-wrap:wrap">
+        <a href="Fundamentos.dc.html" style="color:var(--muted-foreground);text-decoration:none">← Fundamentos</a>
+        <button onClick="{{ toggleDark }}" style="height:32px;padding:0 12px;border-radius:var(--radius-sm);border:1px solid var(--input);background:var(--card);color:var(--foreground);font:inherit;font-size:13px;font-weight:600;cursor:pointer">{{ themeLabel }}</button>
+      </div>
+    </div>
+  </header>
+
+  <section style="max-width:1200px;margin:0 auto;padding:72px var(--gutter) 32px;display:flex;flex-direction:column;gap:14px">
+    <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">Componentes · compatibles con shadcn/ui</span>
+    <h1 style="font-family:var(--font-display);font-weight:500;font-size:clamp(40px,5.5vw,64px);line-height:1.04;letter-spacing:-0.02em;margin:0">Componentes</h1>
+    <p style="margin:0;font-size:17px;line-height:26px;color:var(--text-body);max-width:60ch">Cada pieza usa solo las variables de shadcn (<code style="font-family:var(--font-mono);font-size:14px">--primary</code>, <code style="font-family:var(--font-mono);font-size:14px">--muted</code>, <code style="font-family:var(--font-mono);font-size:14px">--ring</code>…). Con <code style="font-family:var(--font-mono);font-size:14px">tokens.tailwind.css</code> instalado, los componentes de shadcn se ven así sin cambios. Implementaciones de referencia en <code style="font-family:var(--font-mono);font-size:14px">components/</code>.</p>
+  </section>
+
+  <div style="max-width:1200px;margin:0 auto;padding:16px var(--gutter) 96px;display:flex;flex-direction:column;gap:20px">
+
+    <section data-screen-label="Botones" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:20px">
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:24px;margin:0">Botones</h2>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted-foreground)">Variantes</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+          <button style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:1px solid transparent;background:var(--primary);color:var(--primary-foreground);font:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--action-primary-hover)" style-active="transform:scale(0.98)">Primario</button>
+          <button style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:1px solid transparent;background:var(--secondary);color:var(--secondary-foreground);font:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--action-soft-hover)" style-active="transform:scale(0.98)">Secundario</button>
+          <button style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:1px solid var(--input);background:var(--card);color:var(--foreground);font:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--muted)" style-active="transform:scale(0.98)">Contorno</button>
+          <button style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:1px solid transparent;background:transparent;color:var(--foreground);font:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--muted)" style-active="transform:scale(0.98)">Fantasma</button>
+          <button style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:1px solid transparent;background:var(--destructive);color:var(--destructive-foreground);font:inherit;font-size:15px;font-weight:600;cursor:pointer" style-active="transform:scale(0.98)">Eliminar</button>
+          <button style="height:40px;padding:0;border:none;background:transparent;color:var(--text-link);font:inherit;font-size:15px;font-weight:600;cursor:pointer;text-underline-offset:3px" style-hover="text-decoration:underline">Enlace</button>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--muted-foreground)">Tamaños y estados</span>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+          <button style="height:32px;padding:0 12px;border-radius:var(--radius-sm);border:none;background:var(--primary);color:var(--primary-foreground);font:inherit;font-size:14px;font-weight:600;cursor:pointer">Pequeño · 32</button>
+          <button style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:none;background:var(--primary);color:var(--primary-foreground);font:inherit;font-size:15px;font-weight:600;cursor:pointer">Mediano · 40</button>
+          <button style="height:48px;padding:0 22px;border-radius:var(--radius-md);border:none;background:var(--primary);color:var(--primary-foreground);font:inherit;font-size:16px;font-weight:600;cursor:pointer">Grande · 48</button>
+          <button style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:none;background:var(--secondary);color:var(--secondary-foreground);font:inherit;font-size:15px;font-weight:600;display:inline-flex;align-items:center;gap:8px;cursor:pointer"><span style="font-size:20px;line-height:1">+</span>Con ícono</button>
+          <button aria-label="Agregar" style="width:40px;height:40px;border-radius:var(--radius-md);border:1px solid var(--input);background:var(--card);color:var(--foreground);font:inherit;font-size:20px;line-height:1;cursor:pointer">+</button>
+          <button style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:none;background:var(--primary);color:var(--primary-foreground);font:inherit;font-size:15px;font-weight:600;box-shadow:var(--shadow-focus);outline:none">Foco</button>
+          <button style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:none;background:var(--primary);color:var(--primary-foreground);font:inherit;font-size:15px;font-weight:600;display:inline-flex;align-items:center;gap:8px;opacity:0.85"><span style="width:14px;height:14px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent"></span>Guardando</button>
+          <button disabled="" style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:none;background:var(--primary);color:var(--primary-foreground);font:inherit;font-size:15px;font-weight:600;opacity:0.5;cursor:not-allowed">Deshabilitado</button>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Formularios" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:20px">
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:24px;margin:0">Formularios</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Nombre
+            <input placeholder="Cómo te llamas" style="height:40px;padding:0 12px;font:inherit;font-weight:400;font-size:15px;color:var(--foreground);background:var(--card);border:1px solid var(--input);border-radius:var(--radius-md);outline:none" style-focus="border-color:var(--ring);box-shadow:var(--shadow-focus)">
+            <span style="font-size:13px;font-weight:400;color:var(--muted-foreground)">Solo para saludarte.</span>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Correo
+            <input value="hola@ejemplo" readonly="" style="height:40px;padding:0 12px;font:inherit;font-weight:400;font-size:15px;color:var(--foreground);background:var(--card);border:1px solid var(--destructive);border-radius:var(--radius-md);outline:none">
+            <span style="font-size:13px;font-weight:400;color:var(--state-danger-fg)">Revisa el formato: falta el dominio.</span>
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600;opacity:0.6">Empresa
+            <input disabled="" placeholder="Deshabilitado" style="height:40px;padding:0 12px;font:inherit;font-weight:400;font-size:15px;color:var(--foreground);background:var(--muted);border:1px solid var(--input);border-radius:var(--radius-md)">
+          </label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Tipo de proyecto
+            <select style="height:40px;padding:0 12px;font:inherit;font-weight:400;font-size:15px;color:var(--foreground);background:var(--card);border:1px solid var(--input);border-radius:var(--radius-md);outline:none" style-focus="border-color:var(--ring);box-shadow:var(--shadow-focus)">
+              <option>App web</option>
+              <option>App móvil</option>
+              <option>Videojuego</option>
+              <option>Asesoría</option>
+            </select>
+          </label>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Cuéntanos del proyecto
+            <textarea rows="4" placeholder="Lo que sepas basta." style="padding:10px 12px;font:inherit;font-weight:400;font-size:15px;line-height:22px;color:var(--foreground);background:var(--card);border:1px solid var(--input);border-radius:var(--radius-md);outline:none;resize:vertical" style-focus="border-color:var(--ring);box-shadow:var(--shadow-focus)"></textarea>
+          </label>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <sc-for list="{{ checks }}" as="c" hint-placeholder-count="2">
+              <button onClick="{{ c.toggle }}" style="display:flex;gap:10px;align-items:flex-start;background:none;border:none;padding:0;cursor:pointer;text-align:left;font:inherit;color:var(--foreground)">
+                <span style="width:20px;height:20px;flex:none;margin-top:1px;border-radius:6px;border:1.5px solid {{ c.border }};background:{{ c.bg }};color:var(--primary-foreground);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">{{ c.mark }}</span>
+                <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:15px;line-height:22px">{{ c.label }}</span><span style="font-size:13px;line-height:18px;color:var(--muted-foreground)">{{ c.desc }}</span></span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:20px;flex-wrap:wrap">
+            <sc-for list="{{ radios }}" as="r" hint-placeholder-count="2">
+              <button onClick="{{ r.pick }}" style="display:flex;gap:10px;align-items:center;background:none;border:none;padding:0;cursor:pointer;font:inherit;color:var(--foreground)">
+                <span style="width:20px;height:20px;border-radius:50%;border:1.5px solid {{ r.border }};background:var(--card);display:flex;align-items:center;justify-content:center"><span style="width:10px;height:10px;border-radius:50%;background:var(--primary);transform:scale({{ r.scale }});transition:transform var(--duration-fast) var(--ease-out)"></span></span>
+                <span style="font-size:15px">{{ r.label }}</span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:24px;flex-wrap:wrap">
+            <sc-for list="{{ switches }}" as="s" hint-placeholder-count="2">
+              <button onClick="{{ s.toggle }}" role="switch" style="display:flex;gap:10px;align-items:center;background:none;border:none;padding:0;cursor:pointer;font:inherit;color:var(--foreground)">
+                <span style="width:40px;height:24px;border-radius:999px;background:{{ s.track }};position:relative;transition:background var(--duration-base) var(--ease-out)"><span style="position:absolute;top:3px;left:{{ s.left }};width:18px;height:18px;border-radius:50%;background:var(--card);box-shadow:var(--shadow-sm);transition:left var(--duration-base) var(--ease-out)"></span></span>
+                <span style="font-size:15px">{{ s.label }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:20px">
+      <section data-screen-label="Tabs" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:20px">
+        <h2 style="font-family:var(--font-display);font-weight:500;font-size:24px;margin:0">Tabs</h2>
+        <div style="display:inline-flex;gap:2px;padding:4px;background:var(--muted);border-radius:var(--radius-md);align-self:flex-start">
+          <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="3">
+            <button onClick="{{ t.pick }}" style="height:32px;padding:0 14px;border:none;border-radius:var(--radius-sm);background:{{ t.bg }};box-shadow:{{ t.shadow }};color:{{ t.color }};font:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:all var(--duration-fast) var(--ease-out)">{{ t.label }}</button>
+          </sc-for>
+        </div>
+        <p style="margin:0;font-size:15px;line-height:22px;color:var(--text-body)">{{ tabContent }}</p>
+        <div style="display:flex;gap:20px;border-bottom:1px solid var(--border)">
+          <span style="height:40px;display:flex;align-items:center;font-size:14px;font-weight:600;border-bottom:2px solid var(--primary);margin-bottom:-1px">Resumen</span>
+          <span style="height:40px;display:flex;align-items:center;font-size:14px;font-weight:600;color:var(--muted-foreground)">Equipo</span>
+          <span style="height:40px;display:flex;align-items:center;font-size:14px;font-weight:600;color:var(--muted-foreground)">Ajustes</span>
+        </div>
+      </section>
+      <section data-screen-label="Acordeón" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:12px">
+        <h2 style="font-family:var(--font-display);font-weight:500;font-size:24px;margin:0 0 8px">Acordeón</h2>
+        <div style="border-top:1px solid var(--border)">
+          <sc-for list="{{ faq }}" as="q" hint-placeholder-count="3">
+            <div style="border-bottom:1px solid var(--border)">
+              <button onClick="{{ q.toggle }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:16px 0;background:none;border:none;cursor:pointer;text-align:left;color:var(--foreground);font:inherit;font-size:16px;font-weight:600">{{ q.title }}<span style="color:var(--muted-foreground);transform:rotate({{ q.rot }});transition:transform var(--duration-base) var(--ease-out);font-size:14px">▾</span></button>
+              <div style="display:grid;grid-template-rows:{{ q.rows }};transition:grid-template-rows var(--duration-base) var(--ease-out)"><div style="overflow:hidden"><p style="margin:0;padding-bottom:16px;font-size:15px;line-height:22px;color:var(--muted-foreground)">{{ q.body }}</p></div></div>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+    </div>
+
+    <section data-screen-label="Superposiciones" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:20px">
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:24px;margin:0">Modal, drawer, tooltip y toast</h2>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+        <button onClick="{{ openModal }}" style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:1px solid var(--input);background:var(--card);color:var(--foreground);font:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--muted)">Abrir modal</button>
+        <button onClick="{{ openDrawer }}" style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:1px solid var(--input);background:var(--card);color:var(--foreground);font:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--muted)">Abrir drawer</button>
+        <button onClick="{{ showToast }}" style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:1px solid var(--input);background:var(--card);color:var(--foreground);font:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--muted)">Mostrar toast</button>
+        <span style="position:relative;display:inline-flex;margin-left:12px">
+          <span style="height:40px;padding:0 16px;display:inline-flex;align-items:center;border-radius:var(--radius-md);background:var(--muted);font-size:15px;font-weight:600">Tooltip</span>
+          <span style="position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);white-space:nowrap;background:var(--surface-inverse);color:var(--text-inverse);font-size:13px;line-height:18px;font-weight:500;padding:6px 10px;border-radius:var(--radius-sm);box-shadow:var(--shadow-md)">Copia la URL pública</span>
+        </span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px">
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:var(--radius-lg);background:var(--surface-inverse);color:var(--text-inverse);box-shadow:var(--shadow-md)"><span style="width:8px;height:8px;border-radius:50%;background:var(--durazno-300);margin-top:7px;flex:none"></span><span style="display:flex;flex-direction:column;gap:2px"><strong style="font-size:15px;line-height:22px">Enlace copiado</strong><span style="font-size:14px;line-height:20px;opacity:0.85">Ya puedes compartirlo.</span></span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:var(--radius-lg);background:var(--state-success-bg);color:var(--state-success-fg);box-shadow:var(--shadow-md)"><span style="width:8px;height:8px;border-radius:50%;background:currentColor;margin-top:7px;flex:none"></span><span style="display:flex;flex-direction:column;gap:2px"><strong style="font-size:15px;line-height:22px">Cambios guardados</strong><span style="font-size:14px;line-height:20px">Tu perfil ya está actualizado.</span></span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:var(--radius-lg);background:var(--state-danger-bg);color:var(--state-danger-fg);box-shadow:var(--shadow-md)"><span style="width:8px;height:8px;border-radius:50%;background:currentColor;margin-top:7px;flex:none"></span><span style="display:flex;flex-direction:column;gap:2px"><strong style="font-size:15px;line-height:22px">No pudimos guardar</strong><span style="font-size:14px;line-height:20px">Revisa tu conexión; no perdiste nada.</span></span></div>
+      </div>
+    </section>
+
+    <section data-screen-label="Badges y tarjetas" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:20px">
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:24px;margin:0">Badges y tarjetas</h2>
+      <div style="display:flex;gap:8px;flex-wrap:wrap">
+        <sc-for list="{{ badges }}" as="b" hint-placeholder-count="9">
+          <span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;background:{{ b.bg }};color:{{ b.fg }};border:{{ b.border }};font-size:12px;font-weight:600">{{ b.label }}</span>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px">
+        <article style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-xs);transition:all var(--duration-base) var(--ease-out);cursor:pointer;display:flex;flex-direction:column" style-hover="box-shadow:var(--shadow-md);transform:translateY(-2px)">
+          <div style="height:120px;background:var(--durazno-100)"></div>
+          <div style="padding:20px;display:flex;flex-direction:column;gap:6px">
+            <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">App móvil</span>
+            <h3 style="margin:0;font-family:var(--font-display);font-weight:500;font-size:22px">Storia</h3>
+            <p style="margin:0;font-size:15px;line-height:22px;color:var(--muted-foreground)">Tarjeta interactiva: se eleva al pasar el cursor.</p>
+          </div>
+        </article>
+        <article style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);box-shadow:var(--shadow-xs);display:flex;flex-direction:column">
+          <div style="padding:20px;display:flex;flex-direction:column;gap:6px;flex:1">
+            <h3 style="margin:0;font-family:var(--font-display);font-weight:500;font-size:22px">Plan Equipo</h3>
+            <p style="margin:0;font-size:15px;line-height:22px;color:var(--muted-foreground)">Tarjeta con pie de acciones.</p>
+          </div>
+          <div style="padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center">
+            <span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;background:var(--state-success-bg);color:var(--state-success-fg);font-size:12px;font-weight:600">Activo</span>
+            <button style="height:32px;padding:0 12px;border-radius:var(--radius-sm);border:1px solid var(--input);background:var(--card);color:var(--foreground);font:inherit;font-size:14px;font-weight:600;cursor:pointer">Gestionar</button>
+          </div>
+        </article>
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:32px 20px;border:1.5px dashed var(--border);border-radius:var(--radius-xl)">
+          <img src="{{ symbol }}" alt="" style="height:56px">
+          <h3 style="margin:0;font-family:var(--font-display);font-weight:500;font-size:20px">Aún no tienes proyectos</h3>
+          <p style="margin:0;font-size:14px;line-height:20px;color:var(--muted-foreground);max-width:30ch">Crea el primero para empezar a invitar a tu equipo.</p>
+          <button style="height:32px;padding:0 12px;border-radius:var(--radius-sm);border:none;background:var(--primary);color:var(--primary-foreground);font:inherit;font-size:14px;font-weight:600;cursor:pointer;margin-top:4px">Crear proyecto</button>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Navegación" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:20px">
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:24px;margin:0">Navegación</h2>
+      <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;background:var(--background)">
+        <div style="height:64px;padding:0 20px;display:flex;align-items:center;gap:24px">
+          <img src="{{ logo }}" alt="" style="height:22px">
+          <div style="display:flex;gap:4px;flex:1;flex-wrap:wrap">
+            <sc-for list="{{ nav }}" as="n" hint-placeholder-count="3">
+              <button onClick="{{ n.pick }}" style="padding:8px 12px;border-radius:var(--radius-sm);border:none;font:inherit;font-size:15px;font-weight:{{ n.weight }};color:{{ n.color }};background:{{ n.bg }};cursor:pointer">{{ n.label }}</button>
+            </sc-for>
+          </div>
+          <button style="height:32px;padding:0 12px;border-radius:var(--radius-sm);border:none;background:var(--primary);color:var(--primary-foreground);font:inherit;font-size:14px;font-weight:600">Conversemos</button>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Tabla" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:20px">
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:24px;margin:0">Tabla</h2>
+      <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:520px">
+          <thead>
+            <tr style="background:var(--muted)">
+              <th style="text-align:left;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted-foreground)">Proyecto</th>
+              <th style="text-align:left;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted-foreground)">Tipo</th>
+              <th style="text-align:left;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted-foreground)">Estado</th>
+              <th style="text-align:right;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted-foreground)">Usuarios</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ rows }}" as="r" hint-placeholder-count="3">
+              <tr style="border-top:1px solid var(--border)" style-hover="background:var(--muted)">
+                <td style="padding:12px 16px;font-weight:600">{{ r.name }}</td>
+                <td style="padding:12px 16px;color:var(--muted-foreground)">{{ r.type }}</td>
+                <td style="padding:12px 16px"><span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;background:{{ r.bg }};color:{{ r.fg }};font-size:12px;font-weight:600"><span style="width:6px;height:6px;border-radius:50%;background:currentColor"></span>{{ r.status }}</span></td>
+                <td style="padding:12px 16px;text-align:right;font-variant-numeric:tabular-nums">{{ r.users }}</td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <sc-if value="{{ modal }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeAll }}" style="position:fixed;inset:0;z-index:50;background:rgba(42,34,29,0.36);backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;padding:20px">
+      <div onClick="{{ stop }}" role="dialog" style="width:100%;max-width:460px;background:var(--popover);color:var(--popover-foreground);border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);padding:28px;display:flex;flex-direction:column;gap:16px">
+        <h2 style="margin:0;font-family:var(--font-display);font-weight:500;font-size:24px;line-height:30px">¿Eliminar proyecto?</h2>
+        <p style="margin:0;font-size:15px;line-height:22px;color:var(--muted-foreground)">Se borrarán sus datos y no se puede deshacer. Si solo quieres pausarlo, archívalo.</p>
+        <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:4px">
+          <button onClick="{{ closeAll }}" style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:none;background:transparent;color:var(--foreground);font:inherit;font-size:15px;font-weight:600;cursor:pointer" style-hover="background:var(--muted)">Cancelar</button>
+          <button onClick="{{ closeAll }}" style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:none;background:var(--destructive);color:var(--destructive-foreground);font:inherit;font-size:15px;font-weight:600;cursor:pointer">Eliminar</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ drawer }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeAll }}" style="position:fixed;inset:0;z-index:50;background:rgba(42,34,29,0.36);display:flex;justify-content:flex-end">
+      <aside onClick="{{ stop }}" style="width:400px;max-width:100%;background:var(--popover);color:var(--popover-foreground);border-radius:var(--radius-xl) 0 0 var(--radius-xl);box-shadow:var(--shadow-lg);display:flex;flex-direction:column">
+        <header style="display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--border)">
+          <h2 style="margin:0;font-family:var(--font-display);font-weight:500;font-size:20px">Filtros</h2>
+          <button onClick="{{ closeAll }}" aria-label="Cerrar" style="width:32px;height:32px;border-radius:var(--radius-sm);border:none;background:transparent;color:var(--muted-foreground);font-size:18px;cursor:pointer">×</button>
+        </header>
+        <div style="padding:24px;flex:1;display:flex;flex-direction:column;gap:12px;font-size:15px;color:var(--text-body)">
+          <span>Plataforma</span>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <span style="height:32px;padding:0 12px;display:inline-flex;align-items:center;border-radius:999px;background:var(--secondary);color:var(--secondary-foreground);font-size:14px;font-weight:600">Web</span>
+            <span style="height:32px;padding:0 12px;display:inline-flex;align-items:center;border-radius:999px;border:1px solid var(--border);font-size:14px;font-weight:600">iOS</span>
+            <span style="height:32px;padding:0 12px;display:inline-flex;align-items:center;border-radius:999px;border:1px solid var(--border);font-size:14px;font-weight:600">Android</span>
+          </div>
+        </div>
+        <footer style="padding:16px 24px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end">
+          <button onClick="{{ closeAll }}" style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:none;background:transparent;color:var(--foreground);font:inherit;font-size:15px;font-weight:600;cursor:pointer">Limpiar</button>
+          <button onClick="{{ closeAll }}" style="height:40px;padding:0 16px;border-radius:var(--radius-md);border:none;background:var(--primary);color:var(--primary-foreground);font:inherit;font-size:15px;font-weight:600;cursor:pointer">Aplicar</button>
+        </footer>
+      </aside>
+    </div>
+  </sc-if>
+  <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+    <div role="status" style="position:fixed;right:24px;bottom:24px;z-index:60;display:flex;gap:12px;align-items:flex-start;width:340px;max-width:calc(100% - 48px);padding:14px 16px;border-radius:var(--radius-lg);background:var(--state-success-bg);color:var(--state-success-fg);box-shadow:var(--shadow-lg)">
+      <span style="width:8px;height:8px;border-radius:50%;background:currentColor;margin-top:7px;flex:none"></span>
+      <span style="display:flex;flex-direction:column;gap:2px"><strong style="font-size:15px;line-height:22px">Cambios guardados</strong><span style="font-size:14px;line-height:20px">Tu perfil ya está actualizado.</span></span>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;dark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Tema&quot;}}">
+class Component extends DCLogic {
+  state = { dark: null, checks: [true, false], radio: 'tu', sw: [true, false], tab: 'apps', faq: [0], modal: false, drawer: false, toast: false, nav: 'Proyectos' };
+  renderVals() {
+    const s = this.state;
+    const dark = s.dark ?? (this.props.dark ?? false);
+    const L = './assets/logo/';
+    const checkData = [['Quiero recibir novedades', 'Un correo al mes, como máximo.'], ['Acepto los términos', 'Puedes leerlos antes de seguir.']];
+    const tabText = { apps: 'Aplicaciones web y móviles con su propia marca.', juegos: 'Juegos descargables y online, firmados por el estudio.', medida: 'Software a medida y asesorías para empresas.' };
+    const faqData = [['¿Cuánto tarda un proyecto?', 'Depende del alcance. Lo estimamos juntos y le informamos cada semana del avance.'], ['¿Trabajan con IA?', 'Cuando ayuda a las personas que usarán el producto. No como gancho.'], ['¿Hacen mantenimiento?', 'Sí. Cada proyecto incluye un período de soporte acordado por escrito.']];
+    const tone = { ok: ['var(--state-success-bg)', 'var(--state-success-fg)'], warn: ['var(--state-warning-bg)', 'var(--state-warning-fg)'], info: ['var(--state-info-bg)', 'var(--state-info-fg)'] };
+    const rows = [['Storia', 'App móvil', 'Publicado', 'ok', '—'], ['Proyecto B', 'Videojuego', 'En desarrollo', 'warn', '—'], ['Proyecto C', 'SaaS', 'Beta privada', 'info', '—']].map(([name, type, status, t, users]) => ({ name, type, status, users, bg: tone[t][0], fg: tone[t][1] }));
+    const B = (label, bg, fg, border) => ({ label, bg, fg, border: border || '1px solid transparent' });
+    return {
+      themeClass: dark ? 'dark' : '',
+      themeLabel: dark ? 'Modo claro' : 'Modo oscuro',
+      toggleDark: () => this.setState({ dark: !dark }),
+      logo: dark ? L + 'nno-horizontal-dark.svg' : L + 'nno-horizontal.svg',
+      symbol: dark ? L + 'nno-symbol-dark.svg' : L + 'nno-symbol.svg',
+      checks: checkData.map(([label, desc], i) => { const on = s.checks[i]; return { label, desc, mark: on ? '✓' : '', bg: on ? 'var(--primary)' : 'var(--card)', border: on ? 'var(--primary)' : 'var(--input)', toggle: () => this.setState((p) => ({ checks: p.checks.map((v, j) => j === i ? !v : v) })) }; }),
+      radios: [['tu', 'Tú'], ['usted', 'Usted']].map(([v, label]) => ({ label, border: s.radio === v ? 'var(--primary)' : 'var(--input)', scale: s.radio === v ? 1 : 0, pick: () => this.setState({ radio: v }) })),
+      switches: ['Notificaciones', 'Sonido'].map((label, i) => { const on = s.sw[i]; return { label, track: on ? 'var(--primary)' : 'var(--input)', left: on ? '19px' : '3px', toggle: () => this.setState((p) => ({ sw: p.sw.map((v, j) => j === i ? !v : v) })) }; }),
+      tabs: [['apps', 'Apps'], ['juegos', 'Juegos'], ['medida', 'A medida']].map(([v, label]) => { const on = s.tab === v; return { label, bg: on ? 'var(--card)' : 'transparent', shadow: on ? 'var(--shadow-sm)' : 'none', color: on ? 'var(--foreground)' : 'var(--muted-foreground)', pick: () => this.setState({ tab: v }) }; }),
+      tabContent: tabText[s.tab],
+      faq: faqData.map(([title, body], i) => { const on = s.faq.includes(i); return { title, body, rows: on ? '1fr' : '0fr', rot: on ? '180deg' : '0deg', toggle: () => this.setState((p) => ({ faq: p.faq.includes(i) ? [] : [i] })) }; }),
+      badges: [B('Neutro', 'var(--muted)', 'var(--muted-foreground)'), B('Primario', 'var(--secondary)', 'var(--secondary-foreground)'), B('Acento', 'var(--accent)', 'var(--accent-foreground)'), B('Publicado', 'var(--state-success-bg)', 'var(--state-success-fg)'), B('En revisión', 'var(--state-warning-bg)', 'var(--state-warning-fg)'), B('Beta', 'var(--state-info-bg)', 'var(--state-info-fg)'), B('Error', 'var(--state-danger-bg)', 'var(--state-danger-fg)'), B('Nuevo', 'var(--primary)', 'var(--primary-foreground)'), B('iOS', 'transparent', 'var(--foreground)', '1px solid var(--border)')],
+      nav: ['Qué hacemos', 'Proyectos', 'Valores'].map((label) => { const on = s.nav === label; return { label, weight: on ? 600 : 500, color: on ? 'var(--foreground)' : 'var(--muted-foreground)', bg: on ? 'var(--muted)' : 'transparent', pick: () => this.setState({ nav: label }) }; }),
+      rows,
+      modal: s.modal, drawer: s.drawer, toast: s.toast,
+      openModal: () => this.setState({ modal: true }),
+      openDrawer: () => this.setState({ drawer: true }),
+      showToast: () => { this.setState({ toast: true }); clearTimeout(this._t); this._t = setTimeout(() => this.setState({ toast: false }), 4000); },
+      closeAll: () => this.setState({ modal: false, drawer: false }),
+      stop: (e) => e.stopPropagation()
+    };
+  }
+}
+</script>
+</body>
+</html>

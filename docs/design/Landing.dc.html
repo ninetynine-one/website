@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="./styles.css">
+<link rel="icon" href="./assets/logo/favicon.svg">
+<script src="./image-slot.js"></script>
+<title>Ninety Nine One — Estudio de software</title>
+</helmet>
+<div class="{{ themeClass }}" style="background:var(--background);color:var(--foreground);font-family:var(--font-sans);min-height:100vh">
+  <nav style="position:sticky;top:0;z-index:30;background:color-mix(in oklab, var(--background) 86%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)">
+    <div style="max-width:1200px;margin:0 auto;padding:0 var(--gutter);height:64px;display:flex;align-items:center;gap:24px">
+      <a href="#inicio" style="display:flex"><img src="{{ logoH }}" alt="Ninety Nine One" style="height:28px"></a>
+      <div style="display:flex;gap:4px;flex:1;flex-wrap:wrap">
+        <a href="#hacemos" style="padding:8px 12px;border-radius:10px;font-size:15px;font-weight:500;color:var(--muted-foreground);text-decoration:none">Qué hacemos</a>
+        <a href="#proyectos" style="padding:8px 12px;border-radius:10px;font-size:15px;font-weight:500;color:var(--muted-foreground);text-decoration:none">Proyectos</a>
+        <a href="#valores" style="padding:8px 12px;border-radius:10px;font-size:15px;font-weight:500;color:var(--muted-foreground);text-decoration:none">Valores</a>
+      </div>
+      <a href="#contacto" style="height:36px;padding:0 16px;display:inline-flex;align-items:center;border-radius:var(--radius-md);background:var(--primary);color:var(--primary-foreground);font-weight:600;font-size:14px;text-decoration:none" style-hover="background:var(--action-primary-hover)">Conversemos</a>
+    </div>
+  </nav>
+
+  <section id="inicio" data-screen-label="Hero" style="max-width:1200px;margin:0 auto;padding:clamp(64px,10vw,128px) var(--gutter) clamp(64px,8vw,112px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:56px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:28px">
+      <span style="display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--muted-foreground)"><span style="width:8px;height:8px;border-radius:50%;background:var(--primary)"></span>Estudio de software independiente · Chile</span>
+      <h1 style="font-family:var(--font-display);font-weight:500;font-size:clamp(44px,6.4vw,80px);line-height:1;letter-spacing:-0.025em;margin:0;text-wrap:balance">Software hecho con cuidado, para cada persona que lo usa.</h1>
+      <p style="font-size:19px;line-height:30px;color:var(--text-body);margin:0;max-width:50ch;text-wrap:pretty">Creamos aplicaciones, apps y videojuegos propios. También desarrollamos software a medida y asesoramos a empresas que quieren hacerlo bien.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="#proyectos" style="height:48px;padding:0 22px;display:inline-flex;align-items:center;border-radius:var(--radius-md);background:var(--primary);color:var(--primary-foreground);font-weight:600;font-size:16px;text-decoration:none" style-hover="background:var(--action-primary-hover)">Ver proyectos</a>
+        <a href="#contacto" style="height:48px;padding:0 22px;display:inline-flex;align-items:center;border-radius:var(--radius-md);background:var(--secondary);color:var(--secondary-foreground);font-weight:600;font-size:16px;text-decoration:none" style-hover="background:var(--action-soft-hover)">Desarrollo a medida</a>
+      </div>
+    </div>
+    <sc-if value="{{ showPattern }}" hint-placeholder-val="{{ true }}">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-2xl);padding:clamp(28px,5vw,56px);display:flex;flex-direction:column;gap:24px">
+        <div style="display:flex;align-items:center;justify-content:center;padding:clamp(8px,2vw,24px) 0">
+          <img src="{{ symbol }}" alt="" style="width:100%;max-width:340px;aspect-ratio:1">
+        </div>
+        <p style="margin:0;font-size:14px;color:var(--muted-foreground);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><span>Noventa y nueve en el grupo.</span><span style="color:var(--text-link);font-weight:600">Vamos a buscar a la una.</span></p>
+      </div>
+    </sc-if>
+  </section>
+
+  <section id="hacemos" data-screen-label="Qué hacemos" style="background:var(--muted);padding:clamp(72px,9vw,112px) 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 var(--gutter);display:flex;flex-direction:column;gap:40px">
+      <div style="display:flex;flex-direction:column;gap:12px;max-width:640px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">Qué hacemos</span>
+        <h2 style="font-family:var(--font-display);font-weight:500;font-size:clamp(32px,4vw,44px);line-height:1.1;letter-spacing:-0.02em;margin:0;text-wrap:balance">Dos formas de trabajar, el mismo oficio</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:20px">
+        <article style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:clamp(28px,4vw,40px);display:flex;flex-direction:column;gap:20px">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--secondary);display:flex;align-items:center;justify-content:center"><span style="width:12px;height:12px;border-radius:50%;background:var(--primary)"></span></div>
+          <h3 style="font-family:var(--font-display);font-weight:500;font-size:28px;line-height:34px;margin:0">Productos propios</h3>
+          <p style="margin:0;font-size:16px;line-height:25px;color:var(--text-body)">Diseñamos, construimos y mantenemos nuestras propias aplicaciones. Cada una tiene su marca; todas llevan la misma firma.</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;border-top:1px solid var(--border)">
+            <li style="display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);font-size:15px"><span style="font-weight:600">Aplicaciones web</span><span style="color:var(--muted-foreground)">SaaS</span></li>
+            <li style="display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);font-size:15px"><span style="font-weight:600">Apps móviles</span><span style="color:var(--muted-foreground)">iOS y Android</span></li>
+            <li style="display:flex;justify-content:space-between;gap:12px;padding:14px 0;font-size:15px"><span style="font-weight:600">Videojuegos</span><span style="color:var(--muted-foreground)">Descargables y online</span></li>
+          </ul>
+        </article>
+        <article style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:clamp(28px,4vw,40px);display:flex;flex-direction:column;gap:20px">
+          <div style="width:48px;height:48px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center"><span style="width:12px;height:12px;border-radius:50%;background:var(--accent-foreground)"></span></div>
+          <h3 style="font-family:var(--font-display);font-weight:500;font-size:28px;line-height:34px;margin:0">Desarrollo a medida y asesorías</h3>
+          <p style="margin:0;font-size:16px;line-height:25px;color:var(--text-body)">Construimos el software que su empresa necesita, o la acompañamos a tomar mejores decisiones técnicas. Plazos realistas y avances cada semana.</p>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;border-top:1px solid var(--border)">
+            <li style="display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);font-size:15px"><span style="font-weight:600">Software a medida</span><span style="color:var(--muted-foreground)">Web y móvil</span></li>
+            <li style="display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);font-size:15px"><span style="font-weight:600">Asesoría técnica</span><span style="color:var(--muted-foreground)">Arquitectura y producto</span></li>
+            <li style="display:flex;justify-content:space-between;gap:12px;padding:14px 0;font-size:15px"><span style="font-weight:600">Revisión de proyectos</span><span style="color:var(--muted-foreground)">Código y procesos</span></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="proyectos" data-screen-label="Proyectos" style="max-width:1200px;margin:0 auto;padding:clamp(72px,9vw,112px) var(--gutter);display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">Proyectos</span>
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:clamp(32px,4vw,44px);line-height:1.1;letter-spacing:-0.02em;margin:0">Lo que hemos hecho</h2>
+    </div>
+    <article style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-2xl);overflow:hidden;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
+      <div style="min-height:380px;position:relative;background:var(--durazno-100)">
+        <image-slot id="storia-cover" shape="rect" placeholder="Captura o portada de Storia"></image-slot>
+      </div>
+      <div style="padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:18px;justify-content:center">
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <span style="display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;background:var(--secondary);color:var(--secondary-foreground);font-size:12px;font-weight:600">Producto propio</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:999px;background:var(--state-success-bg);color:var(--state-success-fg);font-size:12px;font-weight:600"><span style="width:6px;height:6px;border-radius:50%;background:currentColor"></span>Disponible</span>
+        </div>
+        <h3 style="font-family:var(--font-display);font-weight:500;font-size:40px;line-height:44px;letter-spacing:-0.02em;margin:0">Storia</h3>
+        <p style="margin:0;font-size:17px;line-height:27px;color:var(--text-body);max-width:46ch">Descripción breve de Storia: qué hace, para quién y qué problema resuelve, en dos líneas.</p>
+        <p style="margin:0;font-size:14px;color:var(--muted-foreground)">Un producto de ninety nine one.</p>
+        <a href="#" style="align-self:flex-start;height:40px;padding:0 16px;display:inline-flex;align-items:center;gap:8px;border-radius:var(--radius-md);border:1px solid var(--input);color:var(--foreground);font-weight:600;font-size:15px;text-decoration:none" style-hover="background:var(--muted)">Conocer Storia →</a>
+      </div>
+    </article>
+  </section>
+
+  <section id="valores" data-screen-label="Valores" style="background:var(--surface-inverse);color:var(--text-inverse);padding:clamp(72px,9vw,112px) 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 var(--gutter);display:flex;flex-direction:column;gap:48px">
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:clamp(32px,4.4vw,52px);line-height:1.08;letter-spacing:-0.02em;margin:0;max-width:18ch;text-wrap:balance">La tecnología al servicio de las personas. No al revés.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:40px">
+        <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid color-mix(in oklab, currentColor 22%, transparent);padding-top:24px">
+          <span style="font-family:var(--font-display);font-size:16px;color:var(--durazno-300)">01</span>
+          <h3 style="font-family:var(--font-display);font-weight:500;font-size:26px;margin:0">Transparencia</h3>
+          <p style="margin:0;font-size:16px;line-height:25px;opacity:0.82">Decimos las cosas como son: lo que cuesta, lo que tarda y lo que no sabemos todavía.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid color-mix(in oklab, currentColor 22%, transparent);padding-top:24px">
+          <span style="font-family:var(--font-display);font-size:16px;color:var(--durazno-300)">02</span>
+          <h3 style="font-family:var(--font-display);font-weight:500;font-size:26px;margin:0">Buscar lo mejor</h3>
+          <p style="margin:0;font-size:16px;line-height:25px;opacity:0.82">Oficio y cuidado en cada detalle, aunque nadie lo pida. Se nota en el resultado.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px;border-top:1px solid color-mix(in oklab, currentColor 22%, transparent);padding-top:24px">
+          <span style="font-family:var(--font-display);font-size:16px;color:var(--durazno-300)">03</span>
+          <h3 style="font-family:var(--font-display);font-weight:500;font-size:26px;margin:0">Las personas primero</h3>
+          <p style="margin:0;font-size:16px;line-height:25px;opacity:0.82">Usamos IA cuando ayuda a alguien. Cada usuario y cada cliente importa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" data-screen-label="Contacto" style="max-width:1200px;margin:0 auto;padding:clamp(72px,9vw,112px) var(--gutter);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:56px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">Contacto</span>
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:clamp(32px,4vw,44px);line-height:1.1;letter-spacing:-0.02em;margin:0;text-wrap:balance">Cuéntenos qué quiere construir</h2>
+      <p style="margin:0;font-size:17px;line-height:27px;color:var(--text-body);max-width:44ch">Respondemos en un máximo de dos días hábiles, con una persona del equipo y no con una plantilla.</p>
+      <a href="mailto:hola@ninetynineone.studio" style="font-family:var(--font-display);font-size:22px;font-weight:500">hola@ninetynineone.studio</a>
+    </div>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <div style="background:var(--state-success-bg);color:var(--state-success-fg);border-radius:var(--radius-xl);padding:40px;display:flex;flex-direction:column;gap:8px;justify-content:center">
+        <strong style="font-family:var(--font-display);font-weight:500;font-size:26px">Mensaje recibido.</strong>
+        <span style="font-size:16px;line-height:24px">Le escribiremos a {{ email }} dentro de dos días hábiles.</span>
+      </div>
+    </sc-if>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:clamp(24px,4vw,36px);display:flex;flex-direction:column;gap:16px">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px">
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Nombre<input required="" placeholder="Su nombre" style="height:40px;padding:0 12px;font:inherit;font-weight:400;font-size:15px;color:var(--foreground);background:var(--card);border:1px solid var(--input);border-radius:var(--radius-md);outline:none" style-focus="border-color:var(--ring);box-shadow:var(--shadow-focus)"></label>
+          <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Correo<input required="" type="email" value="{{ email }}" onChange="{{ setEmail }}" placeholder="nombre@empresa.cl" style="height:40px;padding:0 12px;font:inherit;font-weight:400;font-size:15px;color:var(--foreground);background:var(--card);border:1px solid var(--input);border-radius:var(--radius-md);outline:none" style-focus="border-color:var(--ring);box-shadow:var(--shadow-focus)"></label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Tipo de proyecto
+          <select style="height:40px;padding:0 12px;font:inherit;font-weight:400;font-size:15px;color:var(--foreground);background:var(--card);border:1px solid var(--input);border-radius:var(--radius-md);outline:none">
+            <option>Software a medida</option>
+            <option>Asesoría técnica</option>
+            <option>Revisión de proyecto</option>
+            <option>Otro</option>
+          </select>
+        </label>
+        <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Mensaje<textarea rows="4" placeholder="Lo que sepa basta: objetivo, plazos, presupuesto aproximado." style="padding:10px 12px;font:inherit;font-weight:400;font-size:15px;line-height:22px;color:var(--foreground);background:var(--card);border:1px solid var(--input);border-radius:var(--radius-md);outline:none;resize:vertical" style-focus="border-color:var(--ring);box-shadow:var(--shadow-focus)"></textarea></label>
+        <button type="submit" style="height:48px;border:none;border-radius:var(--radius-md);background:var(--primary);color:var(--primary-foreground);font:inherit;font-weight:600;font-size:16px;cursor:pointer" style-hover="background:var(--action-primary-hover)">Enviar mensaje</button>
+      </form>
+    </sc-if>
+  </section>
+
+  <footer style="border-top:1px solid var(--border)">
+    <div style="max-width:1200px;margin:0 auto;padding:48px var(--gutter);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:32px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <img src="{{ logoS }}" alt="Ninety Nine One" style="height:56px;align-self:flex-start">
+        <span style="font-size:14px;color:var(--muted-foreground)">Santiago de Chile</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:15px">
+        <strong style="font-size:13px;color:var(--muted-foreground);font-weight:600">Estudio</strong>
+        <a href="#hacemos" style="color:var(--foreground);text-decoration:none">Qué hacemos</a>
+        <a href="#proyectos" style="color:var(--foreground);text-decoration:none">Proyectos</a>
+        <a href="#valores" style="color:var(--foreground);text-decoration:none">Valores</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:15px">
+        <strong style="font-size:13px;color:var(--muted-foreground);font-weight:600">En otros lugares</strong>
+        <a href="#" style="color:var(--foreground);text-decoration:none">LinkedIn</a>
+        <a href="#" style="color:var(--foreground);text-decoration:none">GitHub</a>
+        <a href="#" style="color:var(--foreground);text-decoration:none">Instagram</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:10px;font-size:14px;color:var(--muted-foreground)">
+        <span>© 2026 Ninety Nine One SpA</span>
+        <a href="#" style="color:var(--muted-foreground)">Privacidad</a>
+      </div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;dark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Tema&quot;},&quot;showPattern&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
+class Component extends DCLogic {
+  state = { sent: false, email: '' };
+  renderVals() {
+    const dark = this.props.dark ?? false;
+    const one = 57;
+    const dots = Array.from({ length: 100 }, (_, i) => ({
+      color: i === one ? 'var(--primary)' : 'var(--durazno-200)',
+      scale: i === one ? 1.25 : 1
+    }));
+    return {
+      themeClass: dark ? 'dark' : '',
+      logoH: dark ? './assets/logo/nno-horizontal-dark.svg' : './assets/logo/nno-horizontal.svg',
+      logoS: dark ? './assets/logo/nno-lockup-dark.svg' : './assets/logo/nno-lockup.svg',
+      symbol: dark ? './assets/logo/nno-symbol-dark.svg' : './assets/logo/nno-symbol.svg',
+      showPattern: this.props.showPattern ?? true,
+      dots,
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      email: this.state.email,
+      setEmail: (e) => this.setState({ email: e.target.value }),
+      submit: (e) => { e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="./styles.css">
+<link rel="icon" href="./assets/logo/favicon.svg">
+<title>Ninety Nine One — Fundamentos</title>
+</helmet>
+<div style="background:var(--background);color:var(--foreground);font-family:var(--font-sans);min-height:100vh">
+  <header style="position:sticky;top:0;z-index:20;background:color-mix(in oklab, var(--background) 88%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)">
+    <div style="max-width:1200px;margin:0 auto;padding:0 var(--gutter);height:64px;display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+      <a href="Marca.dc.html" style="display:flex"><img src="./assets/logo/nno-horizontal.svg" alt="Ninety Nine One" style="height:26px"></a>
+      <div style="display:flex;gap:16px;font-size:14px;flex-wrap:wrap;flex:1;justify-content:flex-end">
+        <a href="#color" style="color:var(--muted-foreground);text-decoration:none">Color</a>
+        <a href="#tipografia" style="color:var(--muted-foreground);text-decoration:none">Tipografía</a>
+        <a href="#espaciado" style="color:var(--muted-foreground);text-decoration:none">Espaciado</a>
+        <a href="#radios" style="color:var(--muted-foreground);text-decoration:none">Radios y sombras</a>
+        <a href="#iconos" style="color:var(--muted-foreground);text-decoration:none">Iconografía</a>
+        <a href="#movimiento" style="color:var(--muted-foreground);text-decoration:none">Movimiento</a>
+        <a href="#tokens" style="color:var(--muted-foreground);text-decoration:none">Tokens</a>
+        <a href="Componentes.dc.html" style="color:var(--text-link);font-weight:600;text-decoration:none">Componentes →</a>
+      </div>
+    </div>
+  </header>
+
+  <section style="max-width:1200px;margin:0 auto;padding:80px var(--gutter) 48px;display:flex;flex-direction:column;gap:16px">
+    <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">Fundamentos · v1.1</span>
+    <h1 style="font-family:var(--font-display);font-weight:500;font-size:clamp(40px,5.5vw,68px);line-height:1.04;letter-spacing:-0.02em;margin:0;max-width:16ch;text-wrap:balance">Las piezas con que se construye todo lo demás</h1>
+    <p style="margin:0;font-size:18px;line-height:28px;color:var(--text-body);max-width:56ch">Pasteles para fondos y superficies, tonos profundos de la misma familia para texto y acciones. Formas redondeadas. Movimiento sobrio.</p>
+  </section>
+
+  <section id="color" data-screen-label="Color" style="max-width:1200px;margin:0 auto;padding:48px var(--gutter) 80px;display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">01 · Color</span>
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:36px;line-height:42px;letter-spacing:-0.02em;margin:0">Siete familias cálidas</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:28px">
+      <sc-for list="{{ families }}" as="fam" hint-placeholder-count="7">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap">
+            <strong style="font-family:var(--font-display);font-weight:500;font-size:22px">{{ fam.name }}</strong>
+            <span style="font-size:14px;color:var(--muted-foreground)">{{ fam.role }}</span>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:8px">
+            <sc-for list="{{ fam.steps }}" as="s" hint-placeholder-count="5">
+              <div style="display:flex;flex-direction:column;gap:6px">
+                <div style="height:64px;border-radius:var(--radius-sm);background:{{ s.hex }};border:1px solid rgba(42,34,29,0.06)"></div>
+                <span style="font-family:var(--font-mono);font-size:12px;line-height:16px;color:var(--text-body)">{{ s.step }}</span>
+                <span style="font-family:var(--font-mono);font-size:11px;line-height:14px;color:var(--muted-foreground)">{{ s.hex }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <h3 style="font-family:var(--font-display);font-weight:500;font-size:24px;margin:0">Roles y contraste verificado</h3>
+      <p style="margin:0;font-size:15px;line-height:22px;color:var(--muted-foreground);max-width:64ch">Todas las parejas de texto sobre fondo cumplen WCAG AA (4.5:1 o más). Calculado con la fórmula de luminancia relativa de WCAG 2.1.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr));gap:10px">
+        <sc-for list="{{ pairs }}" as="p" hint-placeholder-count="12">
+          <div style="background:{{ p.bg }};color:{{ p.fg }};border:1px solid rgba(42,34,29,0.08);border-radius:var(--radius-md);padding:16px;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:8px">
+              <strong style="font-size:15px">{{ p.name }}</strong>
+              <span style="font-family:var(--font-mono);font-size:13px;font-weight:500">{{ p.ratio }}</span>
+            </div>
+            <span style="font-family:var(--font-mono);font-size:11px;line-height:15px">{{ p.tokens }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <h3 style="font-family:var(--font-display);font-weight:500;font-size:24px;margin:0">Mapa shadcn/ui</h3>
+      <p style="margin:0;font-size:15px;line-height:22px;color:var(--muted-foreground);max-width:64ch">El modo claro es el principal. En oscuro, las superficies pasan a marrones cálidos profundos y el primario a Durazno 300.</p>
+      <div style="border:1px solid var(--border);border-radius:var(--radius-lg);overflow:auto;background:var(--card)">
+        <table style="width:100%;border-collapse:collapse;font-size:14px;min-width:560px">
+          <thead>
+            <tr style="background:var(--muted)">
+              <th style="text-align:left;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted-foreground)">Variable</th>
+              <th style="text-align:left;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted-foreground)">Claro</th>
+              <th style="text-align:left;padding:10px 16px;font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:var(--muted-foreground)">Oscuro</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ shadcn }}" as="r" hint-placeholder-count="20">
+              <tr style="border-top:1px solid var(--border)">
+                <td style="padding:10px 16px;font-family:var(--font-mono);font-size:13px">{{ r.name }}</td>
+                <td style="padding:10px 16px"><span style="display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:12px;color:var(--muted-foreground)"><span style="width:22px;height:22px;border-radius:6px;background:{{ r.light }};border:1px solid rgba(42,34,29,0.12)"></span>{{ r.lightLabel }}</span></td>
+                <td style="padding:10px 16px"><span style="display:inline-flex;align-items:center;gap:10px;font-family:var(--font-mono);font-size:12px;color:var(--muted-foreground)"><span style="width:22px;height:22px;border-radius:6px;background:{{ r.dark }};border:1px solid rgba(42,34,29,0.12)"></span>{{ r.darkLabel }}</span></td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="tipografia" data-screen-label="Tipografía" style="background:var(--muted);padding:80px 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 var(--gutter);display:flex;flex-direction:column;gap:40px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">02 · Tipografía</span>
+        <h2 style="font-family:var(--font-display);font-weight:500;font-size:36px;line-height:42px;letter-spacing:-0.02em;margin:0">Redonda para hablar, clara para leer</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px">
+        <div style="background:var(--card);border-radius:var(--radius-xl);padding:32px;display:flex;flex-direction:column;gap:16px">
+          <span style="font-size:13px;font-weight:600;color:var(--muted-foreground)">Titulares · Fredoka</span>
+          <span style="font-family:var(--font-display);font-weight:500;font-size:96px;line-height:1;letter-spacing:-0.03em">Aa</span>
+          <span style="font-family:var(--font-display);font-size:20px;line-height:28px;color:var(--text-body)">abcdefghijklmnñopqrstuvwxyz<br>0123456789 ¿?¡!</span>
+          <span style="font-size:13px;line-height:19px;color:var(--muted-foreground)">500 Medium por defecto, 600 para énfasis. Tracking −2 %. Solo desde 20 px. Google Fonts, licencia OFL.</span>
+        </div>
+        <div style="background:var(--card);border-radius:var(--radius-xl);padding:32px;display:flex;flex-direction:column;gap:16px">
+          <span style="font-size:13px;font-weight:600;color:var(--muted-foreground)">Texto e interfaz · Figtree</span>
+          <span style="font-weight:500;font-size:96px;line-height:1;letter-spacing:-0.02em">Aa</span>
+          <span style="font-size:20px;line-height:28px;color:var(--text-body)">abcdefghijklmnñopqrstuvwxyz<br>0123456789 ¿?¡!</span>
+          <span style="font-size:13px;line-height:19px;color:var(--muted-foreground)">400 texto, 500 interfaz, 600 etiquetas y botones, 700 cifras destacadas. Google Fonts, licencia OFL.</span>
+        </div>
+        <div style="background:var(--card);border-radius:var(--radius-xl);padding:32px;display:flex;flex-direction:column;gap:16px">
+          <span style="font-size:13px;font-weight:600;color:var(--muted-foreground)">Código · Red Hat Mono</span>
+          <span style="font-family:var(--font-mono);font-size:96px;line-height:1">Aa</span>
+          <span style="font-family:var(--font-mono);font-size:16px;line-height:26px;color:var(--text-body)">const one = 99 + 1;<br>--primary: #B04A2B;</span>
+          <span style="font-size:13px;line-height:19px;color:var(--muted-foreground)">Fragmentos de código, tokens, cifras técnicas.</span>
+        </div>
+      </div>
+      <div style="background:var(--card);border-radius:var(--radius-xl);padding:clamp(20px,3vw,32px);display:flex;flex-direction:column">
+        <sc-for list="{{ scale }}" as="t" hint-placeholder-count="11">
+          <div style="display:grid;grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:16px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--border)">
+            <span style="font-family:var(--font-mono);font-size:12px;line-height:18px;color:var(--muted-foreground)">{{ t.token }}<br>{{ t.spec }}</span>
+            <span style="font-family:{{ t.family }};font-weight:{{ t.weight }};font-size:{{ t.size }};line-height:{{ t.lh }};letter-spacing:{{ t.track }};overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ t.sample }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="espaciado" data-screen-label="Espaciado" style="max-width:1200px;margin:0 auto;padding:80px var(--gutter);display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">03 · Espaciado</span>
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:36px;line-height:42px;letter-spacing:-0.02em;margin:0">Base de 4 px</h2>
+      <p style="margin:0;font-size:15px;line-height:22px;color:var(--muted-foreground);max-width:64ch">Componentes entre 4 y 24 px. Secciones entre 64 y 128 px. Contenedor máximo 1200 px con gutter fluido de 20 a 48 px.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <sc-for list="{{ spacing }}" as="s" hint-placeholder-count="14">
+        <div style="display:grid;grid-template-columns:110px 60px minmax(0,1fr);gap:12px;align-items:center">
+          <span style="font-family:var(--font-mono);font-size:12px">{{ s.token }}</span>
+          <span style="font-family:var(--font-mono);font-size:12px;color:var(--muted-foreground)">{{ s.px }}</span>
+          <span style="height:14px;width:{{ s.w }};background:var(--durazno-300);border-radius:4px"></span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="radios" data-screen-label="Radios y sombras" style="background:var(--muted);padding:80px 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 var(--gutter);display:flex;flex-direction:column;gap:40px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">04 · Radios y sombras</span>
+        <h2 style="font-family:var(--font-display);font-weight:500;font-size:36px;line-height:42px;letter-spacing:-0.02em;margin:0">Nada en ángulo recto</h2>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:16px">
+        <sc-for list="{{ radii }}" as="r" hint-placeholder-count="7">
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div style="aspect-ratio:1;background:var(--durazno-100);border:1.5px solid var(--durazno-400);border-radius:{{ r.val }}"></div>
+            <span style="font-family:var(--font-mono);font-size:12px">{{ r.token }}</span>
+            <span style="font-size:12px;line-height:16px;color:var(--muted-foreground)">{{ r.px }} · {{ r.use }}</span>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:24px">
+        <sc-for list="{{ shadows }}" as="s" hint-placeholder-count="5">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="height:110px;background:var(--card);border-radius:var(--radius-lg);box-shadow:{{ s.val }}"></div>
+            <span style="font-family:var(--font-mono);font-size:12px">{{ s.token }}</span>
+            <span style="font-size:12px;line-height:16px;color:var(--muted-foreground)">{{ s.use }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="iconos" data-screen-label="Iconografía" style="max-width:1200px;margin:0 auto;padding:80px var(--gutter);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:48px;align-items:start">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">05 · Iconografía</span>
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:36px;line-height:42px;letter-spacing:-0.02em;margin:0">Lucide, trazo 1.75</h2>
+      <ul style="margin:0;padding:0 0 0 18px;display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:22px;color:var(--text-body)">
+        <li>Librería: Lucide (<code style="font-family:var(--font-mono);font-size:13px">lucide-react</code>), la misma de shadcn/ui.</li>
+        <li>Trazo 1.75, extremos y uniones redondeadas, color <code style="font-family:var(--font-mono);font-size:13px">currentColor</code>.</li>
+        <li>Tamaños 16 px (en texto), 20 px (botones), 24 px (navegación).</li>
+        <li>Sin íconos rellenos, duotono ni emoji como ícono.</li>
+        <li>En estados vacíos se usa el símbolo de la marca, no ilustraciones genéricas.</li>
+      </ul>
+    </div>
+    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:28px;display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px">
+      <sc-for list="{{ icons }}" as="i" hint-placeholder-count="16">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:8px;padding:12px 4px;border-radius:var(--radius-md)" style-hover="background:var(--muted)">
+          <img src="{{ i.src }}" alt="" style="width:24px;height:24px;opacity:0.88">
+          <span style="font-size:11px;color:var(--muted-foreground);text-align:center">{{ i.name }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="movimiento" data-screen-label="Movimiento" style="background:var(--muted);padding:80px 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 var(--gutter);display:flex;flex-direction:column;gap:32px">
+      <div style="display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">06 · Movimiento</span>
+        <h2 style="font-family:var(--font-display);font-weight:500;font-size:36px;line-height:42px;letter-spacing:-0.02em;margin:0">Sobrio en producto, con resorte en los juegos</h2>
+        <p style="margin:0;font-size:15px;line-height:22px;color:var(--muted-foreground);max-width:64ch">Pasa el cursor sobre cada pista para ver la curva. Con <code style="font-family:var(--font-mono);font-size:13px">prefers-reduced-motion</code> todas las duraciones bajan a 0.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:16px">
+        <sc-for list="{{ easings }}" as="e" hint-placeholder-count="4">
+          <div style="background:var(--card);border-radius:var(--radius-lg);padding:20px;display:flex;flex-direction:column;gap:14px">
+            <svg viewBox="-10 -30 120 160" style="width:100%;height:140px">
+              <path d="M0 100 L100 0" stroke="var(--border)" stroke-width="1" stroke-dasharray="3 3" fill="none"></path>
+              <path d="{{ e.path }}" stroke="var(--primary)" stroke-width="3" fill="none" stroke-linecap="round"></path>
+            </svg>
+            <div style="height:28px;background:var(--muted);border-radius:999px;position:relative" style-hover="--x:1">
+              <span style="position:absolute;top:4px;left:4px;width:20px;height:20px;border-radius:50%;background:var(--primary);transition:transform 900ms {{ e.curve }};transform:translateX(calc(var(--x, 0) * 200px))"></span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:2px">
+              <span style="font-family:var(--font-mono);font-size:13px;font-weight:500">--{{ e.token }}</span>
+              <span style="font-family:var(--font-mono);font-size:11px;color:var(--muted-foreground)">{{ e.curve }}</span>
+              <span style="font-size:13px;line-height:19px;color:var(--text-body);margin-top:4px">{{ e.use }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px">
+        <sc-for list="{{ durations }}" as="d" hint-placeholder-count="5">
+          <div style="background:var(--card);border-radius:var(--radius-md);padding:16px;display:flex;flex-direction:column;gap:4px">
+            <span style="font-family:var(--font-display);font-weight:500;font-size:26px">{{ d.ms }}</span>
+            <span style="font-family:var(--font-mono);font-size:12px">--duration-{{ d.token }}</span>
+            <span style="font-size:13px;line-height:19px;color:var(--muted-foreground)">{{ d.use }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="tokens" data-screen-label="Tokens" style="max-width:1200px;margin:0 auto;padding:80px var(--gutter);display:flex;flex-direction:column;gap:32px">
+    <div style="display:flex;flex-direction:column;gap:8px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">07 · Tokens</span>
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:36px;line-height:42px;letter-spacing:-0.02em;margin:0">Listos para Astro y Next.js</h2>
+      <p style="margin:0;font-size:15px;line-height:22px;color:var(--muted-foreground);max-width:64ch">Dos archivos. Uno con variables CSS puras y otro con el bloque <code style="font-family:var(--font-mono);font-size:13px">@theme</code> de Tailwind v4, que ya mapea las variables de shadcn/ui en claro y oscuro.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px">
+      <a href="export/tokens.css" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--foreground)" style-hover="box-shadow:var(--shadow-md)">
+        <span style="font-family:var(--font-mono);font-size:15px;font-weight:500">export/tokens.css</span>
+        <span style="font-size:14px;line-height:20px;color:var(--muted-foreground)">Paleta completa, roles semánticos, variables shadcn, tipografía, espaciado, radios, sombras y movimiento.</span>
+      </a>
+      <a href="export/tokens.tailwind.css" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--foreground)" style-hover="box-shadow:var(--shadow-md)">
+        <span style="font-family:var(--font-mono);font-size:15px;font-weight:500">export/tokens.tailwind.css</span>
+        <span style="font-size:14px;line-height:20px;color:var(--muted-foreground)">:root y .dark de shadcn, @theme con la paleta (bg-durazno-100, font-display…) y @theme inline.</span>
+      </a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px">
+      <div style="background:var(--arena-900);color:var(--arena-50);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:12px;overflow:auto">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--durazno-300)">globals.css</span>
+        <pre style="margin:0;font-family:var(--font-mono);font-size:13px;line-height:21px;white-space:pre">{{ codeGlobals }}</pre>
+      </div>
+      <div style="background:var(--arena-900);color:var(--arena-50);border-radius:var(--radius-lg);padding:24px;display:flex;flex-direction:column;gap:12px;overflow:auto">
+        <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--durazno-300)">Uso</span>
+        <pre style="margin:0;font-family:var(--font-mono);font-size:13px;line-height:21px;white-space:pre">{{ codeUsage }}</pre>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid var(--border)">
+    <div style="max-width:1200px;margin:0 auto;padding:40px var(--gutter);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:14px;color:var(--muted-foreground)">
+      <img src="./assets/logo/nno-horizontal.svg" alt="Ninety Nine One" style="height:24px">
+      <span>Fundamentos v1.1 · 2026</span>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const P = {
+      arena: { name: 'Arena', role: 'Neutros cálidos: fondos, bordes, texto', s: { 50: '#FBF7F1', 100: '#F5EEE3', 200: '#EBE1D2', 300: '#D9CBB7', 400: '#B9A893', 500: '#9A8A76', 600: '#75665A', 700: '#554940', 800: '#3D332C', 900: '#2A221D' } },
+      durazno: { name: 'Durazno', role: 'Primario. "La una": acciones, enlaces, foco', s: { 50: '#FEF4EF', 100: '#FCE6DC', 200: '#F8D0BE', 300: '#F2B39A', 400: '#E48E6C', 500: '#CC6A45', 600: '#B04A2B', 700: '#9A3E22', 800: '#6E2C18', 900: '#2A1A12' } },
+      lavanda: { name: 'Lavanda', role: 'Acento', s: { 100: '#ECE8F7', 200: '#DAD3F0', 300: '#BFB4E4', 700: '#5B4A9A', 800: '#3F3373' } },
+      salvia: { name: 'Salvia', role: 'Éxito', s: { 100: '#E4EFE3', 200: '#CDE2CB', 300: '#A9CBA6', 700: '#3E6B43', 800: '#2C4E31' } },
+      mantequilla: { name: 'Mantequilla', role: 'Advertencia', s: { 100: '#FBF0D3', 200: '#F6E2A8', 300: '#EDCC72', 700: '#7A5A0C', 800: '#5A4208' } },
+      cielo: { name: 'Cielo', role: 'Información', s: { 100: '#E2EEF6', 200: '#C7DDEC', 700: '#2F5F80', 800: '#21445C' } },
+      granada: { name: 'Granada', role: 'Error y acciones destructivas', s: { 100: '#F6E3E6', 200: '#EDC7CE', 400: '#D47A8C', 600: '#9E3550', 700: '#842B42' } }
+    };
+    const families = Object.entries(P).map(([k, f]) => ({ name: f.name, role: f.role, steps: Object.entries(f.s).map(([st, hex]) => ({ step: k + '-' + st, hex })) }));
+    const hx = (t) => { const [f, s] = t.split('-'); return P[f].s[s]; };
+    const lum = (h) => { const c = [1, 3, 5].map((i) => parseInt(h.substr(i, 2), 16) / 255).map((v) => v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4)); return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]; };
+    const cr = (a, b) => { const x = lum(a), y = lum(b); return ((Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05)).toFixed(1) + ':1'; };
+    const pr = (name, fg, bg) => { const f = fg.startsWith('#') ? fg : hx(fg), b = bg.startsWith('#') ? bg : hx(bg); return { name, fg: f, bg: b, ratio: cr(f, b), tokens: (fg.startsWith('#') ? fg : fg) + ' / ' + (bg.startsWith('#') ? bg : bg) }; };
+    const pairs = [
+      pr('Texto', 'arena-900', 'arena-50'), pr('Texto secundario', 'arena-600', 'arena-50'), pr('Texto en tarjeta', 'arena-900', '#FFFFFF'),
+      pr('Botón primario', 'arena-50', 'durazno-600'), pr('Enlace', 'durazno-700', 'arena-50'), pr('Secundario', 'durazno-700', 'durazno-100'),
+      pr('Acento', 'lavanda-800', 'lavanda-100'), pr('Éxito', 'salvia-700', 'salvia-100'), pr('Advertencia', 'mantequilla-700', 'mantequilla-100'),
+      pr('Información', 'cielo-700', 'cielo-100'), pr('Error', 'granada-700', 'granada-100'), pr('Destructivo', '#FFFFFF', 'granada-600'),
+      pr('Oscuro · texto', '#F4ECE2', '#1E1916'), pr('Oscuro · secundario', '#B8AA9A', '#1E1916'), pr('Oscuro · primario', '#2A1A12', '#F2B39A')
+    ];
+    const S = [
+      ['--background', 'arena-50', '#1E1916'], ['--foreground', 'arena-900', '#F4ECE2'], ['--card', '#FFFFFF', '#27211D'], ['--card-foreground', 'arena-900', '#F4ECE2'],
+      ['--popover', '#FFFFFF', '#27211D'], ['--primary', 'durazno-600', 'durazno-300'], ['--primary-foreground', 'arena-50', 'durazno-900'],
+      ['--secondary', 'durazno-100', '#3A2A22'], ['--secondary-foreground', 'durazno-700', 'durazno-200'], ['--muted', 'arena-100', '#312A25'],
+      ['--muted-foreground', 'arena-600', '#B8AA9A'], ['--accent', 'lavanda-100', '#2E2940'], ['--accent-foreground', 'lavanda-800', 'lavanda-200'],
+      ['--destructive', 'granada-600', 'granada-400'], ['--border', 'arena-200', '#3D352F'], ['--input', 'arena-300', '#52483F'], ['--ring', 'durazno-500', 'durazno-300'],
+      ['--chart-1…5', 'durazno-500', 'durazno-300'], ['--sidebar', 'arena-100', '#171310'], ['--radius', '0.875rem', '0.875rem']
+    ];
+    const res = (v) => v.startsWith('#') ? [v, v] : v.includes('-') && P[v.split('-')[0]] ? [hx(v), v + ' · ' + hx(v)] : ['transparent', v];
+    const shadcn = S.map(([name, l, d]) => { const [lc, ll] = res(l), [dc, dl] = res(d); return { name, light: lc, lightLabel: ll, dark: dc, darkLabel: dl }; });
+    const sc = [['7xl', 76, 80, 'd'], ['6xl', 60, 64, 'd'], ['5xl', 48, 52, 'd'], ['4xl', 36, 42, 'd'], ['3xl', 30, 36, 'd'], ['2xl', 24, 32, 'd'], ['xl', 20, 28, 's'], ['lg', 18, 28, 's'], ['base', 16, 24, 's'], ['sm', 14, 20, 's'], ['xs', 12, 16, 's']];
+    const scale = sc.map(([k, px, lh, f]) => ({ token: 'text-' + k, spec: px + ' / ' + lh + (f === 'd' ? ' · Fredoka' : ' · Figtree'), family: f === 'd' ? 'var(--font-display)' : 'var(--font-sans)', weight: f === 'd' ? 500 : 400, size: px + 'px', lh: lh + 'px', track: f === 'd' ? '-0.02em' : '0', sample: f === 'd' ? 'Cada uno importa' : 'Hacemos software con cuidado, para cada persona que lo usa.' }));
+    const spacing = [[0.5, 2], [1, 4], [2, 8], [3, 12], [4, 16], [5, 20], [6, 24], [8, 32], [10, 40], [12, 48], [16, 64], [20, 80], [24, 96], [32, 128]].map(([k, px]) => ({ token: '--space-' + String(k).replace('.', '-'), px: px + 'px', w: px * 3 + 'px' }));
+    const radii = [['xs', 6, 'checkbox, chips'], ['sm', 10, 'tooltip, tab'], ['md', 14, 'botón, input'], ['lg', 20, 'tarjeta, toast'], ['xl', 28, 'modal, drawer'], ['2xl', 40, 'bloques de sección'], ['full', 9999, 'badge, switch, avatar']].map(([k, px, use]) => ({ token: '--radius-' + k, px: px === 9999 ? 'pill' : px + 'px', val: px + 'px', use }));
+    const shadows = [['xs', 'Tarjetas en reposo'], ['sm', 'Tab activa, switch'], ['md', 'Hover de tarjeta, toast'], ['lg', 'Modal, drawer, popover'], ['focus', 'Anillo de foco']].map(([k, use]) => ({ token: '--shadow-' + k, val: 'var(--shadow-' + k + ')', use }));
+    const iconNames = ['heart', 'search', 'gamepad-2', 'smartphone', 'code-xml', 'message-circle', 'users', 'settings', 'arrow-right', 'check', 'circle-alert', 'download', 'mail', 'calendar', 'shield-check', 'globe'];
+    const icons = iconNames.map((n) => ({ name: n, src: 'https://unpkg.com/lucide-static@0.460.0/icons/' + n + '.svg' }));
+    const bez = (a, b, c, d) => { const y = (v) => 100 - v * 100; return 'M0 100 C' + a * 100 + ' ' + y(b) + ' ' + c * 100 + ' ' + y(d) + ' 100 0'; };
+    const easings = [
+      ['ease-out', [0.22, 1, 0.36, 1], 'Por defecto: entradas, hover, modales.'],
+      ['ease-in-out', [0.65, 0, 0.35, 1], 'Elementos que cambian de posición en pantalla.'],
+      ['ease-in', [0.55, 0, 1, 0.45], 'Salidas y cierres.'],
+      ['ease-spring', [0.34, 1.56, 0.64, 1], 'Solo juegos, logros y confirmaciones importantes.']
+    ].map(([token, v, use]) => ({ token, use, curve: 'cubic-bezier(' + v.join(', ') + ')', path: bez(...v) }));
+    const durations = [['instant', '80ms', 'Press, cambios de color mínimos'], ['fast', '140ms', 'Hover, foco, tooltips'], ['base', '220ms', 'Modales, acordeón, switch'], ['slow', '320ms', 'Drawers, toasts'], ['slower', '480ms', 'Splash, transiciones de página']].map(([token, ms, use]) => ({ token, ms, use }));
+    const codeGlobals = '@import "tailwindcss";\n@import "./tokens.tailwind.css";\n\n/* Ya incluye:\n   :root y .dark  → variables shadcn\n   @theme         → paleta, fuentes, escala\n   @theme inline  → bg-background, text-primary… */';
+    const codeUsage = '<button class="bg-primary text-primary-foreground\n  rounded-md h-10 px-4 font-semibold\n  hover:bg-durazno-700">\n  Guardar cambios\n</button>\n\n<h1 class="font-display text-5xl\n  tracking-display">Cada uno importa</h1>\n\n<html class="dark">  <!-- modo oscuro -->';
+    return { families, pairs, shadcn, scale, spacing, radii, shadows, icons, easings, durations, codeGlobals, codeUsage };
+  }
+}
+</script>
+</body>
+</html>
