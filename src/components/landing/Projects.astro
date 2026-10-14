@@ -1,0 +1,45 @@
+---
+import { Image } from "astro:assets"
+import SectionHeading from "./SectionHeading.astro"
+import { Badge } from "@/components/ui/badge"
+import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import symbolPastel from "@/assets/logo/nno-symbol-pastel-soft.svg"
+---
+
+<section
+  id="proyectos"
+  class="container-page flex scroll-mt-16 flex-col gap-10 py-[clamp(72px,9vw,112px)]"
+>
+  <SectionHeading eyebrow="Proyectos" title="Lo que hemos hecho" />
+
+  <article class="grid overflow-hidden rounded-2xl border bg-card lg:grid-cols-2">
+    <!-- TODO: reemplazar por la captura o portada de Storia -->
+    <div class="relative flex min-h-95 items-center justify-center bg-durazno-100">
+      <Image src={symbolPastel} alt="" class="size-40 opacity-80" />
+    </div>
+    <div class="flex flex-col justify-center gap-4.5 p-[clamp(28px,4vw,48px)]">
+      <div class="flex flex-wrap gap-2">
+        <Badge variant="secondary">Producto propio</Badge>
+        <Badge variant="success">
+          <span class="size-1.5 rounded-full bg-current" aria-hidden="true" />
+          Disponible
+        </Badge>
+      </div>
+      <h3 class="text-[40px] leading-11 tracking-display">Storia</h3>
+      <p class="max-w-[46ch] text-[17px] leading-[27px] text-body">
+        Descripción breve de Storia: qué hace, para quién y qué problema
+        resuelve, en dos líneas.
+      </p>
+      <p class="text-sm text-muted-foreground">
+        Un producto de ninety nine one.
+      </p>
+      <a
+        href="#"
+        class={cn(buttonVariants({ variant: "outline" }), "self-start")}
+      >
+        Conocer Storia <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </article>
+</section>
