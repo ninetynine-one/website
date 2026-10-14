@@ -1,0 +1,25 @@
+---
+import { values } from "@/data/site"
+---
+
+<section
+  id="valores"
+  class="scroll-mt-16 bg-inverse py-[clamp(72px,9vw,112px)] text-inverse-foreground"
+>
+  <div class="container-page flex flex-col gap-12">
+    <h2 class="max-w-[18ch] text-[clamp(32px,4.4vw,52px)] leading-[1.08] tracking-display text-balance">
+      La tecnología al servicio de las personas. No al revés.
+    </h2>
+    <ol class="grid gap-10 md:grid-cols-3">
+      {values.map((value, index) => (
+        <li class="flex flex-col gap-3 border-t border-current/22 pt-6">
+          <span class="font-display text-base text-durazno-300">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <h3 class="text-[26px] leading-tight">{value.title}</h3>
+          <p class="leading-[25px] opacity-82">{value.description}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
