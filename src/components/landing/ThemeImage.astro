@@ -8,20 +8,34 @@ interface Props {
   alt: string
   class?: string
   loading?: "eager" | "lazy"
+  widths?: number[]
+  sizes?: string
 }
 
-const { light, dark, alt, class: className, loading = "lazy" } = Astro.props
+const {
+  light,
+  dark,
+  alt,
+  class: className,
+  loading = "lazy",
+  widths,
+  sizes,
+} = Astro.props
 ---
 
 <Image
   src={light}
   alt={alt}
   loading={loading}
+  widths={widths}
+  sizes={sizes}
   class:list={[className, "dark:hidden"]}
 />
 <Image
   src={dark}
   alt={alt}
   loading={loading}
+  widths={widths}
+  sizes={sizes}
   class:list={[className, "hidden dark:block"]}
 />

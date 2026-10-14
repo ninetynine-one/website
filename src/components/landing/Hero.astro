@@ -1,5 +1,5 @@
 ---
-import Logo from "./Logo.astro"
+import ThemeImage from "./ThemeImage.astro"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import symbol from "@/assets/logo/nno-symbol.svg"
@@ -11,10 +11,6 @@ import symbolDark from "@/assets/logo/nno-symbol-dark.svg"
   class="container-page grid scroll-mt-16 items-center gap-14 pt-[clamp(64px,10vw,128px)] pb-[clamp(64px,8vw,112px)] lg:grid-cols-2"
 >
   <div class="flex flex-col gap-7">
-    <span class="inline-flex items-center gap-2 text-[13px] font-semibold text-muted-foreground">
-      <span class="size-2 rounded-full bg-primary" aria-hidden="true"></span>
-      Estudio de software independiente · Chile
-    </span>
     <h1 class="text-[clamp(44px,6.4vw,80px)] leading-none tracking-[-0.025em] text-balance">
       Software hecho con cuidado, para cada persona que lo usa.
     </h1>
@@ -37,7 +33,7 @@ import symbolDark from "@/assets/logo/nno-symbol-dark.svg"
 
   <div class="flex flex-col gap-6 rounded-2xl border bg-card p-[clamp(28px,5vw,56px)]">
     <div class="flex items-center justify-center py-[clamp(8px,2vw,24px)]">
-      <Logo
+      <ThemeImage
         light={symbol}
         dark={symbolDark}
         alt=""

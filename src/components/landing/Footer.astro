@@ -1,5 +1,5 @@
 ---
-import Logo from "./Logo.astro"
+import ThemeImage from "./ThemeImage.astro"
 import { navLinks, site, socialLinks } from "@/data/site"
 import lockup from "@/assets/logo/nno-lockup.svg"
 import lockupDark from "@/assets/logo/nno-lockup-dark.svg"
@@ -11,7 +11,7 @@ const linkClass = "text-foreground no-underline hover:text-link"
 <footer class="border-t">
   <div class="container-page grid items-start gap-8 py-12 sm:grid-cols-2 lg:grid-cols-4">
     <div class="flex flex-col gap-3.5">
-      <Logo
+      <ThemeImage
         light={lockup}
         dark={lockupDark}
         alt={site.name}

@@ -1,5 +1,5 @@
 ---
-import Logo from "./Logo.astro"
+import ThemeImage from "./ThemeImage.astro"
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 import { navLinks, site } from "@/data/site"
@@ -13,7 +13,7 @@ import logoDark from "@/assets/logo/nno-horizontal-dark.svg"
     aria-label="Principal"
   >
     <a href="#inicio" class="flex shrink-0">
-      <Logo
+      <ThemeImage
         light={logo}
         dark={logoDark}
         alt={site.name}
