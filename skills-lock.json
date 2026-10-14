@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "skills": {
+    "astro": {
+      "source": "astrolicious/agent-skills",
+      "sourceType": "github",
+      "skillPath": "skills/astro/SKILL.md",
+      "computedHash": "ebefe26b231d32379c14e41a46c2de7b4b0184543bedab7febdabe4fb21fba4e"
+    },
+    "shadcn": {
+      "source": "shadcn-ui/ui",
+      "sourceType": "github",
+      "skillPath": "skills/shadcn/SKILL.md",
+      "computedHash": "b864a958765563321f485a96f4d59c0bb6539f4286ab6d8b8b66895b7ebd302d"
+    }
+  }
+}
