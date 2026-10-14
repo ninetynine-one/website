@@ -69,3 +69,10 @@ export const projectTypes = [
   "Revisión de proyecto",
   "Otro",
 ]
+
+export const featuredProject = {
+  name: "Storia",
+  url: "https://storia-one-rho.vercel.app",
+  description:
+    "De una idea a un Pull Request en tu blog. Escribes o grabas la idea, la IA redacta el borrador con la voz de tu marca y Storia abre el Pull Request en el repositorio de tu blog.",
+}
