@@ -1,35 +1,51 @@
 import { useState, type SubmitEvent } from "react"
+import { actions, isInputError } from "astro:actions"
+import { CircleAlertIcon } from "lucide-react"
 
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
+import { Spinner } from "@/components/ui/spinner"
 import { Textarea } from "@/components/ui/textarea"
 
 interface ContactFormProps {
   email: string
-  projectTypes: string[]
+  projectTypes: readonly string[]
 }
 
-// Sin backend todavía: arma el correo y lo abre en el cliente de correo de la persona.
-function buildMailto(to: string, data: FormData) {
-  const name = String(data.get("name") ?? "")
-  const from = String(data.get("email") ?? "")
-  const type = String(data.get("type") ?? "")
-  const message = String(data.get("message") ?? "")
-  const subject = `${type} — ${name}`
-  const body = `${message}\n\n${name}\n${from}`
-  return `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
-}
+type FieldErrors = Partial<Record<"name" | "email" | "message", string[]>>
 
 export function ContactForm({ email, projectTypes }: ContactFormProps) {
+  const [pending, setPending] = useState(false)
   const [sentTo, setSentTo] = useState<string | null>(null)
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
+  const [failed, setFailed] = useState(false)
 
-  function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
+  async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    window.location.href = buildMailto(email, data)
-    setSentTo(String(data.get("email") ?? ""))
+    setPending(true)
+    setFailed(false)
+    setFieldErrors({})
+
+    const { data, error } = await actions.contact(
+      new FormData(event.currentTarget)
+    )
+
+    setPending(false)
+    if (data) {
+      setSentTo(data.email)
+    } else if (isInputError(error)) {
+      setFieldErrors(error.fields)
+    } else {
+      setFailed(true)
+    }
   }
 
   if (sentTo !== null) {
@@ -39,11 +55,10 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
         className="flex flex-col justify-center gap-2 rounded-xl bg-success p-10 text-success-foreground"
       >
         <strong className="font-display text-[26px] font-medium">
-          Su correo está listo.
+          Mensaje recibido.
         </strong>
         <span className="leading-6">
-          Envíelo desde su aplicación de correo y le escribiremos a {sentTo}{" "}
-          dentro de dos días hábiles.
+          Le escribiremos a {sentTo} dentro de dos días hábiles.
         </span>
       </div>
     )
@@ -52,11 +67,22 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
+      noValidate
       className="rounded-xl border bg-card p-[clamp(24px,4vw,36px)]"
     >
       <FieldGroup className="gap-4">
+        {failed && (
+          <Alert variant="destructive">
+            <CircleAlertIcon />
+            <AlertTitle>No pudimos enviar su mensaje</AlertTitle>
+            <AlertDescription>
+              Inténtelo de nuevo en unos minutos o escríbanos a{" "}
+              <a href={`mailto:${email}`}>{email}</a>.
+            </AlertDescription>
+          </Alert>
+        )}
         <div className="grid gap-4 sm:grid-cols-2">
-          <Field>
+          <Field data-invalid={!!fieldErrors.name}>
             <FieldLabel htmlFor="contact-name">Nombre</FieldLabel>
             <Input
               id="contact-name"
@@ -64,9 +90,11 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
               required
               autoComplete="name"
               placeholder="Su nombre"
+              aria-invalid={!!fieldErrors.name}
             />
+            <FieldError>{fieldErrors.name?.[0]}</FieldError>
           </Field>
-          <Field>
+          <Field data-invalid={!!fieldErrors.email}>
             <FieldLabel htmlFor="contact-email">Correo</FieldLabel>
             <Input
               id="contact-email"
@@ -75,7 +103,9 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
               required
               autoComplete="email"
               placeholder="nombre@empresa.cl"
+              aria-invalid={!!fieldErrors.email}
             />
+            <FieldError>{fieldErrors.email?.[0]}</FieldError>
           </Field>
         </div>
         <Field>
@@ -88,7 +118,7 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
             ))}
           </NativeSelect>
         </Field>
-        <Field>
+        <Field data-invalid={!!fieldErrors.message}>
           <FieldLabel htmlFor="contact-message">Mensaje</FieldLabel>
           <Textarea
             id="contact-message"
@@ -96,10 +126,21 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
             rows={4}
             placeholder="Lo que sepa basta: objetivo, plazos, presupuesto aproximado."
             className="resize-y"
+            aria-invalid={!!fieldErrors.message}
           />
+          <FieldError>{fieldErrors.message?.[0]}</FieldError>
         </Field>
-        <Button type="submit" size="lg">
-          Enviar mensaje
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="sr-only"
+        />
+        <Button type="submit" size="lg" disabled={pending}>
+          {pending && <Spinner data-icon="inline-start" />}
+          {pending ? "Enviando…" : "Enviar mensaje"}
         </Button>
       </FieldGroup>
     </form>

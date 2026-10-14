@@ -68,7 +68,7 @@ export const projectTypes = [
   "Asesoría técnica",
   "Revisión de proyecto",
   "Otro",
-]
+] as const
 
 export const featuredProject = {
   name: "Storia",
