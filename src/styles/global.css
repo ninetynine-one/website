@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@import "@fontsource-variable/fredoka";
+@import "@fontsource-variable/figtree";
+@import "@fontsource-variable/red-hat-mono";
+
+@import "./tokens/colors.css";
+@import "./tokens/typography.css";
+@import "./tokens/spacing.css";
+@import "./tokens/motion.css";
+@import "./tokens/theme.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply scroll-smooth font-sans antialiased;
+  }
+  body {
+    @apply bg-background text-base text-foreground;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-medium;
+  }
+  a {
+    @apply text-link underline-offset-3 hover:text-primary-hover;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+  ::selection {
+    @apply bg-durazno-200 text-arena-900;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+@utility container-page {
+  @apply mx-auto w-full max-w-(--container-page) px-(--gutter);
+}
+
+@utility eyebrow {
+  @apply text-xs font-semibold tracking-caps text-link uppercase;
+}
