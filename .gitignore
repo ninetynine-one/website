@@ -27,3 +27,6 @@ pnpm-debug.log*
 
 # playwright mcp
 .playwright-mcp/
+
+# shell history
+.zsh_history_project
