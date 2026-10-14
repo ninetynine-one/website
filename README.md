@@ -16,11 +16,24 @@ npm run lint
 npm run format
 ```
 
+## Formulario de contacto
+
+El formulario envía los mensajes con [Resend](https://resend.com) a través de una Astro Action (`src/actions/index.ts`), que corre como función en Vercel. La página sigue siendo estática.
+
+1. Crear una cuenta en Resend y verificar el dominio `ninetynineone.studio` (registros DNS que indica Resend).
+2. Crear una API key y copiar `.env.example` a `.env` con `RESEND_API_KEY`.
+3. En Vercel, agregar `RESEND_API_KEY` en *Settings → Environment Variables*.
+
+Opcionales: `CONTACT_TO_EMAIL` (por defecto `hola@ninetynineone.studio`) y `CONTACT_FROM_EMAIL` (por defecto `Ninety Nine One <web@ninetynineone.studio>`; debe ser del dominio verificado).
+
 ## Estructura
 
 ```
 src/
-├── assets/logo/          Logos y símbolo de la marca (SVG)
+├── actions/index.ts      Action del formulario de contacto (Resend)
+├── assets/
+│   ├── logo/             Logos y símbolo de la marca (SVG)
+│   └── projects/         Capturas de los proyectos
 ├── components/
 │   ├── landing/          Secciones de la landing (Header, Hero, Services, …)
 │   └── ui/               Componentes de shadcn/ui adaptados a la marca
@@ -43,4 +56,4 @@ Agregar componentes de shadcn: `npx shadcn@latest add <componente>`. Después, a
 
 ## Despliegue
 
-El sitio es estático. En Vercel, importar el repositorio: detecta Astro automáticamente (build `npm run build`, salida `dist/`). Actualizar `site` en `astro.config.mjs` si el dominio final cambia.
+Usa `@astrojs/vercel`: las páginas se prerenderizan y solo la action de contacto corre como función. En Vercel, importar el repositorio (detecta Astro automáticamente) y configurar `RESEND_API_KEY`. Actualizar `site` en `astro.config.mjs` si el dominio final cambia.
