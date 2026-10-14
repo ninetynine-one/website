@@ -1,0 +1,43 @@
+---
+import Logo from "./Logo.astro"
+import { buttonVariants } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { navLinks, site } from "@/data/site"
+import logo from "@/assets/logo/nno-horizontal.svg"
+import logoDark from "@/assets/logo/nno-horizontal-dark.svg"
+---
+
+<header class="sticky top-0 z-30 border-b bg-background/85 backdrop-blur-md">
+  <nav
+    class="container-page flex h-16 items-center gap-6"
+    aria-label="Principal"
+  >
+    <a href="#inicio" class="flex shrink-0">
+      <Logo
+        light={logo}
+        dark={logoDark}
+        alt={site.name}
+        loading="eager"
+        class="h-7 w-auto"
+      />
+    </a>
+    <ul class="hidden flex-1 gap-1 md:flex">
+      {navLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class="rounded-sm px-3 py-2 text-[15px] font-medium text-muted-foreground no-underline transition-colors hover:bg-muted hover:text-foreground"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <a
+      href="#contacto"
+      class={cn(buttonVariants({ size: "sm" }), "ml-auto h-9 px-4")}
+    >
+      Conversemos
+    </a>
+  </nav>
+</header>
