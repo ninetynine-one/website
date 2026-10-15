@@ -30,6 +30,24 @@ El formulario envía los mensajes con [Resend](https://resend.com) a través de 
 
 Google Analytics 4 se activa con la variable `PUBLIC_GA_ID` (el ID de medición, `G-XXXXXXXXXX`) en *Settings → Environment Variables* de Vercel. Sin esa variable, o en desarrollo, no se carga. Cada envío exitoso del formulario registra el evento `generate_lead` con el tipo de proyecto.
 
+## Errores y rendimiento (Sentry)
+
+`@sentry/astro` captura errores del navegador y del servidor (la action de contacto y `/api/sentry-test`), mide Web Vitals y tiempos de carga, y guarda una grabación enmascarada (Session Replay) solo cuando hay un error. La configuración está en `sentry.client.config.ts` y `sentry.server.config.ts`.
+
+Variables en Vercel (sin ellas, Sentry no hace nada):
+
+- `PUBLIC_SENTRY_DSN`: DSN del navegador. Se lee al compilar.
+- `SENTRY_DSN`: DSN del servidor. Se lee al ejecutar.
+- `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, `SENTRY_PROJECT`: subida de source maps en el build. Sin token, no se suben y el build sigue.
+- `SENTRY_TEST_TOKEN`: habilita la ruta de prueba del servidor.
+
+`environment` sale de `VERCEL_ENV` (o `development`) y `release` de `VERCEL_GIT_COMMIT_SHA`.
+
+Pruebas en producción:
+
+- Navegador: abrir `https://ninetynineone.studio/?sentry-test=1`. Lanza `Sentry test error (client)`.
+- Servidor: `curl -i -H "x-sentry-test: $SENTRY_TEST_TOKEN" https://ninetynineone.studio/api/sentry-test`. Responde 500 y lanza `Sentry test error (server)`. Sin el header correcto, o sin la variable, responde 404.
+
 ## Estructura
 
 ```
