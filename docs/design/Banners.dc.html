@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="design_doc_mode" content="canvas">
+<link rel="stylesheet" href="./styles.css">
+<title>Ninety Nine One — Banners</title>
+</helmet>
+<div style="background:var(--arena-200);font-family:var(--font-sans);color:var(--arena-900);padding:80px;display:flex;flex-direction:column;gap:72px;width:max-content">
+
+  <section data-screen-label="Open Graph" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;gap:16px;align-items:baseline"><span style="font-size:20px;font-weight:600">Open Graph · 1200 × 630</span><span style="font-size:15px;color:var(--arena-600)">Vista previa al compartir un enlace en WhatsApp, LinkedIn, Facebook, X, Slack y Discord. Todo el contenido dentro de 1080 × 560 para que no se corte.</span></div>
+    <div style="display:flex;gap:48px;align-items:flex-start">
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <div style="width:1200px;height:630px;background:var(--durazno-100);position:relative;overflow:hidden">
+          <svg width="700" height="700" viewBox="0 0 200 200" style="position:absolute;right:-60px;top:0px">
+            <sc-for list="{{ ringPastel }}" as="d" hint-placeholder-count="12"><circle cx="{{ d.x }}" cy="{{ d.y }}" r="{{ d.r }}" fill="{{ d.c }}"></circle></sc-for>
+          </svg>
+          <div style="position:absolute;inset:72px 80px;display:flex;flex-direction:column;justify-content:space-between">
+            <img src="./assets/logo/nno-horizontal.svg" alt="" style="height:52px;align-self:flex-start">
+            <div style="display:flex;flex-direction:column;gap:20px;max-width:680px">
+              <span style="font-family:var(--font-display);font-weight:500;font-size:84px;line-height:84px;letter-spacing:-0.03em">Cada uno importa.</span>
+              <span style="font-size:28px;line-height:38px;color:var(--arena-700)">Apps, videojuegos y software a medida.</span>
+            </div>
+          </div>
+        </div>
+        <figcaption style="font-size:14px;color:var(--arena-600)"><strong style="color:var(--arena-900)">General</strong> · inicio y páginas sin imagen propia · <code>og-default.png</code></figcaption>
+      </figure>
+    </div>
+    <div style="display:flex;gap:48px;align-items:flex-start">
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <div style="width:1200px;height:630px;background:var(--arena-50);position:relative;overflow:hidden">
+          <div style="position:absolute;inset:72px 80px;display:flex;flex-direction:column;justify-content:space-between">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <img src="./assets/logo/nno-horizontal.svg" alt="" style="height:40px">
+              <span style="height:44px;padding:0 20px;display:inline-flex;align-items:center;border-radius:999px;background:var(--durazno-100);color:var(--durazno-700);font-size:20px;font-weight:600">Proyecto</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:20px;max-width:900px">
+              <span style="font-family:var(--font-display);font-weight:500;font-size:96px;line-height:96px;letter-spacing:-0.03em">Storia</span>
+              <span style="font-size:30px;line-height:40px;color:var(--arena-700)">Una línea que explique qué hace el producto.</span>
+            </div>
+            <span style="font-size:22px;font-weight:600;color:var(--durazno-700)">ninetynineone.studio/proyectos/storia</span>
+          </div>
+        </div>
+        <figcaption style="font-size:14px;color:var(--arena-600)"><strong style="color:var(--arena-900)">Plantilla por página</strong> · proyectos, artículos o servicios; cambia título, bajada, etiqueta y URL · <code>og-[slug].png</code></figcaption>
+      </figure>
+      <figure style="margin:0;display:flex;flex-direction:column;gap:12px">
+        <div style="width:630px;height:630px;background:var(--durazno-100);display:flex;align-items:center;justify-content:center">
+          <img src="./assets/logo/nno-lockup.svg" alt="" style="width:380px">
+        </div>
+        <figcaption style="font-size:14px;color:var(--arena-600)"><strong style="color:var(--arena-900)">Cuadrada</strong> · 630 × 630, para tarjetas pequeñas (X summary, WhatsApp en algunos casos) · <code>og-square.png</code></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section data-screen-label="LinkedIn" style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;gap:16px;align-items:baseline"><span style="font-size:20px;font-weight:600">LinkedIn · 1584 × 396</span><span style="font-size:15px;color:var(--arena-600)">La foto de perfil tapa la zona inferior izquierda: ahí solo va el patrón.</span></div>
+    <div style="width:1584px;height:396px;background:var(--durazno-100);position:relative;overflow:hidden">
+      <svg width="760" height="760" viewBox="0 0 200 200" style="position:absolute;left:-200px;top:-150px">
+        <sc-for list="{{ ringPastel }}" as="d" hint-placeholder-count="12"><circle cx="{{ d.x }}" cy="{{ d.y }}" r="{{ d.r }}" fill="{{ d.c }}"></circle></sc-for>
+      </svg>
+      <div style="position:absolute;left:640px;top:0;bottom:0;right:96px;display:flex;flex-direction:column;justify-content:center;gap:18px">
+        <span style="font-family:var(--font-display);font-weight:500;font-size:68px;line-height:70px;letter-spacing:-0.025em">Software hecho con cuidado,<br>para cada persona que lo usa.</span>
+      </div>
+      <img src="./assets/logo/nno-wordmark-line.svg" alt="" style="position:absolute;right:96px;bottom:40px;height:26px">
+    </div>
+  </section>
+
+  <section data-screen-label="GitHub" style="display:flex;flex-direction:column;gap:14px">
+    <span style="font-size:20px;font-weight:600">GitHub social preview · 1280 × 640</span>
+    <div style="width:1280px;height:640px;background:var(--arena-50);position:relative;overflow:hidden">
+      <svg width="900" height="900" viewBox="0 0 200 200" style="position:absolute;right:-330px;top:-140px">
+        <sc-for list="{{ ringPastel }}" as="d" hint-placeholder-count="12"><circle cx="{{ d.x }}" cy="{{ d.y }}" r="{{ d.r }}" fill="{{ d.c }}"></circle></sc-for>
+      </svg>
+      <div style="position:absolute;inset:80px 96px;display:flex;flex-direction:column;justify-content:space-between">
+        <img src="./assets/logo/nno-horizontal.svg" alt="" style="height:60px;align-self:flex-start">
+        <div style="display:flex;flex-direction:column;gap:22px;max-width:720px">
+          <span style="font-family:var(--font-display);font-weight:500;font-size:96px;line-height:96px;letter-spacing:-0.03em">Cada uno importa.</span>
+          <span style="font-size:30px;line-height:40px;color:var(--arena-700)">Apps, videojuegos y software a medida.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div style="display:flex;gap:72px;align-items:flex-start">
+    <section data-screen-label="Instagram post" style="display:flex;flex-direction:column;gap:14px">
+      <span style="font-size:20px;font-weight:600">Instagram post · 1080 × 1350</span>
+      <div style="width:1080px;height:1350px;background:var(--durazno-100);position:relative;overflow:hidden">
+        <svg width="1100" height="1100" viewBox="0 0 200 200" style="position:absolute;right:-420px;top:-380px">
+          <sc-for list="{{ ringPastel }}" as="d" hint-placeholder-count="12"><circle cx="{{ d.x }}" cy="{{ d.y }}" r="{{ d.r }}" fill="{{ d.c }}"></circle></sc-for>
+        </svg>
+        <div style="position:absolute;inset:96px;display:flex;flex-direction:column;justify-content:flex-end;gap:56px">
+          <span style="font-family:var(--font-display);font-weight:500;font-size:124px;line-height:118px;letter-spacing:-0.035em">Hacemos software<br>pensando en <span style="color:var(--durazno-600)">cada persona</span> que lo usa.</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;border-top:2px solid var(--durazno-200);padding-top:36px">
+            <img src="./assets/logo/nno-horizontal.svg" alt="" style="height:52px">
+            <span style="font-size:28px;font-weight:600;color:var(--durazno-700)">ninetynineone.studio</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section data-screen-label="Instagram story" style="display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;gap:16px;align-items:baseline"><span style="font-size:20px;font-weight:600">Instagram story · 1080 × 1920</span><span style="font-size:15px;color:var(--arena-600)">Zonas seguras: 250 px arriba y abajo.</span></div>
+      <div style="width:1080px;height:1920px;background:var(--arena-900);color:var(--arena-50);position:relative;overflow:hidden">
+        <svg width="1300" height="1300" viewBox="0 0 200 200" style="position:absolute;left:-110px;bottom:-560px">
+          <sc-for list="{{ ringDark }}" as="d" hint-placeholder-count="12"><circle cx="{{ d.x }}" cy="{{ d.y }}" r="{{ d.r }}" fill="{{ d.c }}"></circle></sc-for>
+        </svg>
+        <div style="position:absolute;left:96px;right:96px;top:260px;bottom:260px;display:flex;flex-direction:column;justify-content:space-between">
+          <img src="./assets/logo/nno-horizontal-dark.svg" alt="" style="height:64px;align-self:flex-start">
+          <div style="display:flex;flex-direction:column;gap:36px;margin-bottom:420px">
+            <span style="font-family:var(--font-display);font-weight:500;font-size:112px;line-height:108px;letter-spacing:-0.035em">Software hecho con cuidado.</span>
+            <span style="font-size:38px;line-height:50px;color:#B8AA9A">Productos propios y desarrollo a medida.</span>
+          </div>
+          <span style="align-self:flex-start;height:88px;padding:0 44px;display:inline-flex;align-items:center;border-radius:999px;background:var(--durazno-300);color:var(--durazno-900);font-size:34px;font-weight:700">Conversemos · ninetynineone.studio</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  ring(base, hi) {
+    return Array.from({ length: 12 }, (_, i) => {
+      const a = (i / 12) * Math.PI * 2 - Math.PI / 2, out = i === 1, R = out ? 60 * 1.42 : 60;
+      return { x: (100 + Math.cos(a) * R).toFixed(1), y: (106 + Math.sin(a) * R).toFixed(1), r: out ? 12.4 : 8.4, c: out ? hi : base };
+    });
+  }
+  renderVals() {
+    return {
+      ringPastel: this.ring('#F8D0BE', '#B04A2B'),
+      ringDark: this.ring('#3D332C', '#F2B39A')
+    };
+  }
+}
+</script>
+</body>
+</html>
