@@ -33,8 +33,9 @@ export default defineConfig({
       // Los source maps solo se suben si hay token; sin él, el build sigue igual.
       sourcemaps: { disable: !process.env.SENTRY_AUTH_TOKEN },
       telemetry: false,
-      // Middleware de Sentry para la action de contacto y los endpoints on-demand.
-      autoInstrumentation: { requestHandler: true },
+      // El servidor se inicializa y se instrumenta en src/middleware.ts: el
+      // script que inyecta la integración solo corre en páginas SSR y aquí no hay.
+      enabled: { client: true, server: false },
     }),
   ],
   vite: {
