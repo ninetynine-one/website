@@ -28,7 +28,7 @@ export default defineConfig({
       CONTACT_FROM_EMAIL: envField.string({
         context: "server",
         access: "secret",
-        default: "Ninety Nine One <web@ninetynineone.studio>",
+        default: "Ninety Nine One <onboarding@resend.dev>",
       }),
     },
   },

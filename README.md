@@ -24,7 +24,7 @@ El formulario envía los mensajes con [Resend](https://resend.com) a través de 
 2. Crear una API key y copiar `.env.example` a `.env` con `RESEND_API_KEY`.
 3. En Vercel, agregar `RESEND_API_KEY` en *Settings → Environment Variables*.
 
-Opcionales: `CONTACT_TO_EMAIL` (por defecto `hola@ninetynineone.studio`) y `CONTACT_FROM_EMAIL` (por defecto `Ninety Nine One <web@ninetynineone.studio>`; debe ser del dominio verificado).
+`CONTACT_TO_EMAIL` es el correo que recibe los mensajes (por defecto `hola@ninetynineone.studio`). Sin un dominio verificado en Resend, debe ser el correo de la cuenta de Resend. `CONTACT_FROM_EMAIL` es opcional (por defecto `Ninety Nine One <onboarding@resend.dev>`); con un dominio verificado puede ser una dirección de ese dominio.
 
 ## Estructura
 
