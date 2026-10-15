@@ -2,7 +2,7 @@ export const site = {
   name: "Ninety Nine One",
   title: "Ninety Nine One — Estudio de software",
   description:
-    "Estudio de software independiente en Chile. Creamos aplicaciones, apps y videojuegos propios, y desarrollamos software a medida para empresas.",
+    "Estudio de software independiente en Chile. Creamos aplicaciones, apps y videojuegos propios, y desarrollamos software a medida y soluciones con IA para empresas.",
   email: "hola@ninetynineone.studio",
   location: "Santiago de Chile",
   legalName: "Ninety Nine One SpA",
@@ -34,10 +34,11 @@ export const services = [
   {
     title: "Desarrollo a medida y asesorías",
     description:
-      "Construimos el software que su empresa necesita, o la acompañamos a tomar mejores decisiones técnicas. Plazos realistas y avances cada semana.",
+      "Construimos el software que su empresa necesita, con IA donde aporta, o la acompañamos a tomar mejores decisiones técnicas. Plazos realistas y avances cada semana.",
     tone: "accent",
     items: [
       { label: "Software a medida", detail: "Web y móvil" },
+      { label: "Soluciones con IA", detail: "Asistentes y automatización" },
       { label: "Asesoría técnica", detail: "Arquitectura y producto" },
       { label: "Revisión de proyectos", detail: "Código y procesos" },
     ],
@@ -64,6 +65,7 @@ export const values = [
 
 export const projectTypes = [
   "Software a medida",
+  "Solución con IA",
   "Asesoría técnica",
   "Revisión de proyecto",
   "Otro",
