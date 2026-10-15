@@ -2,9 +2,10 @@
 import Layout from "@/layouts/Layout.astro"
 import Header from "@/components/landing/Header.astro"
 import Footer from "@/components/landing/Footer.astro"
+import { cookieCategories } from "@/data/cookies"
 import { site } from "@/data/site"
 
-const updated = "14 de octubre de 2026"
+const updated = "15 de octubre de 2026"
 ---
 
 <Layout
@@ -52,14 +53,29 @@ const updated = "14 de octubre de 2026"
       <section>
         <h2>Analítica de visitas</h2>
         <p>
-          Con su permiso, usamos Google Analytics para saber cuántas personas
-          visitan el sitio, qué secciones leen y cómo llegan. Nos dice, por
-          ejemplo, si alguien envió el formulario, pero no qué escribió.
+          Usamos Google Analytics para saber cuántas personas visitan el sitio,
+          qué secciones leen y cómo llegan. Nos dice, por ejemplo, si alguien
+          envió el formulario, pero no qué escribió. Deja cookies, así que
+          depende de la categoría "Estadísticas".
         </p>
         <p>
-          Google Analytics solo se activa si acepta en el aviso de cookies. Si
-          no acepta, no se carga. Puede cambiar su decisión en cualquier momento
-          con el enlace "Cookies" del pie de página.
+          Si nos visita desde Europa (Espacio Económico Europeo, Reino Unido o
+          Suiza), Google Analytics solo se activa si lo acepta. Desde otros
+          países se activa al entrar, por nuestro interés legítimo en entender
+          cómo se usa el sitio, y le avisamos para que pueda desactivarlo.
+          Sabemos desde dónde nos visita por la zona horaria de su navegador; si
+          no se puede leer, lo tratamos como una visita desde Europa.
+        </p>
+        <p>
+          Además, Vercel Web Analytics cuenta las visitas a cada página sin
+          cookies y sin guardar nada en su navegador. No guarda su dirección IP
+          ni le sigue en otros sitios: solo nos da totales. Por eso funciona
+          aunque desactive las estadísticas.
+        </p>
+        <p>
+          Puede cambiar su decisión en cualquier momento con el enlace "Cookies"
+          del pie de página. Si desactiva las estadísticas, borramos las cookies
+          de Google Analytics.
         </p>
       </section>
 
@@ -85,26 +101,49 @@ const updated = "14 de octubre de 2026"
 
       <section>
         <h2>Cookies y almacenamiento en su navegador</h2>
-        <ul>
-          <li>
-            <strong>_ga y _ga_*</strong>: cookies de Google Analytics. Solo
-            existen si aceptó la analítica. Si después la rechaza, las borramos.
-          </li>
-          <li>
-            <strong>cookie-consent</strong>: guarda su decisión sobre la
-            analítica, para no preguntarle en cada visita.
-          </li>
-          <li>
-            <strong>theme</strong>: recuerda si eligió el modo claro u oscuro.
-          </li>
-          <li>
-            <strong>sentryReplaySession</strong>: la usa Sentry para unir una
-            grabación de error a su visita. Se borra al cerrar la pestaña.
-          </li>
-        </ul>
         <p>
-          Las tres últimas no son cookies: se guardan en el almacenamiento de su
-          navegador. cookie-consent y theme no salen de su equipo.
+          Agrupamos lo que guardamos en su navegador en tres categorías. Las
+          necesarias siempre están activas; las demás las elige usted en el
+          enlace "Cookies" del pie de página.
+        </p>
+        {cookieCategories.map((category) => (
+          <div class="flex flex-col gap-3">
+            <h3>{category.title}</h3>
+            <p>{category.description}</p>
+            <div class="overflow-x-auto">
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Proveedor</th>
+                    <th scope="col">Propósito</th>
+                    <th scope="col">Duración</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {category.items.map((item) => (
+                    <tr>
+                      <td>
+                        <code>{item.name}</code>
+                        <span class="block text-xs text-muted-foreground">
+                          {item.storage}
+                        </span>
+                      </td>
+                      <td>{item.provider}</td>
+                      <td>{item.purpose}</td>
+                      <td>{item.duration}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        ))}
+        <p>
+          localStorage y sessionStorage no son cookies: son el almacenamiento de
+          su navegador. cookie-consent y theme no salen de su equipo. Si
+          desactiva las preferencias, el tema que elija dura solo hasta que
+          recargue la página.
         </p>
       </section>
 
@@ -113,15 +152,16 @@ const updated = "14 de octubre de 2026"
         <p>Estos proveedores tratan datos por encargo nuestro:</p>
         <ul>
           <li>
-            <strong>Vercel</strong>: aloja el sitio. Estados Unidos.
+            <strong>Vercel</strong>: aloja el sitio y cuenta las visitas sin
+            cookies (Web Analytics). Estados Unidos.
           </li>
           <li>
             <strong>Resend</strong>: envía a nuestro correo los mensajes del
             formulario. Estados Unidos.
           </li>
           <li>
-            <strong>Google Analytics</strong>: analítica de visitas, solo si la
-            acepta. Estados Unidos.
+            <strong>Google Analytics</strong>: analítica de visitas, según su
+            elección en "Estadísticas". Estados Unidos.
           </li>
           <li>
             <strong>Sentry</strong>: registra errores del sitio y su velocidad.
@@ -165,6 +205,29 @@ const updated = "14 de octubre de 2026"
   }
   .legal p,
   .legal li {
+    color: var(--color-body);
+  }
+  .legal h3 {
+    font-size: var(--text-lg);
+    line-height: var(--text-lg--line-height);
+  }
+  .legal table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+  }
+  .legal th,
+  .legal td {
+    padding: 0.5rem 0.75rem 0.5rem 0;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+  }
+  .legal th {
+    font-weight: 600;
+  }
+  .legal td {
     color: var(--color-body);
   }
   .legal ul {
