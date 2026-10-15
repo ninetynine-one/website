@@ -48,6 +48,10 @@ Pruebas en producción:
 - Navegador: abrir `https://ninetynineone.studio/?sentry-test=1`. Lanza `Sentry test error (client)`.
 - Servidor: `curl -i -H "x-sentry-test: $SENTRY_TEST_TOKEN" https://ninetynineone.studio/api/sentry-test`. Responde 500 y lanza `Sentry test error (server)`. Sin el header correcto, o sin la variable, responde 404.
 
+## SEO
+
+`@astrojs/sitemap` genera `sitemap-index.xml` con las URL canónicas (sin barra final, igual que el `<link rel="canonical">`). `public/robots.txt` apunta a él.
+
 ## Estructura
 
 ```
@@ -61,6 +65,7 @@ src/
 │   └── ui/               Componentes de shadcn/ui adaptados a la marca
 ├── data/site.ts          Textos, enlaces y datos de contacto
 ├── layouts/Layout.astro  <head>, SEO y modo oscuro automático
+├── lib/analytics.ts      track(): eventos de GA4
 ├── lib/utils.ts          cn()
 ├── pages/index.astro     La landing
 └── styles/

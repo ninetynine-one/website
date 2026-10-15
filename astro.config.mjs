@@ -3,6 +3,7 @@
 import tailwindcss from "@tailwindcss/vite"
 import { defineConfig, envField } from "astro/config"
 import react from "@astrojs/react"
+import sitemap from "@astrojs/sitemap"
 import vercel from "@astrojs/vercel"
 import sentry from "@sentry/astro"
 
@@ -14,6 +15,13 @@ export default defineConfig({
   adapter: vercel(),
   integrations: [
     react(),
+    sitemap({
+      // Mismas URL que el canonical de Layout.astro (sin barra final).
+      serialize(item) {
+        if (item.url !== `${site}/`) item.url = item.url.replace(/\/$/, "")
+        return item
+      },
+    }),
     // Runtime en sentry.client.config.ts y sentry.server.config.ts.
     sentry({
       org: process.env.SENTRY_ORG,
