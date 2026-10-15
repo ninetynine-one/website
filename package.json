@@ -17,11 +17,13 @@
   },
   "dependencies": {
     "@astrojs/react": "^7",
+    "@astrojs/sitemap": "^3.7.4",
     "@astrojs/vercel": "^11.0.14",
     "@base-ui/react": "^1.9.0",
     "@fontsource-variable/figtree": "^5.3.0",
     "@fontsource-variable/fredoka": "^5.3.0",
     "@fontsource-variable/red-hat-mono": "^5.3.0",
+    "@sentry/astro": "^11.7.0",
     "@tailwindcss/vite": "^4",
     "@types/react": "^19",
     "@types/react-dom": "^19",

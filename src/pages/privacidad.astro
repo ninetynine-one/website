@@ -64,6 +64,26 @@ const updated = "14 de octubre de 2026"
       </section>
 
       <section>
+        <h2>Errores del sitio</h2>
+        <p>
+          Usamos Sentry para enterarnos cuando algo falla. Si el sitio o el
+          formulario dan un error, Sentry recibe datos técnicos: qué falló, en
+          qué página, su navegador y su sistema. También mide cuánto tardan en
+          cargar las páginas.
+        </p>
+        <p>
+          Cuando ocurre un error, Sentry guarda además una grabación de lo que
+          pasó en la página justo antes. La grabación oculta todo el texto, las
+          imágenes y lo que escribe en el formulario. Vemos clics y movimientos,
+          no su contenido. Sin errores, no se graba nada.
+        </p>
+        <p>
+          Sentry no usa cookies. No lo usamos para publicidad ni para saber
+          quién es usted.
+        </p>
+      </section>
+
+      <section>
         <h2>Cookies y almacenamiento en su navegador</h2>
         <ul>
           <li>
@@ -77,10 +97,14 @@ const updated = "14 de octubre de 2026"
           <li>
             <strong>theme</strong>: recuerda si eligió el modo claro u oscuro.
           </li>
+          <li>
+            <strong>sentryReplaySession</strong>: la usa Sentry para unir una
+            grabación de error a su visita. Se borra al cerrar la pestaña.
+          </li>
         </ul>
         <p>
-          Las dos últimas se guardan en el almacenamiento local de su navegador.
-          No salen de su equipo.
+          Las tres últimas no son cookies: se guardan en el almacenamiento de su
+          navegador. cookie-consent y theme no salen de su equipo.
         </p>
       </section>
 
@@ -98,6 +122,10 @@ const updated = "14 de octubre de 2026"
           <li>
             <strong>Google Analytics</strong>: analítica de visitas, solo si la
             acepta. Estados Unidos.
+          </li>
+          <li>
+            <strong>Sentry</strong>: registra errores del sitio y su velocidad.
+            Estados Unidos.
           </li>
         </ul>
       </section>

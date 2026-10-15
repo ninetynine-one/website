@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input"
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
 import { Spinner } from "@/components/ui/spinner"
 import { Textarea } from "@/components/ui/textarea"
+import { track } from "@/lib/analytics"
 
 interface ContactFormProps {
   email: string
@@ -40,9 +41,7 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
     setPending(false)
     if (data) {
       setSentTo(data.email)
-      window.gtag?.("event", "generate_lead", {
-        project_type: formData.get("type"),
-      })
+      track("generate_lead", { project_type: formData.get("type") })
     } else if (isInputError(error)) {
       setFieldErrors(error.fields)
     } else {

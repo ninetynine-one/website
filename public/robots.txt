@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /_actions/
+
+Sitemap: https://ninetynineone.studio/sitemap-index.xml
