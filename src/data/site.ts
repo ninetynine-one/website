@@ -15,7 +15,7 @@ export const navLinks = [
 ]
 
 export const socialLinks = [
-  { href: "https://www.instagram.com/ninety.nine_one/", label: "Instagram" },
+  { href: "https://www.instagram.com/ninetynineone.studio", label: "Instagram" },
   { href: "https://github.com/ninetynine-one", label: "GitHub" },
 ]
 
