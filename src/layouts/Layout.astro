@@ -5,10 +5,17 @@ import { site } from "@/data/site"
 interface Props {
   title?: string
   description?: string
+  image?: { src: string; alt: string }
 }
 
-const { title = site.title, description = site.description } = Astro.props
+const {
+  title = site.title,
+  description = site.description,
+  image = { src: "/og-default.png", alt: `${site.name}: Cada uno importa.` },
+} = Astro.props
 const canonical = new URL(Astro.url.pathname, Astro.site)
+const imageUrl = new URL(image.src, Astro.site)
+const squareImageUrl = new URL("/og-square.png", Astro.site)
 ---
 
 <!doctype html>
@@ -28,12 +35,29 @@ const canonical = new URL(Astro.url.pathname, Astro.site)
       media="(prefers-color-scheme: dark)"
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={image.alt} />
+    <meta property="og:image" content={squareImageUrl} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="630" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={site.name} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <meta name="twitter:image:alt" content={image.alt} />
     <title>{title}</title>
     <script is:inline>
       // Tema elegido por el usuario o, si no eligió, el del sistema; antes de pintar.
