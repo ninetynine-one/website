@@ -2,7 +2,7 @@ export const site = {
   name: "Ninety Nine One",
   title: "Ninety Nine One — Estudio de software",
   description:
-    "Estudio de software independiente en Chile. Creamos aplicaciones, apps y videojuegos propios, y desarrollamos software a medida y soluciones con IA para empresas.",
+    "Estudio de software en Chile. Creamos apps y videojuegos propios, y desarrollamos software a medida y soluciones con IA.",
   email: "hola@ninetynineone.studio",
   location: "Santiago de Chile",
   legalName: "Ninety Nine One SpA",
