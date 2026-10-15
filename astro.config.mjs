@@ -30,6 +30,11 @@ export default defineConfig({
         access: "secret",
         default: "Ninety Nine One <onboarding@resend.dev>",
       }),
+      PUBLIC_GA_ID: envField.string({
+        context: "client",
+        access: "public",
+        optional: true,
+      }),
     },
   },
 })

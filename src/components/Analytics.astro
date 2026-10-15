@@ -1,0 +1,26 @@
+---
+import { PUBLIC_GA_ID } from "astro:env/client"
+
+// Solo en producción y con un ID configurado, para no medir el desarrollo local.
+const gaId = import.meta.env.PROD ? PUBLIC_GA_ID : undefined
+---
+
+{
+  gaId && (
+    <>
+      <script
+        is:inline
+        async
+        src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+      />
+      <script is:inline define:vars={{ gaId }}>
+        window.dataLayer = window.dataLayer || []
+        window.gtag = function () {
+          dataLayer.push(arguments)
+        }
+        gtag("js", new Date())
+        gtag("config", gaId)
+      </script>
+    </>
+  )
+}

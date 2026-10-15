@@ -1,5 +1,6 @@
 ---
 import "@/styles/global.css"
+import Analytics from "@/components/Analytics.astro"
 import { site } from "@/data/site"
 
 interface Props {
@@ -59,6 +60,7 @@ const squareImageUrl = new URL("/og-square.png", Astro.site)
     <meta name="twitter:image" content={imageUrl} />
     <meta name="twitter:image:alt" content={image.alt} />
     <title>{title}</title>
+    <Analytics />
     <script is:inline>
       // Tema elegido por el usuario o, si no eligió, el del sistema; antes de pintar.
       const media = window.matchMedia("(prefers-color-scheme: dark)")

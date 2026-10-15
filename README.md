@@ -26,6 +26,10 @@ El formulario envía los mensajes con [Resend](https://resend.com) a través de 
 
 `CONTACT_TO_EMAIL` es el correo que recibe los mensajes (por defecto `hola@ninetynineone.studio`). Sin un dominio verificado en Resend, debe ser el correo de la cuenta de Resend. `CONTACT_FROM_EMAIL` es opcional (por defecto `Ninety Nine One <onboarding@resend.dev>`); con un dominio verificado puede ser una dirección de ese dominio.
 
+## Analítica
+
+Google Analytics 4 se activa con la variable `PUBLIC_GA_ID` (el ID de medición, `G-XXXXXXXXXX`) en *Settings → Environment Variables* de Vercel. Sin esa variable, o en desarrollo, no se carga. Cada envío exitoso del formulario registra el evento `generate_lead` con el tipo de proyecto.
+
 ## Estructura
 
 ```
