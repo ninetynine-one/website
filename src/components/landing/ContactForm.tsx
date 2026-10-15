@@ -34,13 +34,15 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
     setFailed(false)
     setFieldErrors({})
 
-    const { data, error } = await actions.contact(
-      new FormData(event.currentTarget)
-    )
+    const formData = new FormData(event.currentTarget)
+    const { data, error } = await actions.contact(formData)
 
     setPending(false)
     if (data) {
       setSentTo(data.email)
+      window.gtag?.("event", "generate_lead", {
+        project_type: formData.get("type"),
+      })
     } else if (isInputError(error)) {
       setFieldErrors(error.fields)
     } else {
