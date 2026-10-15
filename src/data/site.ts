@@ -9,9 +9,9 @@ export const site = {
 }
 
 export const navLinks = [
-  { href: "#hacemos", label: "Qué hacemos" },
-  { href: "#proyectos", label: "Proyectos" },
-  { href: "#valores", label: "Valores" },
+  { href: "/#hacemos", label: "Qué hacemos" },
+  { href: "/#proyectos", label: "Proyectos" },
+  { href: "/#valores", label: "Valores" },
 ]
 
 export const socialLinks = [
