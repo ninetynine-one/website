@@ -34,7 +34,7 @@ const linkClass = "text-foreground no-underline hover:text-link"
         En otros lugares
       </strong>
       {socialLinks.map((link) => (
-        <a href={link.href} class={linkClass}>
+        <a href={link.href} class={linkClass} target="_blank" rel="noopener">
           {link.label}
         </a>
       ))}
