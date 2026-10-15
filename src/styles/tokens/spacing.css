@@ -1,12 +1,7 @@
-/* Ninety Nine One — layout, radio base y sombras por tema.
+/* Ninety Nine One — radio base y sombras por tema.
    El espaciado usa la escala de Tailwind (base 4px): p-4 = 16px, gap-6 = 24px… */
 :root {
   --radius: 0.875rem; /* shadcn base = radius-md (14px) */
-
-  --container-sm: 640px;
-  --container-md: 880px;
-  --container-lg: 1200px;
-  --gutter: clamp(20px, 4vw, 48px);
 
   --shadow-focus: 0 0 0 3px rgba(204, 106, 69, 0.35);
 }
