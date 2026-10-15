@@ -15,7 +15,7 @@ const tones = {
 }
 ---
 
-<section id="hacemos" class="scroll-mt-16 bg-muted py-[clamp(72px,9vw,112px)]">
+<section id="hacemos" class="scroll-mt-16 bg-muted py-18 md:py-24 lg:py-28">
   <div class="container-page flex flex-col gap-10">
     <SectionHeading
       eyebrow="Qué hacemos"
@@ -37,17 +37,17 @@ const tones = {
                 class:list={["size-3 rounded-full", tones[service.tone].dot]}
               />
             </div>
-            <CardTitle className="text-[28px] leading-[34px]">
+            <CardTitle className="text-3xl">
               <h3>{service.title}</h3>
             </CardTitle>
           </CardHeader>
           <CardContent className="flex flex-col gap-5">
-            <CardDescription className="leading-[25px]">
+            <CardDescription className="text-base">
               {service.description}
             </CardDescription>
             <ul class="flex flex-col border-t">
               {service.items.map((item) => (
-                <li class="flex justify-between gap-3 border-b py-3.5 text-[15px] last:border-b-0">
+                <li class="flex justify-between gap-3 border-b py-3.5 text-sm last:border-b-0">
                   <span class="font-semibold">{item.label}</span>
                   <span class="text-right text-muted-foreground">
                     {item.detail}

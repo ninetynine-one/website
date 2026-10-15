@@ -10,7 +10,7 @@ const { eyebrow, title, class: className } = Astro.props
 
 <div class:list={["flex flex-col gap-3", className]}>
   <span class="eyebrow">{eyebrow}</span>
-  <h2 class="text-[clamp(32px,4vw,44px)] leading-[1.1] tracking-display text-balance">
+  <h2 class="text-3xl md:text-4xl tracking-display text-balance">
     {title}
   </h2>
   <slot />

@@ -54,7 +54,7 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
         role="status"
         className="flex flex-col justify-center gap-2 rounded-xl bg-success p-10 text-success-foreground"
       >
-        <strong className="font-display text-[26px] font-medium">
+        <strong className="font-display text-2xl font-medium">
           Mensaje recibido.
         </strong>
         <span className="leading-6">
@@ -68,7 +68,7 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="rounded-xl border bg-card p-[clamp(24px,4vw,36px)]"
+      className="rounded-xl border bg-card p-6 md:p-9"
     >
       <FieldGroup className="gap-4">
         {failed && (

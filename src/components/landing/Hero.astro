@@ -8,13 +8,13 @@ import symbolDark from "@/assets/logo/nno-symbol-dark.svg"
 
 <section
   id="inicio"
-  class="container-page grid scroll-mt-16 items-center gap-14 pt-[clamp(64px,10vw,128px)] pb-[clamp(64px,8vw,112px)] lg:grid-cols-2"
+  class="container-page grid scroll-mt-16 items-center gap-14 pt-16 pb-16 md:pt-24 md:pb-20 lg:pt-32 lg:pb-28 lg:grid-cols-2"
 >
   <div class="flex flex-col gap-7">
-    <h1 class="text-[clamp(44px,6.4vw,80px)] leading-none tracking-[-0.025em] text-balance">
+    <h1 class="text-5xl leading-none tracking-display md:text-6xl lg:text-7xl text-balance">
       Software hecho con cuidado, para cada persona que lo usa.
     </h1>
-    <p class="max-w-[50ch] text-[19px] leading-[30px] text-pretty text-body">
+    <p class="max-w-xl text-xl/7.5 text-pretty text-body">
       Creamos aplicaciones, apps y videojuegos propios. También desarrollamos
       software a medida y asesoramos a empresas que quieren hacerlo bien.
     </p>
@@ -31,14 +31,14 @@ import symbolDark from "@/assets/logo/nno-symbol-dark.svg"
     </div>
   </div>
 
-  <div class="flex flex-col gap-6 rounded-2xl border bg-card p-[clamp(28px,5vw,56px)]">
-    <div class="flex items-center justify-center py-[clamp(8px,2vw,24px)]">
+  <div class="flex flex-col gap-6 rounded-2xl border bg-card p-7 md:p-10 lg:p-14">
+    <div class="flex items-center justify-center py-2 md:py-4 lg:py-6">
       <ThemeImage
         light={symbol}
         dark={symbolDark}
         alt=""
         loading="eager"
-        class="aspect-square w-full max-w-[340px]"
+        class="aspect-square w-full max-w-xs"
       />
     </div>
     <p class="flex flex-wrap justify-between gap-3 text-sm text-muted-foreground">

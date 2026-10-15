@@ -6,20 +6,20 @@ import { projectTypes, site } from "@/data/site"
 
 <section
   id="contacto"
-  class="container-page grid scroll-mt-16 gap-14 py-[clamp(72px,9vw,112px)] lg:grid-cols-2"
+  class="container-page grid scroll-mt-16 gap-14 py-18 md:py-24 lg:py-28 lg:grid-cols-2"
 >
   <SectionHeading
     eyebrow="Contacto"
     title="Cuéntenos qué quiere construir"
     class="gap-4"
   >
-    <p class="max-w-[44ch] text-[17px] leading-[27px] text-body">
+    <p class="max-w-md text-lg text-body">
       Respondemos en un máximo de dos días hábiles, con una persona del equipo y
       no con una plantilla.
     </p>
     <a
       href={`mailto:${site.email}`}
-      class="self-start font-display text-[22px] font-medium"
+      class="self-start font-display text-2xl font-medium"
     >
       {site.email}
     </a>
