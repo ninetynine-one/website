@@ -1,0 +1,149 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import Header from "@/components/landing/Header.astro"
+import Footer from "@/components/landing/Footer.astro"
+import { site } from "@/data/site"
+
+const updated = "14 de octubre de 2026"
+---
+
+<Layout
+  title={`Privacidad — ${site.name}`}
+  description={`Qué datos trata ${site.legalName} en este sitio, para qué y cómo ejercer sus derechos.`}
+>
+  <Header />
+  <main class="container-page py-18 md:py-24">
+    <article class="legal mx-auto flex max-w-2xl flex-col gap-10">
+      <header class="flex flex-col gap-3">
+        <span class="eyebrow">Privacidad</span>
+        <h1 class="text-4xl tracking-display text-balance md:text-5xl">
+          Qué datos tratamos y para qué
+        </h1>
+        <p class="text-sm text-muted-foreground">
+          Última actualización: {updated}
+        </p>
+      </header>
+
+      <section>
+        <h2>Quiénes somos</h2>
+        <p>
+          Este sitio es de {site.legalName}, un estudio de software en{" "}
+          {site.location}. Somos responsables de los datos que se tratan aquí.
+          Para cualquier consulta sobre privacidad, escríbanos a{" "}
+          <a href={`mailto:${site.email}`}>{site.email}</a>.
+        </p>
+      </section>
+
+      <section>
+        <h2>Formulario de contacto</h2>
+        <p>
+          Cuando nos escribe, recibimos su nombre, su correo, el tipo de
+          proyecto y su mensaje. Los usamos solo para responderle y dar
+          seguimiento a la conversación. No los usamos para enviarle publicidad
+          ni los vendemos.
+        </p>
+        <p>
+          El mensaje llega a nuestro correo. Lo conservamos mientras sea útil
+          para la conversación o una posible relación de trabajo. Puede pedirnos
+          que lo borremos cuando quiera.
+        </p>
+      </section>
+
+      <section>
+        <h2>Analítica de visitas</h2>
+        <p>
+          Con su permiso, usamos Google Analytics para saber cuántas personas
+          visitan el sitio, qué secciones leen y cómo llegan. Nos dice, por
+          ejemplo, si alguien envió el formulario, pero no qué escribió.
+        </p>
+        <p>
+          Google Analytics solo se activa si acepta en el aviso de cookies. Si
+          no acepta, no se carga. Puede cambiar su decisión en cualquier momento
+          con el enlace "Cookies" del pie de página.
+        </p>
+      </section>
+
+      <section>
+        <h2>Cookies y almacenamiento en su navegador</h2>
+        <ul>
+          <li>
+            <strong>_ga y _ga_*</strong>: cookies de Google Analytics. Solo
+            existen si aceptó la analítica. Si después la rechaza, las borramos.
+          </li>
+          <li>
+            <strong>cookie-consent</strong>: guarda su decisión sobre la
+            analítica, para no preguntarle en cada visita.
+          </li>
+          <li>
+            <strong>theme</strong>: recuerda si eligió el modo claro u oscuro.
+          </li>
+        </ul>
+        <p>
+          Las dos últimas se guardan en el almacenamiento local de su navegador.
+          No salen de su equipo.
+        </p>
+      </section>
+
+      <section>
+        <h2>Servicios que usamos</h2>
+        <p>Estos proveedores tratan datos por encargo nuestro:</p>
+        <ul>
+          <li>
+            <strong>Vercel</strong>: aloja el sitio. Estados Unidos.
+          </li>
+          <li>
+            <strong>Resend</strong>: envía a nuestro correo los mensajes del
+            formulario. Estados Unidos.
+          </li>
+          <li>
+            <strong>Google Analytics</strong>: analítica de visitas, solo si la
+            acepta. Estados Unidos.
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Sus derechos</h2>
+        <p>
+          Según la ley chilena de protección de datos, puede pedirnos acceder a
+          sus datos, corregirlos, borrarlos, oponerse a que los tratemos o
+          recibir una copia. Escríbanos a{" "}
+          <a href={`mailto:${site.email}`}>{site.email}</a> y le respondemos en
+          un máximo de dos días hábiles.
+        </p>
+      </section>
+
+      <section>
+        <h2>Cambios</h2>
+        <p>
+          Si cambiamos cómo tratamos sus datos, actualizaremos esta página y la
+          fecha de arriba.
+        </p>
+      </section>
+    </article>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .legal section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .legal h2 {
+    font-size: var(--text-2xl);
+    line-height: var(--text-2xl--line-height);
+  }
+  .legal p,
+  .legal li {
+    color: var(--color-body);
+  }
+  .legal ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-left: 1.25rem;
+    list-style: disc;
+  }
+</style>
