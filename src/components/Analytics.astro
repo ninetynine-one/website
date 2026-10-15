@@ -1,51 +1,12 @@
 ---
-import { PUBLIC_GA_ID } from "astro:env/client"
-import CookieBanner from "@/components/CookieBanner.astro"
-
-// Solo en producción y con un ID configurado, para no medir el desarrollo local.
-const gaId = import.meta.env.PROD ? PUBLIC_GA_ID : undefined
+// Google Analytics 4. Se carga o se apaga según la categoría "Estadísticas"
+// del panel de cookies (src/lib/consent.ts). Solo en producción y con
+// PUBLIC_GA_ID, para no medir el desarrollo local.
 ---
 
-{gaId && (
-  <>
-    <script is:inline define:vars={{ gaId }}>
-      // GA deja cookies: solo se carga si la persona aceptó en el aviso.
-      // La decisión vive en localStorage ("granted" | "denied").
-      window.dataLayer = window.dataLayer || []
-      window.gtag = function () {
-        dataLayer.push(arguments)
-      }
-      window.loadAnalytics = function () {
-        if (window.analyticsLoaded) return
-        window.analyticsLoaded = true
-        window["ga-disable-" + gaId] = false
-        const script = document.createElement("script")
-        script.async = true
-        script.src = "https://www.googletagmanager.com/gtag/js?id=" + gaId
-        document.head.appendChild(script)
-        gtag("js", new Date())
-        gtag("config", gaId)
-      }
-      window.disableAnalytics = function () {
-        window["ga-disable-" + gaId] = true
-        // Borra las cookies de GA (_ga, _ga_XXXX) en este dominio y el padre.
-        const host = location.hostname
-        const domains = ["", host, "." + host.split(".").slice(-2).join(".")]
-        document.cookie.split(";").forEach((c) => {
-          const name = c.split("=")[0].trim()
-          if (!name.startsWith("_ga")) return
-          domains.forEach((d) => {
-            document.cookie =
-              name + "=; Max-Age=0; path=/" + (d ? "; domain=" + d : "")
-          })
-        })
-      }
-      try {
-        if (localStorage.getItem("cookie-consent") === "granted") {
-          window.loadAnalytics()
-        }
-      } catch {}
-    </script>
-    <CookieBanner />
-  </>
-)}
+<script>
+  import { PUBLIC_GA_ID } from "astro:env/client"
+  import { setupGoogleAnalytics } from "@/lib/analytics"
+
+  if (import.meta.env.PROD && PUBLIC_GA_ID) setupGoogleAnalytics(PUBLIC_GA_ID)
+</script>

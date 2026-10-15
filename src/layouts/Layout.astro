@@ -1,6 +1,7 @@
 ---
 import "@/styles/global.css"
 import Analytics from "@/components/Analytics.astro"
+import { CookieConsent } from "@/components/consent/CookieConsent"
 import { site } from "@/data/site"
 
 interface Props {
@@ -84,5 +85,6 @@ const squareImageUrl = new URL("/og-square.png", Astro.site)
   </head>
   <body>
     <slot />
+    <CookieConsent client:only="react" />
   </body>
 </html>
