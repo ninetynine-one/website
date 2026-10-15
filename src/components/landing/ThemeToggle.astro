@@ -10,14 +10,20 @@ import { cn } from "@/lib/utils"
   data-theme-toggle
   aria-label="Cambiar entre modo claro y oscuro"
   title="Cambiar tema"
-  class={cn(buttonVariants({ variant: "ghost", size: "icon-sm" }), "text-muted-foreground")}
+  class={cn(
+    buttonVariants({ variant: "ghost", size: "icon-sm" }),
+    "text-muted-foreground"
+  )}
 >
   <MoonIcon className="dark:hidden" aria-hidden="true" />
   <SunIcon className="hidden dark:block" aria-hidden="true" />
 </button>
 
 <script>
+  import { getConsent } from "@/lib/consent"
+
   // Guarda la elección solo si difiere del sistema; si coincide, vuelve a seguirlo.
+  // Sin la categoría "Preferencias" el cambio dura solo hasta recargar.
   const media = window.matchMedia("(prefers-color-scheme: dark)")
   const root = document.documentElement
 
@@ -26,7 +32,8 @@ import { cn } from "@/lib/utils"
       const dark = !root.classList.contains("dark")
       root.classList.toggle("dark", dark)
       try {
-        if (dark === media.matches) localStorage.removeItem("theme")
+        if (dark === media.matches || !getConsent().preferences)
+          localStorage.removeItem("theme")
         else localStorage.setItem("theme", dark ? "dark" : "light")
       } catch {}
     })

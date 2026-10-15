@@ -30,6 +30,10 @@ El formulario envía los mensajes con [Resend](https://resend.com) a través de 
 
 Google Analytics 4 se activa con la variable `PUBLIC_GA_ID` (el ID de medición, `G-XXXXXXXXXX`) en *Settings → Environment Variables* de Vercel. Sin esa variable, o en desarrollo, no se carga. Cada envío exitoso del formulario registra el evento `generate_lead` con el tipo de proyecto.
 
+Google Analytics depende de la categoría "Estadísticas" del panel de cookies (`src/components/consent/CookieConsent.tsx`). Fuera de Europa viene activada por defecto y se muestra un aviso; en Europa (EEE, Reino Unido y Suiza, según la zona horaria del navegador) se pide permiso antes. La decisión se guarda en `localStorage` (`cookie-consent`, JSON con `v: 2`) y la API está en `src/lib/consent.ts`. El inventario de cookies, que leen el panel y `/privacidad`, está en `src/data/cookies.ts`. En desarrollo, `?consent-region=eu` o `?consent-region=world` fuerzan la región.
+
+Vercel Web Analytics (`@vercel/analytics`) cuenta las visitas sin cookies y no depende del consentimiento. Hay que activarlo en *Analytics* del proyecto en Vercel.
+
 ## Errores y rendimiento (Sentry)
 
 `@sentry/astro` captura errores del navegador y del servidor (la action de contacto y `/api/sentry-test`), mide Web Vitals y tiempos de carga, y guarda una grabación enmascarada (Session Replay) solo cuando hay un error. La configuración está en `sentry.client.config.ts` y `sentry.server.config.ts`.
@@ -64,8 +68,10 @@ src/
 │   ├── landing/          Secciones de la landing (Header, Hero, Services, …)
 │   └── ui/               Componentes de shadcn/ui adaptados a la marca
 ├── data/site.ts          Textos, enlaces y datos de contacto
+├── data/cookies.ts       Inventario de cookies (panel y privacidad)
 ├── layouts/Layout.astro  <head>, SEO y modo oscuro automático
-├── lib/analytics.ts      track(): eventos de GA4
+├── lib/analytics.ts      track() y carga de GA4 según el consentimiento
+├── lib/consent.ts        Decisión sobre cookies: región, migración y API
 ├── lib/utils.ts          cn()
 ├── pages/index.astro     La landing
 └── styles/
