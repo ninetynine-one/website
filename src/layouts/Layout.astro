@@ -36,10 +36,22 @@ const canonical = new URL(Astro.url.pathname, Astro.site)
     <meta property="og:locale" content="es_CL" />
     <title>{title}</title>
     <script is:inline>
-      // Modo oscuro según la preferencia del sistema, antes de pintar.
+      // Tema elegido por el usuario o, si no eligió, el del sistema; antes de pintar.
       const media = window.matchMedia("(prefers-color-scheme: dark)")
-      const apply = () =>
-        document.documentElement.classList.toggle("dark", media.matches)
+      const stored = () => {
+        try {
+          return localStorage.getItem("theme")
+        } catch {
+          return null
+        }
+      }
+      const apply = () => {
+        const theme = stored()
+        document.documentElement.classList.toggle(
+          "dark",
+          theme ? theme === "dark" : media.matches
+        )
+      }
       apply()
       media.addEventListener("change", apply)
     </script>

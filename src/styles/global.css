@@ -19,7 +19,7 @@
     @apply border-border outline-ring/50;
   }
   html {
-    @apply scroll-smooth font-sans antialiased;
+    @apply scroll-smooth scheme-light font-sans antialiased dark:scheme-dark;
   }
   body {
     @apply bg-background text-base text-foreground;
