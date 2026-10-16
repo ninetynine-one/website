@@ -61,7 +61,7 @@ Pruebas en producción:
 
 ```
 src/
-├── actions/index.ts      Action del formulario de contacto (Resend)
+├── actions/index.ts      Action del formulario de contacto (webhook del panel)
 ├── assets/
 │   ├── logo/             Logos y símbolo de la marca (SVG)
 │   └── projects/         Capturas de los proyectos
