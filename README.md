@@ -18,13 +18,14 @@ npm run format
 
 ## Formulario de contacto
 
-El formulario envía los mensajes con [Resend](https://resend.com) a través de una Astro Action (`src/actions/index.ts`), que corre como función en Vercel. La página sigue siendo estática.
+El formulario no envía correos: una Astro Action (`src/actions/index.ts`), que corre como función en Vercel, reenvía cada mensaje al panel de gestión (`../dashboard`, ruta `POST /api/leads`). Ahí queda como contacto, oportunidad y mensaje en *Correos → Mensajes*. La página sigue siendo estática.
 
-1. Crear una cuenta en Resend y verificar el dominio `ninetynineone.studio` (registros DNS que indica Resend).
-2. Crear una API key y copiar `.env.example` a `.env` con `RESEND_API_KEY`.
-3. En Vercel, agregar `RESEND_API_KEY` en *Settings → Environment Variables*.
+1. Copiar `.env.example` a `.env` y completar:
+   - `DASHBOARD_LEADS_URL`: URL del webhook, por ejemplo `https://<panel>/api/leads` (en local, `http://localhost:3000/api/leads`).
+   - `DASHBOARD_LEADS_SECRET`: el mismo valor que `LEADS_WEBHOOK_SECRET` en el panel.
+2. En Vercel, agregar ambas variables en *Settings → Environment Variables*.
 
-`CONTACT_TO_EMAIL` es el correo que recibe los mensajes (por defecto `hola@ninetynineone.studio`). Sin un dominio verificado en Resend, debe ser el correo de la cuenta de Resend. `CONTACT_FROM_EMAIL` es opcional (por defecto `Ninety Nine One <onboarding@resend.dev>`); con un dominio verificado puede ser una dirección de ese dominio.
+Sin esas variables, el formulario responde "El formulario no está configurado." y el error llega a Sentry.
 
 ## Analítica
 
@@ -60,7 +61,7 @@ Pruebas en producción:
 
 ```
 src/
-├── actions/index.ts      Action del formulario de contacto (Resend)
+├── actions/index.ts      Action del formulario de contacto (webhook del panel)
 ├── assets/
 │   ├── logo/             Logos y símbolo de la marca (SVG)
 │   └── projects/         Capturas de los proyectos
@@ -89,4 +90,4 @@ Agregar componentes de shadcn: `npx shadcn@latest add <componente>`. Después, a
 
 ## Despliegue
 
-Usa `@astrojs/vercel`: las páginas se prerenderizan y solo la action de contacto corre como función. En Vercel, importar el repositorio (detecta Astro automáticamente) y configurar `RESEND_API_KEY`. Actualizar `site` en `astro.config.mjs` si el dominio final cambia.
+Usa `@astrojs/vercel`: las páginas se prerenderizan y solo la action de contacto corre como función. En Vercel, importar el repositorio (detecta Astro automáticamente) y configurar `DASHBOARD_LEADS_URL` y `DASHBOARD_LEADS_SECRET`. Actualizar `site` en `astro.config.mjs` si el dominio final cambia.

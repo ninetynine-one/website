@@ -1,12 +1,7 @@
 import * as Sentry from "@sentry/astro"
 import { ActionError, defineAction } from "astro:actions"
-import {
-  CONTACT_FROM_EMAIL,
-  CONTACT_TO_EMAIL,
-  RESEND_API_KEY,
-} from "astro:env/server"
+import { DASHBOARD_LEADS_SECRET, DASHBOARD_LEADS_URL } from "astro:env/server"
 import { z } from "astro/zod"
-import { Resend } from "resend"
 
 import { projectTypes } from "@/data/site"
 
@@ -30,34 +25,35 @@ export const server = {
       website: z.string().max(0).optional(),
     }),
     handler: async ({ name, email, type, message }) => {
-      if (!RESEND_API_KEY) {
-        console.error("[contact] RESEND_API_KEY is not set")
-        Sentry.captureMessage("[contact] RESEND_API_KEY is not set", "error")
+      if (!DASHBOARD_LEADS_URL || !DASHBOARD_LEADS_SECRET) {
+        console.error(
+          "[contact] DASHBOARD_LEADS_URL or DASHBOARD_LEADS_SECRET is not set"
+        )
+        Sentry.captureMessage(
+          "[contact] dashboard leads webhook is not configured",
+          "error"
+        )
         throw new ActionError({
           code: "INTERNAL_SERVER_ERROR",
           message: "El formulario no está configurado.",
         })
       }
 
-      const resend = new Resend(RESEND_API_KEY)
-      let result: Awaited<ReturnType<typeof resend.emails.send>>
+      // El mensaje queda en el panel (Correos → Mensajes), no se envía por correo.
+      let response: Response
       try {
-        result = await resend.emails.send({
-          from: CONTACT_FROM_EMAIL,
-          to: CONTACT_TO_EMAIL,
-          replyTo: email,
-          subject: `${type} — ${name}`,
-          text: [
-            `Nombre: ${name}`,
-            `Correo: ${email}`,
-            `Tipo de proyecto: ${type}`,
-            "",
-            message || "(Sin mensaje)",
-          ].join("\n"),
+        response = await fetch(DASHBOARD_LEADS_URL, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${DASHBOARD_LEADS_SECRET}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ name, email, type, message }),
+          signal: AbortSignal.timeout(10_000),
         })
       } catch (cause) {
-        // Falla de red o del SDK: llega a Sentry sin datos del formulario.
-        console.error("[contact] Resend threw", cause)
+        // Falla de red o tiempo de espera: llega a Sentry sin datos del formulario.
+        console.error("[contact] dashboard request failed", cause)
         Sentry.captureException(cause, { tags: { action: "contact" } })
         throw new ActionError({
           code: "INTERNAL_SERVER_ERROR",
@@ -65,12 +61,11 @@ export const server = {
         })
       }
 
-      const { error } = result
-      if (error) {
-        console.error("[contact] Resend error", error)
+      if (!response.ok) {
+        console.error("[contact] dashboard responded", response.status)
         Sentry.captureException(
-          new Error(`[contact] Resend error: ${error.name}`),
-          { tags: { action: "contact" }, extra: { resend: error.message } }
+          new Error(`[contact] dashboard responded ${response.status}`),
+          { tags: { action: "contact" } }
         )
         throw new ActionError({
           code: "INTERNAL_SERVER_ERROR",

@@ -43,20 +43,17 @@ export default defineConfig({
   },
   env: {
     schema: {
-      RESEND_API_KEY: envField.string({
+      // Webhook del panel de gestión que guarda los mensajes del formulario.
+      DASHBOARD_LEADS_URL: envField.string({
         context: "server",
         access: "secret",
         optional: true,
+        url: true,
       }),
-      CONTACT_TO_EMAIL: envField.string({
+      DASHBOARD_LEADS_SECRET: envField.string({
         context: "server",
         access: "secret",
-        default: "hola@ninetynineone.studio",
-      }),
-      CONTACT_FROM_EMAIL: envField.string({
-        context: "server",
-        access: "secret",
-        default: "Ninety Nine One <onboarding@resend.dev>",
+        optional: true,
       }),
       PUBLIC_GA_ID: envField.string({
         context: "client",
