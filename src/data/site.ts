@@ -15,7 +15,10 @@ export const navLinks = [
 ]
 
 export const socialLinks = [
-  { href: "https://www.instagram.com/ninetynineone.studio", label: "Instagram" },
+  {
+    href: "https://www.instagram.com/ninetynineone.studio",
+    label: "Instagram",
+  },
   { href: "https://github.com/ninetynine-one", label: "GitHub" },
 ]
 
@@ -34,16 +37,36 @@ export const services = [
   {
     title: "Desarrollo a medida y asesorías",
     description:
-      "Construimos el software que su empresa necesita, con IA donde aporta, o la acompañamos a tomar mejores decisiones técnicas. Plazos realistas y avances cada semana.",
+      "Construimos el software que su empresa necesita, o la acompañamos a tomar mejores decisiones técnicas. Plazos realistas y avances cada semana.",
     tone: "accent",
     items: [
       { label: "Software a medida", detail: "Web y móvil" },
-      { label: "Soluciones con IA", detail: "Asistentes y automatización" },
       { label: "Asesoría técnica", detail: "Arquitectura y producto" },
       { label: "Revisión de proyectos", detail: "Código y procesos" },
     ],
   },
 ] as const
+
+export const aiService = {
+  badge: "Inteligencia artificial",
+  title: "Soluciones de IA para empresas",
+  description:
+    "Ayudamos a su empresa a decidir dónde la inteligencia artificial aporta valor y construimos la solución. Usted trabaja siempre con una persona del equipo, de principio a fin.",
+  items: [
+    {
+      label: "Asesoría en IA",
+      detail: "Diagnóstico, casos de uso y hoja de ruta",
+    },
+    {
+      label: "Desarrollo con LLMs",
+      detail: "Asistentes, agentes y búsqueda en sus datos",
+    },
+    {
+      label: "Integración y automatización",
+      detail: "Conectada a sus sistemas actuales",
+    },
+  ],
+} as const
 
 export const values = [
   {
@@ -65,9 +88,11 @@ export const values = [
 
 export const projectTypes = [
   "Software a medida",
-  "Solución con IA",
   "Asesoría técnica",
   "Revisión de proyecto",
+  "Asesoría en IA",
+  "Desarrollo con LLMs",
+  "Integración y automatización con IA",
   "Otro",
 ] as const
 
