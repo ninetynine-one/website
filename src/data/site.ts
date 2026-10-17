@@ -32,12 +32,13 @@ export const process = [
     when: "Primer paso",
     title: "Conversamos",
     description:
-      "Nos cuenta qué quiere construir. Le responde una persona, no una plantilla.",
+      "Una llamada de 30 minutos para entender qué necesita y si somos el equipo indicado. No tiene costo.",
   },
   {
     when: "Propuesta",
     title: "Plazo y costo, por escrito",
-    description: "Con lo que sabemos y lo que todavía no. Sin letra chica.",
+    description:
+      "Una cotización con alcance, plazo y precio cerrado. Si el problema todavía no está claro, partimos con un diagnóstico.",
   },
   {
     when: "Cada viernes",
@@ -50,7 +51,25 @@ export const process = [
     when: "Entrega",
     title: "Software que se queda",
     description:
-      "Probado, documentado y en sus manos. Lo seguimos acompañando si lo necesita.",
+      "Probado, documentado y en sus manos, con garantía después de la entrega final.",
+  },
+]
+
+export const billing = [
+  {
+    title: "Diagnóstico",
+    description:
+      "Cuando hace falta entender el problema antes de cotizar. Se cobra aparte y el resultado es suyo.",
+  },
+  {
+    title: "Cotización cerrada",
+    description:
+      "El precio no cambia, salvo que cambie el alcance. Cualquier cambio se acuerda por escrito.",
+  },
+  {
+    title: "Pago por hitos",
+    description:
+      "40 % al iniciar, 30 % a mitad del proyecto y 30 % en la entrega.",
   },
 ]
 
