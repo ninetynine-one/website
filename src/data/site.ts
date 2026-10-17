@@ -1,3 +1,6 @@
+import storiaLight from "@/assets/projects/storia-light.png"
+import storiaDark from "@/assets/projects/storia-dark.png"
+
 export const site = {
   name: "Ninety Nine One",
   title: "Ninety Nine One — Estudio de software",
@@ -126,9 +129,16 @@ export const projectTypes = [
   "Otro",
 ] as const
 
-export const featuredProject = {
-  name: "Storia",
-  url: "https://storia-one-rho.vercel.app",
-  description:
-    "De una idea a un Pull Request en tu blog. Escribes o grabas la idea, la IA redacta el borrador con la voz de tu marca y Storia abre el Pull Request en el repositorio de tu blog.",
-}
+// Proyectos del carrusel, en orden. Con uno solo se muestra sin controles.
+export const projects = [
+  {
+    name: "Storia",
+    kind: "Producto propio",
+    status: "Inscripciones abiertas",
+    url: "https://storia-one-rho.vercel.app",
+    caption: "storia · 2026",
+    image: { light: storiaLight, dark: storiaDark },
+    description:
+      "De una idea a un Pull Request en tu blog. Escribes o grabas la idea, la IA redacta el borrador con la voz de tu marca y Storia abre el Pull Request en el repositorio de tu blog.",
+  },
+]
