@@ -28,7 +28,7 @@ export const socialLinks = [
 
 export const process = [
   {
-    when: "Antes de 2 días hábiles",
+    when: "Primer paso",
     title: "Conversamos",
     description:
       "Nos cuenta qué quiere construir. Le responde una persona, no una plantilla.",

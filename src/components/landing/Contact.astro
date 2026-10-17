@@ -12,15 +12,9 @@ import { projectTypes, site } from "@/data/site"
       Cuéntenos qué quiere construir.
     </h2>
     <p class="max-w-md text-lg/7 text-body">
-      Respondemos en un máximo de dos días hábiles, con una persona del equipo y
-      no con una plantilla.
+      Le respondemos en los próximos días, con una persona del equipo y no con
+      una plantilla.
     </p>
-    <a
-      href={`mailto:${site.email}`}
-      class="font-display text-2xl font-medium text-foreground underline decoration-primary decoration-2 underline-offset-8 hover:text-link md:text-3xl"
-    >
-      {site.email}
-    </a>
   </div>
 
   <ContactForm client:visible email={site.email} projectTypes={projectTypes} />

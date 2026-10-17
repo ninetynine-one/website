@@ -59,7 +59,7 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
           Mensaje recibido.
         </strong>
         <span className="leading-6">
-          Le escribiremos a {sentTo} dentro de dos días hábiles.
+          Le escribiremos a {sentTo} en los próximos días.
         </span>
       </div>
     )
