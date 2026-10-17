@@ -1,5 +1,5 @@
 ---
-import { process } from "@/data/site"
+import { billing, process } from "@/data/site"
 ---
 
 <section id="como" class="scroll-mt-18 bg-background py-18 md:py-24 lg:py-32">
@@ -29,5 +29,14 @@ import { process } from "@/data/site"
         </li>
       ))}
     </ol>
+    <div class="mt-14 grid gap-6 rounded-xl bg-paper p-6 shadow-paper md:mt-20 md:grid-cols-2 md:p-8 lg:grid-cols-4">
+      <h3 class="text-2xl">Cómo cobramos</h3>
+      {billing.map((item) => (
+        <div class="flex flex-col gap-1">
+          <strong class="text-[15px] font-semibold">{item.title}</strong>
+          <p class="text-sm/5.5 text-body">{item.description}</p>
+        </div>
+      ))}
+    </div>
   </div>
 </section>

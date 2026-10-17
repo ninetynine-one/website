@@ -1,6 +1,8 @@
 ---
 import { ContactForm } from "./ContactForm"
+import { buttonVariants } from "@/components/ui/button"
 import { projectTypes, site } from "@/data/site"
+import { cn } from "@/lib/utils"
 ---
 
 <section
@@ -15,6 +17,14 @@ import { projectTypes, site } from "@/data/site"
       Le respondemos en los próximos días, con una persona del equipo y no con
       una plantilla.
     </p>
+    <a
+      href={site.whatsapp}
+      target="_blank"
+      rel="noopener"
+      class={cn(buttonVariants({ variant: "secondary", size: "lg" }))}
+    >
+      Escribir por WhatsApp
+    </a>
   </div>
 
   <ContactForm client:visible email={site.email} projectTypes={projectTypes} />

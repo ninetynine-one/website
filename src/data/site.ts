@@ -8,6 +8,7 @@ export const site = {
     "Estudio de software en Chile. Creamos apps y videojuegos propios, y desarrollamos software a medida y soluciones con IA.",
   email: "hola@ninetynineone.studio",
   location: "Santiago de Chile",
+  whatsapp: "https://wa.me/56984875420",
   legalName: "Ninety Nine One SpA",
 }
 
@@ -16,6 +17,7 @@ export const navLinks = [
   { href: "/#hacemos", label: "Qué hacemos" },
   { href: "/#proyectos", label: "Proyectos" },
   { href: "/#valores", label: "Valores" },
+  { href: "/#preguntas", label: "Preguntas" },
 ]
 
 export const socialLinks = [
@@ -31,12 +33,13 @@ export const process = [
     when: "Primer paso",
     title: "Conversamos",
     description:
-      "Nos cuenta qué quiere construir. Le responde una persona, no una plantilla.",
+      "Una llamada de 30 minutos para entender qué necesita y si somos el equipo indicado. No tiene costo.",
   },
   {
     when: "Propuesta",
     title: "Plazo y costo, por escrito",
-    description: "Con lo que sabemos y lo que todavía no. Sin letra chica.",
+    description:
+      "Una cotización con alcance, plazo y precio cerrado. Si el problema todavía no está claro, partimos con un diagnóstico.",
   },
   {
     when: "Cada viernes",
@@ -49,7 +52,25 @@ export const process = [
     when: "Entrega",
     title: "Software que se queda",
     description:
-      "Probado, documentado y en sus manos. Lo seguimos acompañando si lo necesita.",
+      "Probado, documentado y en sus manos, con garantía después de la entrega final.",
+  },
+]
+
+export const billing = [
+  {
+    title: "Diagnóstico",
+    description:
+      "Cuando hace falta entender el problema antes de cotizar. Se cobra aparte y el resultado es suyo.",
+  },
+  {
+    title: "Cotización cerrada",
+    description:
+      "El precio no cambia, salvo que cambie el alcance. Cualquier cambio se acuerda por escrito.",
+  },
+  {
+    title: "Pago por hitos",
+    description:
+      "40 % al iniciar, 30 % a mitad del proyecto y 30 % en la entrega.",
   },
 ]
 
@@ -120,14 +141,78 @@ export const values = [
 ]
 
 export const projectTypes = [
+  "App o videojuego",
   "Software a medida",
   "Asesoría técnica",
   "Revisión de proyecto",
   "Asesoría en IA",
   "Desarrollo con LLMs",
   "Integración y automatización con IA",
+  "No sé qué necesito",
   "Otro",
 ] as const
+
+export type ProjectType = (typeof projectTypes)[number]
+
+// Atajos al formulario: cada uno deja elegido su tipo de proyecto.
+export const startPoints = [
+  {
+    title: "Tengo una idea de app o juego",
+    description: "La convertimos en un producto que se pueda lanzar.",
+    type: "App o videojuego",
+  },
+  {
+    title: "Necesito software para mi empresa",
+    description: "Un sistema hecho para cómo trabaja su equipo.",
+    type: "Software a medida",
+  },
+  {
+    title: "Quiero usar IA en mi empresa",
+    description: "Vemos dónde aporta valor y construimos la solución.",
+    type: "Asesoría en IA",
+  },
+  {
+    title: "Tengo un proyecto que no avanza",
+    description: "Revisamos el código y el proceso, y le decimos qué hacer.",
+    type: "Revisión de proyecto",
+  },
+  {
+    title: "No sé qué necesito",
+    description: "Cuéntenos el problema y le decimos por dónde partir.",
+    type: "No sé qué necesito",
+  },
+] satisfies { title: string; description: string; type: ProjectType }[]
+
+export const faqs = [
+  {
+    question: "¿Cuánto cuesta un proyecto?",
+    answer:
+      "Depende del alcance. Después de la primera conversación le enviamos una cotización cerrada, con el precio total y lo que incluye.",
+  },
+  {
+    question: "¿Cuánto demora?",
+    answer:
+      "El plazo va en la cotización. Una asesoría o un piloto suele tomar algunas semanas; un producto completo, algunos meses.",
+  },
+  {
+    question: "¿Qué pasa después de la entrega?",
+    answer:
+      "Hay un periodo de garantía en que corregimos errores sin costo. Después puede contratar mantención o seguir con su propio equipo.",
+  },
+  {
+    question: "¿De quién es el código?",
+    answer:
+      "De su empresa, una vez pagado el proyecto. Le entregamos el código fuente y la documentación.",
+  },
+  {
+    question: "¿Firman acuerdos de confidencialidad?",
+    answer: "Sí. Si lo necesita, lo firmamos antes de la primera reunión.",
+  },
+  {
+    question: "¿Trabajan con empresas fuera de Chile?",
+    answer: "Sí. Trabajamos de forma remota, en español o en inglés.",
+  },
+]
 
 // Proyectos del carrusel, en orden. Con uno solo se muestra sin controles.
 export const projects = [

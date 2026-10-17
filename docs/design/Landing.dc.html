@@ -16,13 +16,15 @@
 <div class="{{ themeClass }}" style="background:var(--background);color:var(--foreground);font-family:var(--font-sans);min-height:100vh">
   <nav style="position:sticky;top:0;z-index:30;background:color-mix(in oklab, var(--background) 86%, transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)">
     <div style="max-width:1200px;margin:0 auto;padding:0 var(--gutter);height:64px;display:flex;align-items:center;gap:24px">
-      <a href="#inicio" style="display:flex"><img src="{{ logoH }}" alt="Ninety Nine One" style="height:28px"></a>
-      <div style="display:flex;gap:4px;flex:1;flex-wrap:wrap">
-        <a href="#hacemos" style="padding:8px 12px;border-radius:10px;font-size:15px;font-weight:500;color:var(--muted-foreground);text-decoration:none">Qué hacemos</a>
-        <a href="#proyectos" style="padding:8px 12px;border-radius:10px;font-size:15px;font-weight:500;color:var(--muted-foreground);text-decoration:none">Proyectos</a>
-        <a href="#valores" style="padding:8px 12px;border-radius:10px;font-size:15px;font-weight:500;color:var(--muted-foreground);text-decoration:none">Valores</a>
+      <a href="#inicio" style="display:flex"><sc-if value="{{ isLight }}" hint-placeholder-val="{{ true }}"><img src="./assets/logo/nno-horizontal.svg" alt="Ninety Nine One" style="height:28px"></sc-if><sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}"><img src="./assets/logo/nno-horizontal-dark.svg" alt="Ninety Nine One" style="height:28px"></sc-if></a>
+      <div style="display:flex;gap:2px;flex:1;min-width:0;overflow-x:auto;scrollbar-width:none;white-space:nowrap">
+        <a href="#hacemos" style="padding:8px 10px;border-radius:10px;font-size:15px;font-weight:500;color:var(--muted-foreground);text-decoration:none;flex-shrink:0">Qué hacemos</a>
+        <a href="#proyectos" style="padding:8px 10px;border-radius:10px;font-size:15px;font-weight:500;color:var(--muted-foreground);text-decoration:none;flex-shrink:0">Proyectos</a>
+        <a href="#como" style="padding:8px 10px;border-radius:10px;font-size:15px;font-weight:500;color:var(--muted-foreground);text-decoration:none;flex-shrink:0">Cómo trabajamos</a>
+        <a href="#valores" style="padding:8px 10px;border-radius:10px;font-size:15px;font-weight:500;color:var(--muted-foreground);text-decoration:none;flex-shrink:0">Valores</a>
+        <a href="#preguntas" style="padding:8px 10px;border-radius:10px;font-size:15px;font-weight:500;color:var(--muted-foreground);text-decoration:none;flex-shrink:0">Preguntas</a>
       </div>
-      <a href="#contacto" style="height:36px;padding:0 16px;display:inline-flex;align-items:center;border-radius:var(--radius-md);background:var(--primary);color:var(--primary-foreground);font-weight:600;font-size:14px;text-decoration:none" style-hover="background:var(--action-primary-hover)">Conversemos</a>
+      <a href="#contacto" style="flex-shrink:0;height:36px;padding:0 16px;display:inline-flex;align-items:center;border-radius:var(--radius-md);background:var(--primary);color:var(--primary-foreground);font-weight:600;font-size:14px;text-decoration:none" style-hover="background:var(--action-primary-hover)">Conversemos</a>
     </div>
   </nav>
 
@@ -39,11 +41,24 @@
     <sc-if value="{{ showPattern }}" hint-placeholder-val="{{ true }}">
       <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-2xl);padding:clamp(28px,5vw,56px);display:flex;flex-direction:column;gap:24px">
         <div style="display:flex;align-items:center;justify-content:center;padding:clamp(8px,2vw,24px) 0">
-          <img src="{{ symbol }}" alt="" style="width:100%;max-width:340px;aspect-ratio:1">
+          <sc-if value="{{ isLight }}" hint-placeholder-val="{{ true }}"><img src="./assets/logo/nno-symbol.svg" alt="" style="width:100%;max-width:340px;aspect-ratio:1"></sc-if><sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}"><img src="./assets/logo/nno-symbol-dark.svg" alt="" style="width:100%;max-width:340px;aspect-ratio:1"></sc-if>
         </div>
         <p style="margin:0;font-size:14px;color:var(--muted-foreground);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><span>Noventa y nueve en el grupo.</span><span style="color:var(--text-link);font-weight:600">Vamos a buscar a la una.</span></p>
       </div>
     </sc-if>
+  </section>
+
+  <section data-screen-label="Por dónde partimos" style="max-width:1200px;margin:0 auto;padding:0 var(--gutter) clamp(56px,7vw,88px);display:flex;flex-direction:column;gap:16px">
+    <h2 style="font-family:var(--font-display);font-weight:500;font-size:22px;line-height:28px;margin:0">¿Por dónde partimos?</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px">
+      <sc-for list="{{ starts }}" as="st" hint-placeholder-count="5">
+        <a href="#contacto" onClick="{{ st.pick }}" style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;display:flex;flex-direction:column;gap:6px;text-decoration:none;color:var(--foreground)" style-hover="border-color:var(--primary);background:var(--durazno-50)">
+          <strong style="font-size:16px;line-height:22px;font-weight:600;text-wrap:balance">{{ st.t }}</strong>
+          <span style="font-size:14px;line-height:20px;color:var(--muted-foreground);text-wrap:pretty">{{ st.d }}</span>
+          <span style="font-size:14px;font-weight:600;color:var(--text-link);margin-top:auto;padding-top:6px">Contarnos →</span>
+        </a>
+      </sc-for>
+    </div>
   </section>
 
   <section id="hacemos" data-screen-label="Qué hacemos" style="background:var(--muted);padding:clamp(72px,9vw,112px) 0">
@@ -73,6 +88,18 @@
             <li style="display:flex;justify-content:space-between;gap:12px;padding:14px 0;font-size:15px"><span style="font-weight:600">Revisión de proyectos</span><span style="color:var(--muted-foreground)">Código y procesos</span></li>
           </ul>
         </article>
+        <article style="grid-column:1/-1;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-xl);padding:clamp(28px,4vw,40px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:clamp(24px,4vw,56px)">
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <span style="align-self:flex-start;height:26px;padding:0 10px;display:inline-flex;align-items:center;border-radius:999px;background:var(--secondary);color:var(--secondary-foreground);font-size:12px;font-weight:600">Inteligencia artificial</span>
+            <h3 style="font-family:var(--font-display);font-weight:500;font-size:28px;line-height:34px;margin:0;text-wrap:balance">Soluciones de IA para empresas</h3>
+            <p style="margin:0;font-size:16px;line-height:25px;color:var(--text-body);text-wrap:pretty">Ayudamos a su empresa a decidir dónde la inteligencia artificial aporta valor y construimos la solución. Usted trabaja siempre con una persona del equipo, de principio a fin.</p>
+          </div>
+          <ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;border-top:1px solid var(--border);align-self:end">
+            <li style="display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);font-size:15px"><span style="font-weight:600">Asesoría en IA</span><span style="color:var(--muted-foreground);text-align:right">Diagnóstico, casos de uso y hoja de ruta</span></li>
+            <li style="display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-bottom:1px solid var(--border);font-size:15px"><span style="font-weight:600">Desarrollo con LLMs</span><span style="color:var(--muted-foreground);text-align:right">Asistentes, agentes y búsqueda en sus datos</span></li>
+            <li style="display:flex;justify-content:space-between;gap:12px;padding:14px 0;font-size:15px"><span style="font-weight:600">Integración y automatización</span><span style="color:var(--muted-foreground);text-align:right">Conectada a sus sistemas actuales</span></li>
+          </ul>
+        </article>
       </div>
     </div>
   </section>
@@ -99,6 +126,28 @@
     </article>
   </section>
 
+  <section id="como" data-screen-label="Cómo trabajamos" style="max-width:1200px;margin:0 auto;padding:0 var(--gutter) clamp(72px,9vw,112px);display:flex;flex-direction:column;gap:40px">
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:640px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">Cómo trabajamos</span>
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:clamp(32px,4vw,44px);line-height:1.1;letter-spacing:-0.02em;margin:0;text-wrap:balance">Tres pasos y un precio que no cambia</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:20px">
+      <sc-for list="{{ steps }}" as="p" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:14px;border-top:2px solid var(--primary);padding-top:22px">
+          <span style="font-family:var(--font-display);font-size:16px;color:var(--text-link)">{{ p.n }}</span>
+          <h3 style="font-family:var(--font-display);font-weight:500;font-size:26px;line-height:32px;margin:0">{{ p.t }}</h3>
+          <p style="margin:0;font-size:16px;line-height:25px;color:var(--text-body);text-wrap:pretty">{{ p.d }}</p>
+        </div>
+      </sc-for>
+    </div>
+    <div style="background:var(--muted);border-radius:var(--radius-xl);padding:clamp(20px,3vw,28px) clamp(20px,3vw,32px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px">
+      <strong style="font-family:var(--font-display);font-weight:500;font-size:22px;line-height:28px">Cómo cobramos</strong>
+      <sc-for list="{{ billing }}" as="b" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:4px"><strong style="font-size:15px;font-weight:600">{{ b.t }}</strong><span style="font-size:14px;line-height:21px;color:var(--text-body)">{{ b.d }}</span></div>
+      </sc-for>
+    </div>
+  </section>
+
   <section id="valores" data-screen-label="Valores" style="background:var(--surface-inverse);color:var(--text-inverse);padding:clamp(72px,9vw,112px) 0">
     <div style="max-width:1200px;margin:0 auto;padding:0 var(--gutter);display:flex;flex-direction:column;gap:48px">
       <h2 style="font-family:var(--font-display);font-weight:500;font-size:clamp(32px,4.4vw,52px);line-height:1.08;letter-spacing:-0.02em;margin:0;max-width:18ch;text-wrap:balance">La tecnología al servicio de las personas. No al revés.</h2>
@@ -122,17 +171,34 @@
     </div>
   </section>
 
+  <section id="preguntas" data-screen-label="Preguntas frecuentes" style="max-width:1200px;margin:0 auto;padding:clamp(72px,9vw,112px) var(--gutter) 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:clamp(32px,5vw,72px);align-items:start">
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">Preguntas frecuentes</span>
+      <h2 style="font-family:var(--font-display);font-weight:500;font-size:clamp(32px,4vw,44px);line-height:1.1;letter-spacing:-0.02em;margin:0;text-wrap:balance">Lo que suelen preguntarnos</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;border-top:1px solid var(--border)">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="6">
+        <div style="border-bottom:1px solid var(--border)">
+          <button onClick="{{ f.toggle }}" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:20px 0;border:0;background:none;font:inherit;font-size:17px;font-weight:600;color:var(--foreground);text-align:left;cursor:pointer">{{ f.q }}<span style="width:28px;height:28px;flex-shrink:0;border-radius:50%;background:{{ f.iconBg }};color:{{ f.iconFg }};display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1">{{ f.sign }}</span></button>
+          <sc-if value="{{ f.open }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:0 44px 22px 0;font-size:16px;line-height:25px;color:var(--text-body);text-wrap:pretty">{{ f.a }}</p></sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
   <section id="contacto" data-screen-label="Contacto" style="max-width:1200px;margin:0 auto;padding:clamp(72px,9vw,112px) var(--gutter);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:56px">
     <div style="display:flex;flex-direction:column;gap:16px">
       <span style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-link)">Contacto</span>
       <h2 style="font-family:var(--font-display);font-weight:500;font-size:clamp(32px,4vw,44px);line-height:1.1;letter-spacing:-0.02em;margin:0;text-wrap:balance">Cuéntenos qué quiere construir</h2>
-      <p style="margin:0;font-size:17px;line-height:27px;color:var(--text-body);max-width:44ch">Respondemos en un máximo de dos días hábiles, con una persona del equipo y no con una plantilla.</p>
-      <a href="mailto:hola@ninetynineone.studio" style="font-family:var(--font-display);font-size:22px;font-weight:500">hola@ninetynineone.studio</a>
+      <p style="margin:0;font-size:17px;line-height:27px;color:var(--text-body);max-width:44ch">Por formulario o por WhatsApp. Respondemos en un máximo de 48 horas hábiles, con una persona del equipo y no con una plantilla.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a href="https://wa.me/56984875420" style="height:48px;padding:0 20px;display:inline-flex;align-items:center;border-radius:var(--radius-md);background:var(--secondary);color:var(--secondary-foreground);font-weight:600;font-size:16px;text-decoration:none" style-hover="background:var(--action-soft-hover)">Escribir por WhatsApp</a>
+      </div>
     </div>
     <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
       <div style="background:var(--state-success-bg);color:var(--state-success-fg);border-radius:var(--radius-xl);padding:40px;display:flex;flex-direction:column;gap:8px;justify-content:center">
         <strong style="font-family:var(--font-display);font-weight:500;font-size:26px">Mensaje recibido.</strong>
-        <span style="font-size:16px;line-height:24px">Le escribiremos a {{ email }} dentro de dos días hábiles.</span>
+        <span style="font-size:16px;line-height:24px">Le escribiremos a {{ email }} dentro de 48 horas hábiles.</span>
       </div>
     </sc-if>
     <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
@@ -142,10 +208,15 @@
           <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Correo<input required="" type="email" value="{{ email }}" onChange="{{ setEmail }}" placeholder="nombre@empresa.cl" style="height:40px;padding:0 12px;font:inherit;font-weight:400;font-size:15px;color:var(--foreground);background:var(--card);border:1px solid var(--input);border-radius:var(--radius-md);outline:none" style-focus="border-color:var(--ring);box-shadow:var(--shadow-focus)"></label>
         </div>
         <label style="display:flex;flex-direction:column;gap:6px;font-size:14px;font-weight:600">Tipo de proyecto
-          <select style="height:40px;padding:0 12px;font:inherit;font-weight:400;font-size:15px;color:var(--foreground);background:var(--card);border:1px solid var(--input);border-radius:var(--radius-md);outline:none">
+          <select value="{{ ptype }}" onChange="{{ setPtype }}" style="height:40px;padding:0 12px;font:inherit;font-weight:400;font-size:15px;color:var(--foreground);background:var(--card);border:1px solid var(--input);border-radius:var(--radius-md);outline:none">
+            <option>App o videojuego</option>
             <option>Software a medida</option>
             <option>Asesoría técnica</option>
             <option>Revisión de proyecto</option>
+            <option>Asesoría en IA</option>
+            <option>Desarrollo con LLMs</option>
+            <option>Integración y automatización con IA</option>
+            <option>No sé qué necesito</option>
             <option>Otro</option>
           </select>
         </label>
@@ -158,14 +229,16 @@
   <footer style="border-top:1px solid var(--border)">
     <div style="max-width:1200px;margin:0 auto;padding:48px var(--gutter);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:32px;align-items:start">
       <div style="display:flex;flex-direction:column;gap:14px">
-        <img src="{{ logoS }}" alt="Ninety Nine One" style="height:56px;align-self:flex-start">
+        <sc-if value="{{ isLight }}" hint-placeholder-val="{{ true }}"><img src="./assets/logo/nno-lockup.svg" alt="Ninety Nine One" style="height:56px;align-self:flex-start"></sc-if><sc-if value="{{ isDark }}" hint-placeholder-val="{{ false }}"><img src="./assets/logo/nno-lockup-dark.svg" alt="Ninety Nine One" style="height:56px;align-self:flex-start"></sc-if>
         <span style="font-size:14px;color:var(--muted-foreground)">Santiago de Chile</span>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;font-size:15px">
         <strong style="font-size:13px;color:var(--muted-foreground);font-weight:600">Estudio</strong>
         <a href="#hacemos" style="color:var(--foreground);text-decoration:none">Qué hacemos</a>
         <a href="#proyectos" style="color:var(--foreground);text-decoration:none">Proyectos</a>
+        <a href="#como" style="color:var(--foreground);text-decoration:none">Cómo trabajamos</a>
         <a href="#valores" style="color:var(--foreground);text-decoration:none">Valores</a>
+        <a href="#preguntas" style="color:var(--foreground);text-decoration:none">Preguntas frecuentes</a>
       </div>
       <div style="display:flex;flex-direction:column;gap:10px;font-size:15px">
         <strong style="font-size:13px;color:var(--muted-foreground);font-weight:600">En otros lugares</strong>
@@ -183,7 +256,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;dark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Tema&quot;},&quot;showPattern&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Hero&quot;}}">
 class Component extends DCLogic {
-  state = { sent: false, email: '' };
+  state = { sent: false, email: '', ptype: 'Software a medida', faq: 0 };
   renderVals() {
     const dark = this.props.dark ?? false;
     const one = 57;
@@ -192,12 +265,38 @@ class Component extends DCLogic {
       scale: i === one ? 1.25 : 1
     }));
     return {
-      themeClass: dark ? 'dark' : '',
+      themeClass: dark ? 'dark' : '', isDark: dark, isLight: !dark,
       logoH: dark ? './assets/logo/nno-horizontal-dark.svg' : './assets/logo/nno-horizontal.svg',
       logoS: dark ? './assets/logo/nno-lockup-dark.svg' : './assets/logo/nno-lockup.svg',
       symbol: dark ? './assets/logo/nno-symbol-dark.svg' : './assets/logo/nno-symbol.svg',
       showPattern: this.props.showPattern ?? true,
       dots,
+      starts: [
+        ['Tengo una idea de app o juego', 'La convertimos en un producto que se pueda lanzar.', 'App o videojuego'],
+        ['Necesito software para mi empresa', 'Un sistema hecho para cómo trabaja su equipo.', 'Software a medida'],
+        ['Quiero usar IA en mi empresa', 'Vemos dónde aporta valor y construimos la solución.', 'Asesoría en IA'],
+        ['Tengo un proyecto que no avanza', 'Revisamos el código y el proceso, y le decimos qué hacer.', 'Revisión de proyecto'],
+        ['No sé qué necesito', 'Cuéntenos el problema y le decimos por dónde partir.', 'No sé qué necesito']
+      ].map(([t, d, v]) => ({ t, d, pick: () => this.setState({ ptype: v }) })),
+      ptype: this.state.ptype, setPtype: e => this.setState({ ptype: e.target.value }),
+      steps: [
+        { n: '01', t: 'Conversamos', d: 'Una llamada de 30 minutos para entender qué necesita y si somos el equipo indicado. No tiene costo.' },
+        { n: '02', t: 'Le proponemos', d: 'Una cotización con alcance, plazo y precio cerrado. Si el problema todavía no está claro, partimos con un diagnóstico.' },
+        { n: '03', t: 'Construimos y entregamos', d: 'Avances cada viernes, entregas por etapas y garantía después de la entrega final.' }
+      ],
+      billing: [
+        { t: 'Diagnóstico', d: 'Cuando hace falta entender el problema antes de cotizar. Se cobra aparte y el resultado es suyo.' },
+        { t: 'Cotización cerrada', d: 'El precio no cambia, salvo que cambie el alcance. Cualquier cambio se acuerda por escrito.' },
+        { t: 'Pago por hitos', d: '40 % al iniciar, 30 % a mitad del proyecto y 30 % en la entrega.' }
+      ],
+      faqs: [
+        ['¿Cuánto cuesta un proyecto?', 'Depende del alcance. Después de la primera conversación le enviamos una cotización cerrada, con el precio total y lo que incluye.'],
+        ['¿Cuánto demora?', 'El plazo va en la cotización. Una asesoría o un piloto suele tomar algunas semanas; un producto completo, algunos meses.'],
+        ['¿Qué pasa después de la entrega?', 'Hay un periodo de garantía en que corregimos errores sin costo. Después puede contratar mantención o seguir con su propio equipo.'],
+        ['¿De quién es el código?', 'De su empresa, una vez pagado el proyecto. Le entregamos el código fuente y la documentación.'],
+        ['¿Firman acuerdos de confidencialidad?', 'Sí. Si lo necesita, lo firmamos antes de la primera reunión.'],
+        ['¿Trabajan con empresas fuera de Chile?', 'Sí. Trabajamos de forma remota, en español o en inglés.']
+      ].map(([q, a], i) => { const open = this.state.faq === i; return { q, a, open, sign: open ? '−' : '+', iconBg: open ? 'var(--primary)' : 'var(--muted)', iconFg: open ? 'var(--primary-foreground)' : 'var(--foreground)', toggle: () => this.setState({ faq: open ? -1 : i }) }; }),
       sent: this.state.sent,
       notSent: !this.state.sent,
       email: this.state.email,

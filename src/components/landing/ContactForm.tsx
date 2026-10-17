@@ -1,4 +1,4 @@
-import { useState, type SubmitEvent } from "react"
+import { useEffect, useState, type SubmitEvent } from "react"
 import { actions, isInputError } from "astro:actions"
 import { CircleAlertIcon } from "lucide-react"
 
@@ -28,6 +28,20 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
   const [sentTo, setSentTo] = useState<string | null>(null)
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
   const [failed, setFailed] = useState(false)
+  const [type, setType] = useState("Software a medida")
+
+  // Los atajos de "¿Por dónde partimos?" eligen el tipo de proyecto, a veces
+  // antes de que el formulario se hidrate.
+  useEffect(() => {
+    const pending = document.getElementById("contacto")?.dataset.projectType
+    // Viene del DOM, no de React: solo existe tras montar.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    if (pending) setType(pending)
+    const onPick = (event: Event) =>
+      setType((event as CustomEvent<string>).detail)
+    window.addEventListener("contact:type", onPick)
+    return () => window.removeEventListener("contact:type", onPick)
+  }, [])
 
   async function handleSubmit(event: SubmitEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -111,7 +125,13 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
         </div>
         <Field>
           <FieldLabel htmlFor="contact-type">Tipo de proyecto</FieldLabel>
-          <NativeSelect id="contact-type" name="type" className="w-full">
+          <NativeSelect
+            id="contact-type"
+            name="type"
+            value={type}
+            onChange={(event) => setType(event.target.value)}
+            className="w-full"
+          >
             {projectTypes.map((type) => (
               <NativeSelectOption key={type} value={type}>
                 {type}
