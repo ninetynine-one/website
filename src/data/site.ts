@@ -17,6 +17,7 @@ export const navLinks = [
   { href: "/#hacemos", label: "Qué hacemos" },
   { href: "/#proyectos", label: "Proyectos" },
   { href: "/#valores", label: "Valores" },
+  { href: "/#preguntas", label: "Preguntas" },
 ]
 
 export const socialLinks = [
@@ -181,6 +182,37 @@ export const startPoints = [
     type: "No sé qué necesito",
   },
 ] satisfies { title: string; description: string; type: ProjectType }[]
+
+export const faqs = [
+  {
+    question: "¿Cuánto cuesta un proyecto?",
+    answer:
+      "Depende del alcance. Después de la primera conversación le enviamos una cotización cerrada, con el precio total y lo que incluye.",
+  },
+  {
+    question: "¿Cuánto demora?",
+    answer:
+      "El plazo va en la cotización. Una asesoría o un piloto suele tomar algunas semanas; un producto completo, algunos meses.",
+  },
+  {
+    question: "¿Qué pasa después de la entrega?",
+    answer:
+      "Hay un periodo de garantía en que corregimos errores sin costo. Después puede contratar mantención o seguir con su propio equipo.",
+  },
+  {
+    question: "¿De quién es el código?",
+    answer:
+      "De su empresa, una vez pagado el proyecto. Le entregamos el código fuente y la documentación.",
+  },
+  {
+    question: "¿Firman acuerdos de confidencialidad?",
+    answer: "Sí. Si lo necesita, lo firmamos antes de la primera reunión.",
+  },
+  {
+    question: "¿Trabajan con empresas fuera de Chile?",
+    answer: "Sí. Trabajamos de forma remota, en español o en inglés.",
+  },
+]
 
 // Proyectos del carrusel, en orden. Con uno solo se muestra sin controles.
 export const projects = [

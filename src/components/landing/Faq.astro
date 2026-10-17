@@ -1,0 +1,34 @@
+---
+import { PlusIcon } from "lucide-react"
+
+import { faqs } from "@/data/site"
+---
+
+<section
+  id="preguntas"
+  class="container-page grid scroll-mt-18 items-start gap-10 pb-18 md:pb-24 lg:grid-cols-[5fr_7fr] lg:gap-24 lg:pb-32"
+>
+  <h2 class="max-w-[17ch] text-4xl tracking-display text-balance md:text-5xl">
+    Lo que suelen preguntarnos.
+  </h2>
+  <div class="rounded-xl bg-paper px-6 shadow-paper md:px-10">
+    {faqs.map((faq, index) => (
+      <details
+        name="preguntas"
+        open={index === 0}
+        class="group border-t first:border-t-0"
+      >
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-[17px] font-semibold text-foreground [&::-webkit-details-marker]:hidden">
+          {faq.question}
+          <span
+            class="inline-flex size-7 shrink-0 items-center justify-center rounded-full bg-muted transition duration-base group-open:rotate-45 group-open:bg-primary group-open:text-primary-foreground motion-reduce:transition-none"
+            aria-hidden="true"
+          >
+            <PlusIcon className="size-4" strokeWidth={2.5} />
+          </span>
+        </summary>
+        <p class="pr-11 pb-5.5 text-pretty text-body">{faq.answer}</p>
+      </details>
+    ))}
+  </div>
+</section>
