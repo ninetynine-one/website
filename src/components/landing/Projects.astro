@@ -1,54 +1,191 @@
 ---
-import SectionHeading from "./SectionHeading.astro"
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
+
 import ThemeImage from "./ThemeImage.astro"
-import { Badge } from "@/components/ui/badge"
 import { buttonVariants } from "@/components/ui/button"
-import { featuredProject as project } from "@/data/site"
+import { projects } from "@/data/site"
 import { cn } from "@/lib/utils"
-import storiaLight from "@/assets/projects/storia-light.png"
-import storiaDark from "@/assets/projects/storia-dark.png"
+
+const carousel = projects.length > 1
+const arrow =
+  "inline-flex size-13 items-center justify-center rounded-full border border-input bg-paper text-foreground transition-colors hover:not-disabled:border-inverse hover:not-disabled:bg-inverse hover:not-disabled:text-inverse-foreground disabled:cursor-default disabled:opacity-35"
 ---
 
 <section
   id="proyectos"
-  class="container-page flex scroll-mt-16 flex-col gap-10 py-18 md:py-24 lg:py-28"
+  class="container-page scroll-mt-18 py-18 md:py-24 lg:py-32"
+  data-carousel
+  aria-roledescription={carousel ? "carrusel" : undefined}
+  aria-labelledby="proyectos-title"
 >
-  <SectionHeading eyebrow="Proyectos" title="Lo que hemos hecho" />
-
-  <article class="grid overflow-hidden rounded-2xl border bg-card lg:grid-cols-2">
-    <div class="relative min-h-95 bg-durazno-100 dark:bg-muted">
-      <ThemeImage
-        light={storiaLight}
-        dark={storiaDark}
-        alt={`Página de inicio de ${project.name}`}
-        widths={[640, 960, 1280, 1906]}
-        sizes="(min-width: 1024px) 600px, 100vw"
-        class="absolute inset-0 size-full object-cover object-top"
-      />
-    </div>
-    <div class="flex flex-col justify-center gap-4.5 p-7 md:p-10 lg:p-12">
-      <div class="flex flex-wrap gap-2">
-        <Badge variant="secondary">Producto propio</Badge>
-        <Badge variant="success">
-          <span class="size-1.5 rounded-full bg-current" aria-hidden="true" />
-          Inscripciones abiertas
-        </Badge>
+  <div class="mb-9 flex flex-wrap items-end justify-between gap-6 md:mb-14">
+    <h2
+      id="proyectos-title"
+      class="text-4xl tracking-display text-balance md:text-5xl"
+    >
+      Lo que hemos hecho.
+    </h2>
+    {carousel && (
+      <div class="flex items-center gap-2.5">
+        <span
+          class="mr-2 font-mono text-[13px] text-muted-foreground"
+          aria-live="polite"
+          data-counter
+        >
+          1 de {projects.length}
+        </span>
+        <button
+          type="button"
+          class={arrow}
+          aria-label="Proyecto anterior"
+          data-prev
+          disabled
+        >
+          <ChevronLeftIcon className="size-5" strokeWidth={2.25} />
+        </button>
+        <button
+          type="button"
+          class={arrow}
+          aria-label="Proyecto siguiente"
+          data-next
+        >
+          <ChevronRightIcon className="size-5" strokeWidth={2.25} />
+        </button>
       </div>
-      <h3 class="text-4xl tracking-display">{project.name}</h3>
-      <p class="max-w-md text-lg text-body">
-        {project.description}
-      </p>
-      <p class="text-sm text-muted-foreground">
-        Un producto de ninety nine one.
-      </p>
-      <a
-        href={project.url}
-        target="_blank"
-        rel="noopener"
-        class={cn(buttonVariants({ variant: "outline" }), "self-start")}
-      >
-        Conocer {project.name} <span aria-hidden="true">→</span>
-      </a>
+    )}
+  </div>
+
+  <div class="-mx-3 overflow-hidden px-3 py-6">
+    <div
+      class="flex gap-12 transition-transform duration-slower ease-out motion-reduce:transition-none"
+      data-track
+    >
+      {projects.map((project, index) => (
+        <div
+          class:list={[
+            "min-w-0 shrink-0",
+            carousel ? "basis-full lg:basis-[88%]" : "basis-full",
+          ]}
+          role={carousel ? "group" : undefined}
+          aria-roledescription={carousel ? "diapositiva" : undefined}
+          aria-label={
+            carousel ? `${index + 1} de ${projects.length}` : undefined
+          }
+          inert={carousel && index > 0}
+          data-slide
+        >
+          <article class="grid items-center gap-10 lg:grid-cols-[7fr_5fr] lg:gap-18">
+            <figure class="relative m-0 -rotate-[1.5deg] rounded-xs bg-card p-3.5 pb-14 shadow-lg">
+              <span
+                class="absolute -top-2.5 left-1/2 size-5 -translate-x-1/2 rounded-full bg-primary shadow-sm"
+                aria-hidden="true"
+              />
+              <ThemeImage
+                light={project.image.light}
+                dark={project.image.dark}
+                alt={`Página de inicio de ${project.name}`}
+                widths={[640, 960, 1280, 1906]}
+                sizes="(min-width: 1024px) 680px, 100vw"
+                class="block h-auto w-full rounded-[2px]"
+              />
+              <figcaption class="absolute bottom-4.5 left-4.5 font-display text-lg text-muted-foreground">
+                {project.caption}
+              </figcaption>
+            </figure>
+            <div class="flex flex-col items-start gap-5">
+              <div class="flex flex-wrap gap-2">
+                <span class="inline-flex h-7.5 items-center rounded-full bg-secondary px-3 text-[13px] font-semibold text-secondary-foreground">
+                  {project.kind}
+                </span>
+                {project.status && (
+                  <span class="inline-flex h-7.5 items-center gap-2 rounded-full bg-success px-3 text-[13px] font-semibold text-success-foreground">
+                    <span
+                      class="size-1.75 rounded-full bg-current"
+                      aria-hidden="true"
+                    />
+                    {project.status}
+                  </span>
+                )}
+              </div>
+              <h3 class="text-5xl leading-none tracking-display md:text-6xl">
+                {project.name}
+              </h3>
+              <p class="text-lg/7 text-body">{project.description}</p>
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener"
+                class={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+              >
+                Conocer {project.name} <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      ))}
     </div>
-  </article>
+  </div>
+
+  {carousel && (
+    <div class="mt-7 flex justify-center gap-3">
+      {projects.map((project, index) => (
+        <button
+          type="button"
+          class="size-3 rounded-full bg-input transition duration-base ease-spring hover:bg-arena-500 aria-[current=true]:scale-135 aria-[current=true]:bg-primary"
+          aria-label={`Ir a ${project.name}`}
+          aria-current={index === 0 ? "true" : undefined}
+          data-dot={index}
+        />
+      ))}
+    </div>
+  )}
 </section>
+
+<script>
+  // Mueve la pista hasta la diapositiva activa; las demás quedan inertes
+  // para que el foco no llegue a enlaces que no se ven.
+  document.querySelectorAll<HTMLElement>("[data-carousel]").forEach((root) => {
+    const track = root.querySelector<HTMLElement>("[data-track]")
+    const slides = [...root.querySelectorAll<HTMLElement>("[data-slide]")]
+    if (!track || slides.length < 2) return
+
+    const prev = root.querySelector<HTMLButtonElement>("[data-prev]")
+    const next = root.querySelector<HTMLButtonElement>("[data-next]")
+    const counter = root.querySelector<HTMLElement>("[data-counter]")
+    const dots = [...root.querySelectorAll<HTMLButtonElement>("[data-dot]")]
+    let current = 0
+
+    const go = (index: number) => {
+      current = Math.max(0, Math.min(slides.length - 1, index))
+      const offset = slides[current].offsetLeft - slides[0].offsetLeft
+      track.style.transform = `translateX(-${offset}px)`
+      slides.forEach((slide, i) => (slide.inert = i !== current))
+      dots.forEach((dot, i) =>
+        i === current
+          ? dot.setAttribute("aria-current", "true")
+          : dot.removeAttribute("aria-current")
+      )
+      if (prev) prev.disabled = current === 0
+      if (next) next.disabled = current === slides.length - 1
+      if (counter) counter.textContent = `${current + 1} de ${slides.length}`
+    }
+
+    prev?.addEventListener("click", () => go(current - 1))
+    next?.addEventListener("click", () => go(current + 1))
+    dots.forEach((dot, i) => dot.addEventListener("click", () => go(i)))
+    window.addEventListener("resize", () => go(current))
+
+    let startX = 0
+    track.addEventListener(
+      "touchstart",
+      (event) => {
+        startX = event.touches[0].clientX
+      },
+      { passive: true }
+    )
+    track.addEventListener("touchend", (event) => {
+      const delta = event.changedTouches[0].clientX - startX
+      if (Math.abs(delta) > 50) go(current + (delta < 0 ? 1 : -1))
+    })
+  })
+</script>

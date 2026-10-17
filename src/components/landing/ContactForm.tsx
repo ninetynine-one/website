@@ -69,7 +69,7 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
     <form
       onSubmit={handleSubmit}
       noValidate
-      className="rounded-xl border bg-card p-6 md:p-9"
+      className="rounded-xl bg-paper p-6 shadow-paper md:p-10"
     >
       <FieldGroup className="gap-4">
         {failed && (
@@ -139,7 +139,13 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
           aria-hidden="true"
           className="sr-only"
         />
-        <Button type="submit" size="lg" disabled={pending}>
+        <Button
+          type="submit"
+          variant="ink"
+          size="lg"
+          disabled={pending}
+          className="self-start"
+        >
           {pending && <Spinner data-icon="inline-start" />}
           {pending ? "Enviando…" : "Enviar mensaje"}
         </Button>

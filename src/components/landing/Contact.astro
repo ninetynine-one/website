@@ -1,29 +1,27 @@
 ---
-import SectionHeading from "./SectionHeading.astro"
 import { ContactForm } from "./ContactForm"
 import { projectTypes, site } from "@/data/site"
 ---
 
 <section
   id="contacto"
-  class="container-page grid scroll-mt-16 gap-14 py-18 md:py-24 lg:py-28 lg:grid-cols-2"
+  class="container-page grid scroll-mt-18 gap-14 pb-18 md:pb-24 lg:grid-cols-[5fr_6fr] lg:gap-24 lg:pb-32"
 >
-  <SectionHeading
-    eyebrow="Contacto"
-    title="Cuéntenos qué quiere construir"
-    class="gap-4"
-  >
-    <p class="max-w-md text-lg text-body">
+  <div class="flex flex-col items-start gap-6">
+    <h2 class="max-w-[17ch] text-4xl tracking-display text-balance md:text-5xl">
+      Cuéntenos qué quiere construir.
+    </h2>
+    <p class="max-w-md text-lg/7 text-body">
       Respondemos en un máximo de dos días hábiles, con una persona del equipo y
       no con una plantilla.
     </p>
     <a
       href={`mailto:${site.email}`}
-      class="self-start font-display text-2xl font-medium"
+      class="font-display text-2xl font-medium text-foreground underline decoration-primary decoration-2 underline-offset-8 hover:text-link md:text-3xl"
     >
       {site.email}
     </a>
-  </SectionHeading>
+  </div>
 
   <ContactForm client:visible email={site.email} projectTypes={projectTypes} />
 </section>

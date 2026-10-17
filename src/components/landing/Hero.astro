@@ -1,50 +1,133 @@
 ---
-import ThemeImage from "./ThemeImage.astro"
+import { CheckIcon, CircleIcon } from "lucide-react"
+
 import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
-import symbol from "@/assets/logo/nno-symbol.svg"
-import symbolDark from "@/assets/logo/nno-symbol-dark.svg"
+
+// Reporte de ejemplo: muestra cómo se ve un viernes, no un proyecto real.
+const weeks = { total: 8, current: 6 }
+const tasks = [
+  { done: true, label: "Pago en línea terminado y probado" },
+  { done: true, label: "Panel de administración, primera versión" },
+  { done: false, label: "Correos de confirmación, la próxima semana" },
+]
+
+const note =
+  "absolute z-30 rounded-lg px-5 py-4.5 shadow-paper [&_b]:mt-1.5 [&_b]:block [&_b]:font-display [&_b]:text-xl/6 [&_b]:font-medium"
 ---
 
 <section
   id="inicio"
-  class="container-page grid scroll-mt-16 items-center gap-14 pt-16 pb-16 md:pt-24 md:pb-20 lg:pt-32 lg:pb-28 lg:grid-cols-2"
+  class="container-page grid scroll-mt-18 items-center gap-14 pt-12 pb-20 md:pt-20 md:pb-28 lg:grid-cols-[6fr_5fr] lg:gap-20 lg:pt-24 lg:pb-34"
 >
   <div class="flex flex-col gap-7">
-    <h1 class="text-5xl leading-none tracking-display md:text-6xl lg:text-7xl text-balance">
-      Software hecho con cuidado, para cada persona que lo usa.
+    <h1 class="text-5xl leading-none tracking-display text-balance md:text-6xl lg:text-7xl">
+      Software hecho con cuidado, para{" "}
+      <em class="text-primary not-italic">cada persona</em> que lo usa.
     </h1>
-    <p class="max-w-xl text-xl/7.5 text-pretty text-body">
+    <p class="max-w-xl text-lg/7 text-pretty text-body md:text-xl/8">
       Creamos aplicaciones, apps y videojuegos propios. También desarrollamos
       software a medida, integramos IA en sus procesos y asesoramos a empresas
       que quieren hacerlo bien.
     </p>
-    <div class="flex flex-wrap gap-2.5">
-      <a href="#proyectos" class={cn(buttonVariants({ size: "lg" }))}>
-        Ver proyectos
-      </a>
+    <div class="flex flex-wrap gap-3">
       <a
         href="#contacto"
-        class={cn(buttonVariants({ size: "lg", variant: "secondary" }))}
+        class={cn(buttonVariants({ variant: "ink", size: "lg" }))}
       >
-        Desarrollo a medida
+        Conversemos un proyecto
+      </a>
+      <a
+        href="#como"
+        class={cn(buttonVariants({ variant: "outline", size: "lg" }))}
+      >
+        Cómo trabajamos
       </a>
     </div>
   </div>
 
-  <div class="flex flex-col gap-6 rounded-2xl border bg-card p-7 md:p-10 lg:p-14">
-    <div class="flex items-center justify-center py-2 md:py-4 lg:py-6">
-      <ThemeImage
-        light={symbol}
-        dark={symbolDark}
-        alt=""
-        loading="eager"
-        class="aspect-square w-full max-w-xs"
-      />
+  <div
+    class="relative mx-auto min-h-168 w-full max-w-130 sm:min-h-135"
+    role="img"
+    aria-label="Ejemplo de reporte semanal: semana 6 de 8, dos tareas terminadas y un riesgo avisado a tiempo."
+  >
+    <div
+      aria-hidden="true"
+      class={cn(note, "top-0 right-0 w-48 rotate-4 bg-accent sm:w-52")}
+    >
+      <span class="font-mono text-[13px] text-lavanda-700 dark:text-lavanda-300">
+        Respuesta
+      </span>
+      <b class="text-accent-foreground">En dos días hábiles, máximo.</b>
     </div>
-    <p class="flex flex-wrap justify-between gap-3 text-sm text-muted-foreground">
-      <span>Noventa y nueve en el grupo.</span>
-      <span class="font-semibold text-link">Vamos a buscar a la una.</span>
-    </p>
+
+    <article
+      aria-hidden="true"
+      class="absolute top-26 right-0 left-0 z-20 -rotate-[1.2deg] animate-[settle_0.9s_var(--ease-out)_0.2s_backwards] rounded-lg bg-paper p-6 shadow-paper motion-reduce:animate-none sm:top-10 sm:right-[6%] sm:p-7"
+    >
+      <div class="flex items-center justify-between gap-3 text-muted-foreground">
+        <span class="font-mono text-[13px]">
+          Viernes · Semana {weeks.current} de {weeks.total}
+        </span>
+        <span class="rounded-full bg-muted px-2.5 py-1 text-xs font-semibold">
+          Ejemplo
+        </span>
+      </div>
+      <h2 class="mt-3 text-2xl">Portal de reservas</h2>
+      <div class="mt-5 mb-1.5 flex items-center gap-2.5">
+        {Array.from({ length: weeks.total }, (_, index) => {
+          const week = index + 1
+          return (
+            <span
+              class:list={[
+                "size-4.5 rounded-full",
+                week < weeks.current && "bg-foreground",
+                week === weeks.current &&
+                  "animate-[beacon_2.4s_ease-in-out_infinite] bg-primary shadow-[0_0_0_5px_var(--action-soft)] motion-reduce:animate-none",
+                week > weeks.current &&
+                  "border-[1.5px] border-dashed border-arena-400",
+              ]}
+            />
+          )
+        })}
+      </div>
+      <ul class="mt-4.5 flex flex-col gap-2.5 text-[15px]">
+        {tasks.map((task) => (
+          <li class="flex items-start gap-3">
+            {task.done ? (
+              <CheckIcon
+                className="mt-0.5 size-4.5 shrink-0 text-success-foreground"
+                strokeWidth={2.5}
+              />
+            ) : (
+              <CircleIcon
+                className="mt-0.5 size-4.5 shrink-0 text-arena-400"
+                strokeWidth={2.5}
+              />
+            )}
+            {task.label}
+          </li>
+        ))}
+      </ul>
+      <p class="mt-4.5 rounded-md bg-warning px-4 py-3.5 text-sm text-warning-foreground">
+        <b>Riesgo:</b> el proveedor de calendario cambió su API. Lo sabemos hoy
+        y se lo contamos hoy; no mueve la fecha.
+      </p>
+    </article>
+
+    <div
+      aria-hidden="true"
+      class={cn(
+        note,
+        "bottom-0 left-0 w-60 -rotate-3 bg-success sm:left-[8%] sm:w-62"
+      )}
+    >
+      <span class="font-mono text-[13px] text-success-foreground">
+        Con usted
+      </span>
+      <b class="text-salvia-800 dark:text-salvia-200">
+        Siempre la misma persona del equipo.
+      </b>
+    </div>
   </div>
 </section>

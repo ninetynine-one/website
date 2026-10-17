@@ -22,7 +22,7 @@
     @apply scroll-smooth scheme-light font-sans antialiased dark:scheme-dark;
   }
   body {
-    @apply bg-background text-base text-foreground;
+    @apply bg-dots text-base text-foreground;
   }
   h1,
   h2,
@@ -48,6 +48,40 @@
   @apply mx-auto w-full max-w-300 px-5 md:px-8 lg:px-12;
 }
 
-@utility eyebrow {
-  @apply text-xs font-semibold tracking-caps text-link uppercase;
+/* Trama de puntos del fondo: el cuaderno del taller. */
+@utility bg-dots {
+  background-color: var(--surface-muted);
+  background-image: radial-gradient(
+    circle,
+    var(--border-strong) 1.1px,
+    transparent 1.5px
+  );
+  background-size: 22px 22px;
+
+  &:where(.dark, .dark *) {
+    background-color: var(--surface-page);
+  }
+}
+
+/* Superficie de papel sobre la trama: tarjetas, hojas y formularios. */
+@utility bg-paper {
+  background-color: var(--surface-page);
+
+  &:where(.dark, .dark *) {
+    background-color: var(--surface-card);
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    translate: 0 24px;
+    rotate: 2deg;
+  }
+}
+
+@keyframes beacon {
+  50% {
+    box-shadow: 0 0 0 9px var(--action-soft);
+  }
 }

@@ -8,9 +8,9 @@ import logo from "@/assets/logo/nno-horizontal.svg"
 import logoDark from "@/assets/logo/nno-horizontal-dark.svg"
 ---
 
-<header class="sticky top-0 z-30 border-b bg-background/85 backdrop-blur-md">
+<header class="sticky top-0 z-30 border-b bg-muted/85 backdrop-blur-md dark:bg-background/85">
   <nav
-    class="container-page flex h-16 items-center gap-6"
+    class="container-page flex h-18 items-center gap-6"
     aria-label="Principal"
   >
     <a href="/#inicio" class="flex shrink-0">
@@ -22,23 +22,23 @@ import logoDark from "@/assets/logo/nno-horizontal-dark.svg"
         class="h-7 w-auto"
       />
     </a>
-    <ul class="hidden flex-1 gap-1 md:flex">
+    <ul class="ml-auto hidden gap-1 md:flex">
       {navLinks.map((link) => (
         <li>
           <a
             href={link.href}
-            class="rounded-sm px-3 py-2 text-sm font-medium text-muted-foreground no-underline transition-colors hover:bg-muted hover:text-foreground"
+            class="rounded-sm px-3 py-2 text-sm font-medium text-muted-foreground no-underline transition-colors hover:bg-background hover:text-foreground dark:hover:bg-muted"
           >
             {link.label}
           </a>
         </li>
       ))}
     </ul>
-    <div class="ml-auto flex items-center gap-2">
+    <div class="ml-auto flex items-center gap-2 md:ml-0">
       <ThemeToggle />
       <a
         href="/#contacto"
-        class={cn(buttonVariants({ size: "sm" }), "h-9 px-4")}
+        class={cn(buttonVariants({ variant: "ink" }), "px-4.5")}
       >
         Conversemos
       </a>
