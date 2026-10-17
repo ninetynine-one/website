@@ -9,6 +9,7 @@ export const site = {
 }
 
 export const navLinks = [
+  { href: "/#como", label: "Cómo trabajamos" },
   { href: "/#hacemos", label: "Qué hacemos" },
   { href: "/#proyectos", label: "Proyectos" },
   { href: "/#valores", label: "Valores" },
@@ -22,12 +23,40 @@ export const socialLinks = [
   { href: "https://github.com/ninetynine-one", label: "GitHub" },
 ]
 
+export const process = [
+  {
+    when: "Antes de 2 días hábiles",
+    title: "Conversamos",
+    description:
+      "Nos cuenta qué quiere construir. Le responde una persona, no una plantilla.",
+  },
+  {
+    when: "Propuesta",
+    title: "Plazo y costo, por escrito",
+    description: "Con lo que sabemos y lo que todavía no. Sin letra chica.",
+  },
+  {
+    when: "Cada viernes",
+    title: "Avance visible",
+    description:
+      "Qué se terminó, qué sigue y cualquier riesgo apenas lo detectamos.",
+    highlight: true,
+  },
+  {
+    when: "Entrega",
+    title: "Software que se queda",
+    description:
+      "Probado, documentado y en sus manos. Lo seguimos acompañando si lo necesita.",
+  },
+]
+
 export const services = [
   {
-    title: "Productos propios",
-    description:
-      "Diseñamos, construimos y mantenemos nuestras propias aplicaciones. Cada una tiene su marca; todas llevan la misma firma.",
+    tab: "Producto digital",
     tone: "primary",
+    title: "Aplicaciones, apps y videojuegos",
+    description:
+      "Diseñamos, construimos y mantenemos productos digitales completos. Cada uno con su propia marca; todos con la misma firma.",
     items: [
       { label: "Aplicaciones web", detail: "SaaS" },
       { label: "Apps móviles", detail: "iOS y Android" },
@@ -35,38 +64,39 @@ export const services = [
     ],
   },
   {
-    title: "Desarrollo a medida y asesorías",
-    description:
-      "Construimos el software que su empresa necesita, o la acompañamos a tomar mejores decisiones técnicas. Plazos realistas y avances cada semana.",
+    tab: "Desarrollo y asesoría",
     tone: "accent",
+    title: "Software a medida y asesoría técnica",
+    description:
+      "Construimos el software que su empresa necesita, o la acompañamos a tomar mejores decisiones técnicas.",
     items: [
       { label: "Software a medida", detail: "Web y móvil" },
       { label: "Asesoría técnica", detail: "Arquitectura y producto" },
       { label: "Revisión de proyectos", detail: "Código y procesos" },
     ],
   },
+  {
+    tab: "Inteligencia artificial",
+    tone: "success",
+    title: "Soluciones de IA para empresas",
+    description:
+      "Le ayudamos a decidir dónde la inteligencia artificial aporta valor y construimos la solución. Usted trabaja siempre con una persona del equipo, de principio a fin.",
+    items: [
+      {
+        label: "Asesoría en IA",
+        detail: "Diagnóstico, casos de uso y hoja de ruta",
+      },
+      {
+        label: "Desarrollo con LLMs",
+        detail: "Asistentes, agentes y búsqueda en sus datos",
+      },
+      {
+        label: "Integración y automatización",
+        detail: "Conectada a sus sistemas actuales",
+      },
+    ],
+  },
 ] as const
-
-export const aiService = {
-  badge: "Inteligencia artificial",
-  title: "Soluciones de IA para empresas",
-  description:
-    "Ayudamos a su empresa a decidir dónde la inteligencia artificial aporta valor y construimos la solución. Usted trabaja siempre con una persona del equipo, de principio a fin.",
-  items: [
-    {
-      label: "Asesoría en IA",
-      detail: "Diagnóstico, casos de uso y hoja de ruta",
-    },
-    {
-      label: "Desarrollo con LLMs",
-      detail: "Asistentes, agentes y búsqueda en sus datos",
-    },
-    {
-      label: "Integración y automatización",
-      detail: "Conectada a sus sistemas actuales",
-    },
-  ],
-} as const
 
 export const values = [
   {

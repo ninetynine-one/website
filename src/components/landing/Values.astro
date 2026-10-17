@@ -4,22 +4,21 @@ import { values } from "@/data/site"
 
 <section
   id="valores"
-  class="scroll-mt-16 bg-inverse py-18 md:py-24 lg:py-28 text-inverse-foreground"
+  class="container-page scroll-mt-18 pb-18 md:pb-24 lg:pb-32"
 >
-  <div class="container-page flex flex-col gap-12">
-    <h2 class="max-w-lg text-4xl lg:text-5xl tracking-display text-balance">
+  <div class="rounded-2xl bg-inverse px-6 py-10 text-inverse-foreground dark:bg-muted dark:text-foreground md:px-14 md:py-18 lg:px-20 lg:py-24">
+    <h2 class="mb-8 max-w-[17ch] text-4xl tracking-display text-balance md:mb-14 md:text-5xl">
       La tecnología al servicio de las personas. No al revés.
     </h2>
-    <ol class="grid gap-10 md:grid-cols-3">
-      {values.map((value, index) => (
-        <li class="flex flex-col gap-3 border-t border-current/22 pt-6">
-          <span class="font-display text-base text-durazno-300">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <h3 class="text-2xl">{value.title}</h3>
-          <p class="opacity-80">{value.description}</p>
+    <ul>
+      {values.map((value) => (
+        <li class="grid gap-3 border-t border-current/15 py-7 md:grid-cols-[4fr_8fr] md:gap-6">
+          <h3 class="text-3xl">{value.title}</h3>
+          <p class="max-w-xl text-lg/7 opacity-75 md:text-xl/8">
+            {value.description}
+          </p>
         </li>
       ))}
-    </ol>
+    </ul>
   </div>
 </section>
