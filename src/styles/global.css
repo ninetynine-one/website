@@ -48,10 +48,6 @@
   @apply mx-auto w-full max-w-300 px-5 md:px-8 lg:px-12;
 }
 
-@utility eyebrow {
-  @apply text-xs font-semibold tracking-caps text-link uppercase;
-}
-
 /* Trama de puntos del fondo: el cuaderno del taller. */
 @utility bg-dots {
   background-color: var(--surface-muted);
