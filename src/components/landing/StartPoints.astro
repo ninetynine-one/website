@@ -1,0 +1,49 @@
+---
+import { startPoints } from "@/data/site"
+---
+
+<section
+  class="container-page flex flex-col gap-5 pb-18 md:pb-24"
+  aria-labelledby="partimos-title"
+>
+  <h2 id="partimos-title" class="text-2xl">
+    ¿Por dónde partimos?
+  </h2>
+  <ul class="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+    {startPoints.map((start) => (
+      <li class="flex">
+        <a
+          href="#contacto"
+          data-project-type={start.type}
+          class="flex w-full flex-col gap-1.5 rounded-lg border border-transparent bg-paper px-5 py-4.5 text-foreground no-underline shadow-paper transition-colors hover:border-primary hover:text-foreground"
+        >
+          <strong class="leading-5.5 font-semibold text-balance">
+            {start.title}
+          </strong>
+          <span class="text-sm text-pretty text-muted-foreground">
+            {start.description}
+          </span>
+          <span class="mt-auto pt-1.5 text-sm font-semibold text-link">
+            Contarnos <span aria-hidden="true">→</span>
+          </span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<script>
+  // Deja elegido el tipo de proyecto. El formulario puede hidratarse después
+  // del clic, así que el valor queda también en la sección de contacto.
+  document
+    .querySelectorAll<HTMLAnchorElement>("[data-project-type]")
+    .forEach((link) =>
+      link.addEventListener("click", () => {
+        const type = link.dataset.projectType
+        const contact = document.getElementById("contacto")
+        if (!type || !contact) return
+        contact.dataset.projectType = type
+        window.dispatchEvent(new CustomEvent("contact:type", { detail: type }))
+      })
+    )
+</script>

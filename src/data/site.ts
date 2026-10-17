@@ -134,6 +134,35 @@ export const projectTypes = [
 
 export type ProjectType = (typeof projectTypes)[number]
 
+// Atajos al formulario: cada uno deja elegido su tipo de proyecto.
+export const startPoints = [
+  {
+    title: "Tengo una idea de app o juego",
+    description: "La convertimos en un producto que se pueda lanzar.",
+    type: "App o videojuego",
+  },
+  {
+    title: "Necesito software para mi empresa",
+    description: "Un sistema hecho para cómo trabaja su equipo.",
+    type: "Software a medida",
+  },
+  {
+    title: "Quiero usar IA en mi empresa",
+    description: "Vemos dónde aporta valor y construimos la solución.",
+    type: "Asesoría en IA",
+  },
+  {
+    title: "Tengo un proyecto que no avanza",
+    description: "Revisamos el código y el proceso, y le decimos qué hacer.",
+    type: "Revisión de proyecto",
+  },
+  {
+    title: "No sé qué necesito",
+    description: "Cuéntenos el problema y le decimos por dónde partir.",
+    type: "No sé qué necesito",
+  },
+] satisfies { title: string; description: string; type: ProjectType }[]
+
 // Proyectos del carrusel, en orden. Con uno solo se muestra sin controles.
 export const projects = [
   {
