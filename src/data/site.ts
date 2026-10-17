@@ -8,6 +8,7 @@ export const site = {
     "Estudio de software en Chile. Creamos apps y videojuegos propios, y desarrollamos software a medida y soluciones con IA.",
   email: "hola@ninetynineone.studio",
   location: "Santiago de Chile",
+  whatsapp: "https://wa.me/56984875420",
   legalName: "Ninety Nine One SpA",
 }
 
@@ -120,14 +121,18 @@ export const values = [
 ]
 
 export const projectTypes = [
+  "App o videojuego",
   "Software a medida",
   "Asesoría técnica",
   "Revisión de proyecto",
   "Asesoría en IA",
   "Desarrollo con LLMs",
   "Integración y automatización con IA",
+  "No sé qué necesito",
   "Otro",
 ] as const
+
+export type ProjectType = (typeof projectTypes)[number]
 
 // Proyectos del carrusel, en orden. Con uno solo se muestra sin controles.
 export const projects = [
