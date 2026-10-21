@@ -1,5 +1,7 @@
 import storiaLight from "@/assets/projects/storia-light.png"
 import storiaDark from "@/assets/projects/storia-dark.png"
+// La app de cursos solo tiene modo oscuro: la misma captura sirve para ambos temas.
+import cursos from "@/assets/projects/cursos-dark.png"
 
 export const site = {
   name: "Ninety Nine One",
@@ -225,5 +227,15 @@ export const projects = [
     image: { light: storiaLight, dark: storiaDark },
     description:
       "De una idea a un Pull Request en tu blog. Escribes o grabas la idea, la IA redacta el borrador con la voz de tu marca y Storia abre el Pull Request en el repositorio de tu blog.",
+  },
+  {
+    name: "eduardoalvarez.dev",
+    kind: "Desarrollo a medida",
+    status: "En producción",
+    url: "https://cursos.eduardoalvarez.dev",
+    caption: "cursos · 2026",
+    image: { light: cursos, dark: cursos },
+    description:
+      "Plataforma de educación en desarrollo de software para un instructor independiente. Venta de cursos, lecciones en video y texto, pruebas, retos revisados y certificados, con un panel de administración donde la IA asiste en la creación de contenido.",
   },
 ]
