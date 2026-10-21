@@ -107,8 +107,14 @@ const arrow =
                   </span>
                 )}
               </div>
-              <h3 class="text-5xl leading-none tracking-display md:text-6xl">
-                {project.name}
+              <h3 class="text-4xl leading-none tracking-display sm:text-5xl md:text-6xl">
+                {/* Un dominio no tiene espacios: permite el salto tras cada punto. */}
+                {project.name.split(/(?<=\.)/).map((part, i) => (
+                  <>
+                    {i > 0 && <wbr />}
+                    {part}
+                  </>
+                ))}
               </h3>
               <p class="text-lg/7 text-body">{project.description}</p>
               <a
