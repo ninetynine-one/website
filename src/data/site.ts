@@ -229,13 +229,15 @@ export const projects = [
       "De una idea a un Pull Request en tu blog. Escribes o grabas la idea, la IA redacta el borrador con la voz de tu marca y Storia abre el Pull Request en el repositorio de tu blog.",
   },
   {
-    name: "eduardoalvarez.dev",
+    name: "Plataforma de formación online",
     kind: "Desarrollo a medida",
     status: "En producción",
     url: "https://cursos.eduardoalvarez.dev",
-    caption: "cursos · 2026",
+    // Con un nombre largo, «Conocer <nombre>» no cabe en el botón en móviles.
+    cta: "Conocer la plataforma",
+    caption: "cursos.eduardoalvarez.dev · 2026",
     image: { light: cursos, dark: cursos },
     description:
-      "Plataforma de educación en desarrollo de software para un instructor independiente. Venta de cursos, lecciones en video y texto, pruebas, retos revisados y certificados, con un panel de administración donde la IA asiste en la creación de contenido.",
+      "Hecha para un instructor independiente de desarrollo de software: venta de cursos, lecciones en video y texto, pruebas, retos revisados y certificados, con un panel de administración donde la IA asiste en la creación de contenido.",
   },
 ]

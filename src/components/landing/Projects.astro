@@ -123,7 +123,8 @@ const arrow =
                 rel="noopener"
                 class={cn(buttonVariants({ variant: "outline", size: "lg" }))}
               >
-                Conocer {project.name} <span aria-hidden="true">→</span>
+                {project.cta ?? `Conocer ${project.name}`}{" "}
+                <span aria-hidden="true">→</span>
               </a>
             </div>
           </article>
