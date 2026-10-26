@@ -155,20 +155,6 @@ export function ContactForm({
             ))}
           </NativeSelect>
         </Field>
-        <Field data-invalid={!!fieldErrors.message}>
-          <FieldLabel htmlFor="contact-message">
-            ¿Qué problema quiere resolver?
-          </FieldLabel>
-          <Textarea
-            id="contact-message"
-            name="message"
-            rows={4}
-            placeholder="Lo que sepa basta: qué quiere lograr y qué se lo impide hoy."
-            className="resize-y"
-            aria-invalid={!!fieldErrors.message}
-          />
-          <FieldError>{fieldErrors.message?.[0]}</FieldError>
-        </Field>
         <div className="grid gap-4 sm:grid-cols-2">
           <Field data-invalid={!!fieldErrors.timeline}>
             <FieldLabel htmlFor="contact-timeline">
@@ -217,6 +203,20 @@ export function ContactForm({
             <FieldError>{fieldErrors.decision?.[0]}</FieldError>
           </Field>
         </div>
+        <Field data-invalid={!!fieldErrors.message}>
+          <FieldLabel htmlFor="contact-message">
+            ¿Qué problema quiere resolver?
+          </FieldLabel>
+          <Textarea
+            id="contact-message"
+            name="message"
+            rows={4}
+            placeholder="Lo que sepa basta: qué quiere lograr y qué se lo impide hoy."
+            className="resize-y"
+            aria-invalid={!!fieldErrors.message}
+          />
+          <FieldError>{fieldErrors.message?.[0]}</FieldError>
+        </Field>
         <input
           type="text"
           name="website"
