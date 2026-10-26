@@ -5,7 +5,7 @@ import Footer from "@/components/landing/Footer.astro"
 import { cookieCategories } from "@/data/cookies"
 import { site } from "@/data/site"
 
-const updated = "16 de octubre de 2026"
+const updated = "25 de octubre de 2026"
 ---
 
 <Layout
@@ -27,9 +27,11 @@ const updated = "16 de octubre de 2026"
       <section>
         <h2>Quiénes somos</h2>
         <p>
-          Este sitio es de {site.legalName}, un estudio de software en{" "}
-          {site.location}. Somos responsables de los datos que se tratan aquí.
-          Para cualquier consulta sobre privacidad, escríbanos a{" "}
+          Este sitio y el de nuestros juegos,{" "}
+          <a href={site.games}>games.ninetynineone.studio</a>, son de{" "}
+          {site.legalName}, un estudio de software en {site.location}. Somos
+          responsables de los datos que se tratan en ambos. Para cualquier
+          consulta sobre privacidad, escríbanos a{" "}
           <a href={`mailto:${site.email}`}>{site.email}</a>.
         </p>
       </section>
@@ -100,6 +102,75 @@ const updated = "16 de octubre de 2026"
       </section>
 
       <section>
+        <h2>Nuestros juegos</h2>
+        <p>
+          En <a href={site.games}>games.ninetynineone.studio</a> se pueden jugar
+          nuestras demos en el navegador, sin cuenta. Ese sitio no usa cookies
+          ni Google Analytics. Vercel Web Analytics cuenta las visitas sin
+          cookies, igual que aquí.
+        </p>
+        <h3>Datos de partida</h3>
+        <p>
+          La primera vez que abre un juego le preguntamos si quiere enviarnos
+          datos de sus partidas. Solo los enviamos si acepta, y puede cambiar de
+          opinión cuando quiera en los ajustes del juego ("Enviar datos de juego
+          anónimos"). Si no acepta, el juego funciona igual.
+        </p>
+        <p>
+          Enviamos qué nivel juega, hasta qué oleada llega, si gana o pierde,
+          cuánto dura la partida, qué elige (premios, héroe, herramienta y
+          mascota), el avance del tutorial y los cambios de ajustes. También la
+          versión del juego, el tipo de dispositivo y el idioma. No enviamos su
+          nombre, su correo ni su dirección IP: las partidas van asociadas a un
+          identificador aleatorio que el juego crea en su navegador.
+        </p>
+        <p>
+          Los usamos solo para entender cómo se juega y mejorar los juegos: qué
+          niveles cuestan más, dónde se abandona y qué opciones se usan. No los
+          usamos para publicidad, no los vendemos y no los cruzamos con otros
+          datos.
+        </p>
+        <p>
+          Se guardan en nuestro panel de gestión, en Supabase. Los conservamos
+          hasta 24 meses desde que los recibimos; después los borramos o los
+          dejamos solo como totales que no se pueden asociar a nadie.
+        </p>
+        <p>
+          El progreso, los récords, sus ajustes, su decisión sobre los datos y
+          el identificador aleatorio se guardan en el localStorage de su
+          navegador, en el sitio de juegos. Si borra los datos de ese sitio en
+          su navegador, el juego empieza de cero con un identificador nuevo.
+        </p>
+        <h3>Avisos de nuevas versiones</h3>
+        <p>
+          Si se inscribe para recibir avisos, guardamos su correo, los juegos
+          que eligió y la fecha en que dio su consentimiento. Antes de
+          escribirle le enviamos un correo para que confirme la inscripción; si
+          no confirma, no le enviamos nada más y borramos la inscripción
+          pendiente a los 30 días.
+        </p>
+        <p>
+          Solo le escribimos cuando hay una versión nueva de esos juegos. Cada
+          correo trae un enlace para darse de baja en un clic. Al darse de baja
+          dejamos de escribirle y guardamos solo el registro de la baja, para no
+          volver a enviarle avisos; si prefiere que borremos también su correo,
+          pídanoslo.
+        </p>
+        <p>
+          Las inscripciones se guardan en nuestro panel de gestión, en Supabase,
+          y los correos se envían con Resend.
+        </p>
+        <h3>Cómo pedir que borremos sus datos</h3>
+        <p>
+          Escríbanos a <a href={`mailto:${site.email}`}>{site.email}</a>. Para
+          los avisos basta con el correo inscrito. Como los datos de partida no
+          llevan su nombre ni su correo, díganos desde qué juego y qué
+          dispositivo jugó, y le ayudamos a encontrarlos y borrarlos. Para dejar
+          de enviarlos basta con desactivar la opción en los ajustes del juego.
+        </p>
+      </section>
+
+      <section>
         <h2>Cookies y almacenamiento en su navegador</h2>
         <p>
           Agrupamos lo que guardamos en su navegador en tres categorías. Las
@@ -152,12 +223,17 @@ const updated = "16 de octubre de 2026"
         <p>Estos proveedores tratan datos por encargo nuestro:</p>
         <ul>
           <li>
-            <strong>Vercel</strong>: aloja el sitio y cuenta las visitas sin
-            cookies (Web Analytics). Estados Unidos.
+            <strong>Vercel</strong>: aloja este sitio y el de los juegos, y
+            cuenta las visitas sin cookies (Web Analytics). Estados Unidos.
           </li>
           <li>
-            <strong>Supabase</strong>: guarda los mensajes del formulario en
-            nuestro sistema de gestión de clientes. Brasil.
+            <strong>Supabase</strong>: guarda los mensajes del formulario, los
+            datos de partida y las inscripciones a los avisos en nuestro panel
+            de gestión. Brasil.
+          </li>
+          <li>
+            <strong>Resend</strong>: envía los correos de confirmación y los
+            avisos de nuevas versiones. Estados Unidos.
           </li>
           <li>
             <strong>Google Analytics</strong>: analítica de visitas, según su
@@ -173,11 +249,14 @@ const updated = "16 de octubre de 2026"
       <section>
         <h2>Sus derechos</h2>
         <p>
-          Según la ley chilena de protección de datos, puede pedirnos acceder a
-          sus datos, corregirlos, borrarlos, oponerse a que los tratemos o
-          recibir una copia. Escríbanos a{" "}
-          <a href={`mailto:${site.email}`}>{site.email}</a> y le respondemos en
-          un máximo de dos días hábiles.
+          Tratamos sus datos según la Ley 19.628 sobre protección de la vida
+          privada y, desde su entrada en vigencia, la Ley 21.719 que la
+          modifica. Puede pedirnos acceder a sus datos, corregirlos, borrarlos,
+          oponerse a que los tratemos o recibir una copia. Cuando un tratamiento
+          depende de su consentimiento, como los datos de partida o los avisos,
+          puede retirarlo cuando quiera, sin afectar lo tratado antes.
+          Escríbanos a <a href={`mailto:${site.email}`}>{site.email}</a> y le
+          respondemos en un máximo de dos días hábiles.
         </p>
       </section>
 
