@@ -50,6 +50,12 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
     setFieldErrors({})
 
     const formData = new FormData(event.currentTarget)
+    // El panel guarda de qué canal llegó el lead (enlaces con ?utm_source=linkedin, etc.).
+    // shortcut: solo lee la URL actual, se pierde si navega a otra página antes de escribir; guardarlo en sessionStorage si pasa.
+    formData.set(
+      "source",
+      new URLSearchParams(window.location.search).get("utm_source") ?? ""
+    )
     const { data, error } = await actions.contact(formData)
 
     setPending(false)
