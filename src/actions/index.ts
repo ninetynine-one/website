@@ -3,7 +3,7 @@ import { ActionError, defineAction } from "astro:actions"
 import { DASHBOARD_LEADS_SECRET, DASHBOARD_LEADS_URL } from "astro:env/server"
 import { z } from "astro/zod"
 
-import { projectTypes } from "@/data/site"
+import { decisions, projectTypes, timelines } from "@/data/site"
 
 export const server = {
   contact: defineAction({
@@ -21,11 +21,31 @@ export const server = {
         .trim()
         .max(5000, "El mensaje es demasiado largo.")
         .optional(),
+      timeline: z.enum(
+        timelines.map((t) => t.value),
+        {
+          error: "Cuéntenos cuándo quiere empezar.",
+        }
+      ),
+      decision: z.enum(
+        decisions.map((d) => d.value),
+        {
+          error: "Cuéntenos quién más participa en la decisión.",
+        }
+      ),
       source: z.string().trim().max(60).optional(),
       // Campo trampa: invisible para personas, los bots lo llenan.
       website: z.string().max(0).optional(),
     }),
-    handler: async ({ name, email, type, message, source }) => {
+    handler: async ({
+      name,
+      email,
+      type,
+      message,
+      timeline,
+      decision,
+      source,
+    }) => {
       if (!DASHBOARD_LEADS_URL || !DASHBOARD_LEADS_SECRET) {
         console.error(
           "[contact] DASHBOARD_LEADS_URL or DASHBOARD_LEADS_SECRET is not set"
@@ -49,7 +69,15 @@ export const server = {
             Authorization: `Bearer ${DASHBOARD_LEADS_SECRET}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name, email, type, message, source }),
+          body: JSON.stringify({
+            name,
+            email,
+            type,
+            message,
+            timeline,
+            decision,
+            source,
+          }),
           signal: AbortSignal.timeout(10_000),
         })
       } catch (cause) {

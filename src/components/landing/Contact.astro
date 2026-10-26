@@ -1,7 +1,7 @@
 ---
 import { ContactForm } from "./ContactForm"
 import { buttonVariants } from "@/components/ui/button"
-import { projectTypes, site } from "@/data/site"
+import { decisions, projectTypes, site, timelines } from "@/data/site"
 import { cn } from "@/lib/utils"
 ---
 
@@ -27,5 +27,11 @@ import { cn } from "@/lib/utils"
     </a>
   </div>
 
-  <ContactForm client:visible email={site.email} projectTypes={projectTypes} />
+  <ContactForm
+    client:visible
+    email={site.email}
+    projectTypes={projectTypes}
+    timelines={timelines}
+    decisions={decisions}
+  />
 </section>

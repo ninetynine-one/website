@@ -158,6 +158,23 @@ export const projectTypes = [
 
 export type ProjectType = (typeof projectTypes)[number]
 
+// Preguntas de calificación: el panel puntúa al lead con los `value` (mismos enums allá).
+export const timelines = [
+  { value: "esta_semana", label: "Esta semana" },
+  { value: "este_mes", label: "Este mes" },
+  { value: "este_trimestre", label: "Este trimestre" },
+  { value: "mas_adelante", label: "Más adelante" },
+  { value: "explorando", label: "Solo estoy explorando" },
+] as const
+
+export const decisions = [
+  { value: "solo", label: "Solo yo" },
+  { value: "con_equipo", label: "Con un socio o mi equipo" },
+  { value: "otra_persona", label: "Lo presento a otra persona" },
+] as const
+
+export type Choice = { value: string; label: string }
+
 // Atajos al formulario: cada uno deja elegido su tipo de proyecto.
 export const startPoints = [
   {

@@ -14,16 +14,26 @@ import { Input } from "@/components/ui/input"
 import { NativeSelect, NativeSelectOption } from "@/components/ui/native-select"
 import { Spinner } from "@/components/ui/spinner"
 import { Textarea } from "@/components/ui/textarea"
+import type { Choice } from "@/data/site"
 import { track } from "@/lib/analytics"
 
 interface ContactFormProps {
   email: string
   projectTypes: readonly string[]
+  timelines: readonly Choice[]
+  decisions: readonly Choice[]
 }
 
-type FieldErrors = Partial<Record<"name" | "email" | "message", string[]>>
+type FieldErrors = Partial<
+  Record<"name" | "email" | "message" | "timeline" | "decision", string[]>
+>
 
-export function ContactForm({ email, projectTypes }: ContactFormProps) {
+export function ContactForm({
+  email,
+  projectTypes,
+  timelines,
+  decisions,
+}: ContactFormProps) {
   const [pending, setPending] = useState(false)
   const [sentTo, setSentTo] = useState<string | null>(null)
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({})
@@ -146,17 +156,67 @@ export function ContactForm({ email, projectTypes }: ContactFormProps) {
           </NativeSelect>
         </Field>
         <Field data-invalid={!!fieldErrors.message}>
-          <FieldLabel htmlFor="contact-message">Mensaje</FieldLabel>
+          <FieldLabel htmlFor="contact-message">
+            ¿Qué problema quiere resolver?
+          </FieldLabel>
           <Textarea
             id="contact-message"
             name="message"
             rows={4}
-            placeholder="Lo que sepa basta: objetivo, plazos, presupuesto aproximado."
+            placeholder="Lo que sepa basta: qué quiere lograr y qué se lo impide hoy."
             className="resize-y"
             aria-invalid={!!fieldErrors.message}
           />
           <FieldError>{fieldErrors.message?.[0]}</FieldError>
         </Field>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Field data-invalid={!!fieldErrors.timeline}>
+            <FieldLabel htmlFor="contact-timeline">
+              ¿Cuándo quiere empezar?
+            </FieldLabel>
+            <NativeSelect
+              id="contact-timeline"
+              name="timeline"
+              required
+              defaultValue=""
+              className="w-full"
+              aria-invalid={!!fieldErrors.timeline}
+            >
+              <NativeSelectOption value="" disabled>
+                Elija una opción
+              </NativeSelectOption>
+              {timelines.map((t) => (
+                <NativeSelectOption key={t.value} value={t.value}>
+                  {t.label}
+                </NativeSelectOption>
+              ))}
+            </NativeSelect>
+            <FieldError>{fieldErrors.timeline?.[0]}</FieldError>
+          </Field>
+          <Field data-invalid={!!fieldErrors.decision}>
+            <FieldLabel htmlFor="contact-decision">
+              ¿Quién más participa en la decisión?
+            </FieldLabel>
+            <NativeSelect
+              id="contact-decision"
+              name="decision"
+              required
+              defaultValue=""
+              className="w-full"
+              aria-invalid={!!fieldErrors.decision}
+            >
+              <NativeSelectOption value="" disabled>
+                Elija una opción
+              </NativeSelectOption>
+              {decisions.map((d) => (
+                <NativeSelectOption key={d.value} value={d.value}>
+                  {d.label}
+                </NativeSelectOption>
+              ))}
+            </NativeSelect>
+            <FieldError>{fieldErrors.decision?.[0]}</FieldError>
+          </Field>
+        </div>
         <input
           type="text"
           name="website"
