@@ -12,6 +12,7 @@ export const site = {
   location: "Santiago de Chile",
   whatsapp: "https://wa.me/56984875420",
   legalName: "Ninety Nine One SpA",
+  games: "https://games.ninetynineone.studio",
 }
 
 export const navLinks = [
@@ -20,6 +21,7 @@ export const navLinks = [
   { href: "/#proyectos", label: "Proyectos" },
   { href: "/#valores", label: "Valores" },
   { href: "/#preguntas", label: "Preguntas" },
+  { href: site.games, label: "Juegos" },
 ]
 
 export const socialLinks = [
