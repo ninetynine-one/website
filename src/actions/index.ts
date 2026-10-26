@@ -10,7 +10,8 @@ export const server = {
     accept: "form",
     input: z.object({
       name: z
-        .string()
+        // Astro manda los campos vacíos como null: el mensaje cubre ese caso.
+        .string({ error: "Cuéntenos su nombre." })
         .trim()
         .min(1, "Cuéntenos su nombre.")
         .max(120, "El nombre es demasiado largo."),
@@ -30,7 +31,7 @@ export const server = {
       decision: z.enum(
         decisions.map((d) => d.value),
         {
-          error: "Cuéntenos quién más participa en la decisión.",
+          error: "Cuéntenos quién más decide.",
         }
       ),
       source: z.string().trim().max(60).optional(),

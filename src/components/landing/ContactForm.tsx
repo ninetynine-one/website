@@ -195,7 +195,7 @@ export function ContactForm({
           </Field>
           <Field data-invalid={!!fieldErrors.decision}>
             <FieldLabel htmlFor="contact-decision">
-              ¿Quién más participa en la decisión?
+              ¿Quién más decide?
             </FieldLabel>
             <NativeSelect
               id="contact-decision"
