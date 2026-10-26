@@ -21,10 +21,11 @@ export const server = {
         .trim()
         .max(5000, "El mensaje es demasiado largo.")
         .optional(),
+      source: z.string().trim().max(60).optional(),
       // Campo trampa: invisible para personas, los bots lo llenan.
       website: z.string().max(0).optional(),
     }),
-    handler: async ({ name, email, type, message }) => {
+    handler: async ({ name, email, type, message, source }) => {
       if (!DASHBOARD_LEADS_URL || !DASHBOARD_LEADS_SECRET) {
         console.error(
           "[contact] DASHBOARD_LEADS_URL or DASHBOARD_LEADS_SECRET is not set"
@@ -48,7 +49,7 @@ export const server = {
             Authorization: `Bearer ${DASHBOARD_LEADS_SECRET}`,
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ name, email, type, message }),
+          body: JSON.stringify({ name, email, type, message, source }),
           signal: AbortSignal.timeout(10_000),
         })
       } catch (cause) {
