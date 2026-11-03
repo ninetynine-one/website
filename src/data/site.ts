@@ -257,6 +257,6 @@ export const projects = [
     caption: "cursos.eduardoalvarez.dev · 2026",
     image: { light: cursos, dark: cursos },
     description:
-      "Hecha para un instructor independiente de desarrollo de software: venta de cursos, lecciones en video y texto, pruebas, retos revisados y certificados, con un panel de administración donde la IA asiste en la creación de contenido.",
+      "Hecha por y para el fundador de la empresa, instructor de desarrollo de software: venta de cursos, lecciones en video y texto, pruebas, retos revisados y certificados, con un panel de administración donde la IA asiste en la creación de contenido.",
   },
 ]
