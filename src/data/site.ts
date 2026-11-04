@@ -10,7 +10,7 @@ export const site = {
     "Estudio de software en Chile. Creamos apps y videojuegos propios, y desarrollamos software a medida y soluciones con IA.",
   email: "hola@ninetynineone.studio",
   location: "Santiago de Chile",
-  whatsapp: "https://wa.me/56984875420",
+  whatsapp: "https://wa.me/56931128428",
   legalName: "Ninety Nine One SpA",
   games: "https://games.ninetynineone.studio",
 }
