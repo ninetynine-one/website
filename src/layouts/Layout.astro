@@ -82,6 +82,17 @@ const squareImageUrl = new URL("/og-square.png", Astro.site)
       }
       apply()
       media.addEventListener("change", apply)
+      // Al ir a los juegos, lleva el tema visible (games.ninetynineone.studio es otro origen).
+      document.addEventListener("click", (event) => {
+        const link = event.target.closest?.("a[href]")
+        if (!link || link.hostname !== "games.ninetynineone.studio") return
+        const url = new URL(link.href)
+        url.searchParams.set(
+          "theme",
+          document.documentElement.classList.contains("dark") ? "dark" : "light"
+        )
+        link.href = url.href
+      })
     </script>
   </head>
   <body>
