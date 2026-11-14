@@ -29,6 +29,10 @@ export const socialLinks = [
     href: "https://www.instagram.com/ninetynineone.studio",
     label: "Instagram",
   },
+  {
+    href: "https://www.linkedin.com/company/ninetynineone-studio",
+    label: "LinkedIn",
+  },
   { href: "https://github.com/ninetynine-one", label: "GitHub" },
 ]
 
