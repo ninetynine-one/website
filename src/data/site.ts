@@ -242,7 +242,7 @@ export const faqs = [
   },
   {
     question: "¿Firman acuerdos de confidencialidad?",
-    answer: "Sí. Si lo necesita, lo firmamos antes de la primera reunión.",
+    answer: "Sí. Si lo necesita, lo firmamos antes de comenzar a trabajar.",
   },
   {
     question: "¿Trabajan con empresas fuera de Chile?",
