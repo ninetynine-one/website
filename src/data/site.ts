@@ -34,6 +34,10 @@ export const socialLinks = [
     label: "LinkedIn",
   },
   { href: "https://github.com/ninetynine-one", label: "GitHub" },
+  {
+    href: "https://www.youtube.com/channel/UCt0NFMaEBglKr9PXkN1INOw",
+    label: "YouTube",
+  },
 ]
 
 export const process = [
