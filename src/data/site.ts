@@ -108,7 +108,7 @@ export const services = [
     tone: "success",
     title: "Soluciones de IA para empresas",
     description:
-      "Le ayudamos a decidir dónde la inteligencia artificial aporta valor y construimos la solución. Usted trabaja siempre con una persona del equipo, de principio a fin.",
+      "Le ayudamos a decidir dónde la inteligencia artificial aporta valor y construimos la solución. Usted trabaja siempre con la misma persona, de principio a fin.",
     items: [
       {
         label: "Asesoría en IA",
@@ -216,6 +216,21 @@ export const faqs = [
       "El plazo va en la cotización. Una asesoría o un piloto suele tomar algunas semanas; un producto completo, algunos meses.",
   },
   {
+    question: "Ya contratamos a alguien y el proyecto salió mal. ¿Qué cambia?",
+    answer:
+      "El precio y el plazo quedan por escrito antes de empezar. Cada viernes recibe un reporte con lo terminado, lo que sigue y los riesgos apenas los detectamos. Y si tiene un proyecto a medias, lo revisamos y le decimos qué conviene hacer.",
+  },
+  {
+    question: "¿Necesito un equipo técnico?",
+    answer:
+      "No. Nos encargamos del diseño, el desarrollo y la entrega, y le explicamos cada decisión sin jerga. Si ya tiene equipo, trabajamos con él.",
+  },
+  {
+    question: "¿Y si todavía no sé bien qué necesito?",
+    answer:
+      "Partimos con un diagnóstico: entendemos el problema y le decimos qué construir y qué no. Se cobra aparte y el resultado es suyo, siga o no con nosotros.",
+  },
+  {
     question: "¿Qué pasa después de la entrega?",
     answer:
       "Hay un periodo de garantía en que corregimos errores sin costo. Después puede contratar mantención o seguir con su propio equipo.",
@@ -227,7 +242,7 @@ export const faqs = [
   },
   {
     question: "¿Firman acuerdos de confidencialidad?",
-    answer: "Sí. Si lo necesita, lo firmamos antes de la primera reunión.",
+    answer: "Sí. Si lo necesita, lo firmamos antes de comenzar a trabajar.",
   },
   {
     question: "¿Trabajan con empresas fuera de Chile?",
