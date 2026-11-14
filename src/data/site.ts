@@ -108,7 +108,7 @@ export const services = [
     tone: "success",
     title: "Soluciones de IA para empresas",
     description:
-      "Le ayudamos a decidir dónde la inteligencia artificial aporta valor y construimos la solución. Usted trabaja siempre con una persona del equipo, de principio a fin.",
+      "Le ayudamos a decidir dónde la inteligencia artificial aporta valor y construimos la solución. Usted trabaja siempre con la misma persona, de principio a fin.",
     items: [
       {
         label: "Asesoría en IA",
