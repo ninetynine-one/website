@@ -35,7 +35,7 @@ export const socialLinks = [
   },
   { href: "https://github.com/ninetynine-one", label: "GitHub" },
   {
-    href: "https://www.youtube.com/channel/UCt0NFMaEBglKr9PXkN1INOw",
+    href: "https://www.youtube.com/@ninetynineone.studio",
     label: "YouTube",
   },
 ]
