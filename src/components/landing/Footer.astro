@@ -18,6 +18,10 @@ const linkClass = "self-start text-foreground no-underline hover:text-link"
         class="h-16 w-auto self-start"
       />
       <span class="text-[15px] text-muted-foreground">{site.location}</span>
+      <!-- La hora la pone el navegador: el HTML es estático y quedaría la del build. -->
+      <span data-santiago-clock hidden class="text-[15px] text-muted-foreground">
+        Son las <time></time> en Santiago
+      </span>
     </div>
     <nav class="flex flex-col gap-3 text-[15px]" aria-label="Estudio">
       <strong class="mb-1 text-[13px] font-semibold text-foreground">
@@ -43,6 +47,7 @@ const linkClass = "self-start text-foreground no-underline hover:text-link"
       <span>
         © {year} {site.legalName}
       </span>
+      <span>Diseñado y programado por nosotros.</span>
       <a href="/privacidad" class="text-muted-foreground">
         Privacidad
       </a>
@@ -52,3 +57,22 @@ const linkClass = "self-start text-foreground no-underline hover:text-link"
     </div>
   </div>
 </footer>
+
+<script>
+  const clock = document.querySelector<HTMLElement>("[data-santiago-clock]")
+  const time = clock?.querySelector("time")
+  const format = new Intl.DateTimeFormat("es-CL", {
+    timeZone: "America/Santiago",
+    hour: "2-digit",
+    minute: "2-digit",
+    hourCycle: "h23",
+  })
+  const tick = () => {
+    if (time) time.textContent = format.format(new Date())
+  }
+  if (clock) {
+    tick()
+    clock.hidden = false
+    setInterval(tick, 30_000)
+  }
+</script>

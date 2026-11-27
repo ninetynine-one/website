@@ -1,4 +1,6 @@
 ---
+import { CopyIcon } from "lucide-react"
+
 import { ContactForm } from "./ContactForm"
 import { buttonVariants } from "@/components/ui/button"
 import { decisions, projectTypes, site, timelines } from "@/data/site"
@@ -14,17 +16,30 @@ import { cn } from "@/lib/utils"
       Cuéntenos qué quiere construir.
     </h2>
     <p class="max-w-md text-lg/7 text-body">
-      La primera llamada dura 30 minutos y no tiene costo. Le respondemos en los
-      próximos días.
+      La primera llamada dura 30 minutos y no tiene costo. Leemos todo y le
+      respondemos en los próximos días.
     </p>
     <a
       href={site.whatsapp}
       target="_blank"
       rel="noopener"
+      data-whatsapp="contacto"
       class={cn(buttonVariants({ variant: "secondary", size: "lg" }))}
     >
       Escribir por WhatsApp
     </a>
+    <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-body">
+      O escríbanos a
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      <button
+        type="button"
+        data-copy-email={site.email}
+        class={cn(buttonVariants({ variant: "outline", size: "xs" }))}
+      >
+        <CopyIcon aria-hidden="true" />
+        <span data-copy-label aria-live="polite">Copiar</span>
+      </button>
+    </p>
   </div>
 
   <ContactForm
@@ -35,3 +50,21 @@ import { cn } from "@/lib/utils"
     decisions={decisions}
   />
 </section>
+
+<script>
+  // Copia el correo; si el navegador no deja, queda el enlace mailto al lado.
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-copy-email]")
+    .forEach((button) =>
+      button.addEventListener("click", async () => {
+        const label = button.querySelector("[data-copy-label]")
+        try {
+          await navigator.clipboard.writeText(button.dataset.copyEmail ?? "")
+          if (label) label.textContent = "Copiado"
+        } catch {
+          if (label) label.textContent = "No se pudo copiar"
+        }
+        setTimeout(() => label && (label.textContent = "Copiar"), 2000)
+      })
+    )
+</script>
