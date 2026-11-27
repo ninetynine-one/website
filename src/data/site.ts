@@ -10,7 +10,8 @@ export const site = {
     "Estudio de software en Chile. Creamos apps y videojuegos propios, y desarrollamos software a medida y soluciones con IA.",
   email: "hola@ninetynineone.studio",
   location: "Santiago de Chile",
-  whatsapp: "https://wa.me/56931128428",
+  // Mensaje prellenado: el chat llega con contexto de dónde vino.
+  whatsapp: `https://wa.me/56931128428?text=${encodeURIComponent("Hola, les escribo desde la web de Ninety Nine One.")}`,
   legalName: "Ninety Nine One SpA",
   games: "https://games.ninetynineone.studio",
 }

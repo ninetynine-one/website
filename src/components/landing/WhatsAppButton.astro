@@ -1,0 +1,36 @@
+---
+import { MessageCircleIcon } from "lucide-react"
+
+import { buttonVariants } from "@/components/ui/button"
+import { site } from "@/data/site"
+import { cn } from "@/lib/utils"
+---
+
+<!-- Se esconde mientras el aviso de cookies ocupa la misma esquina. -->
+<a
+  href={site.whatsapp}
+  target="_blank"
+  rel="noopener"
+  data-whatsapp="flotante"
+  aria-label="Escribir por WhatsApp"
+  title="Escribir por WhatsApp"
+  class={cn(
+    buttonVariants({ size: "icon-lg" }),
+    "fixed right-4 bottom-4 z-30 rounded-full shadow-md md:right-6 md:bottom-6 [body:has(#cookie-notice-title)_&]:hidden"
+  )}
+>
+  <MessageCircleIcon className="size-6" aria-hidden="true" />
+</a>
+
+<script>
+  import { track } from "@/lib/analytics"
+
+  // Mide los clics a WhatsApp desde cualquier enlace marcado (flotante, contacto).
+  document
+    .querySelectorAll<HTMLAnchorElement>("[data-whatsapp]")
+    .forEach((link) =>
+      link.addEventListener("click", () =>
+        track("whatsapp_click", { location: link.dataset.whatsapp })
+      )
+    )
+</script>
